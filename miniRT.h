@@ -76,7 +76,7 @@ typedef struct {
     float diameter;
     float height;
     colour rgb;
-}
+} cy;
 
 typedef vector point;
 
