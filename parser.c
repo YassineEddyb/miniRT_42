@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:36:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/06/29 20:06:00 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:15:15 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,11 @@ char	**ft_map(char **av)
 		i = 0;
 		while (i < j)
 			map[i++] = get_next_line(fd);
-		map[i] = NULL;
 		close (fd);
+		map[i] = NULL;
+		return (map);
 	}
-	else
-		return (NULL);
-	return (map);
+	return (NULL);
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 10:34:40 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/06/29 16:41:07 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:50:48 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ char	*ft_getline(char *save)
 		dst[j] = save[j];
 		j++;
 	}
-	if (save[j] == '\n')
-		// dst[j++] = '\n';
 	dst[j] = '\0';
 	return (dst);
 }
@@ -66,14 +64,14 @@ char	*ft_save(int fd, char *save)
 	char	*buff;
 	int		ret;
 
-	buff = malloc(100 + 1);
+	buff = malloc(1 + 1);
 	if (!buff)
 		return (NULL);
 	buff[0] = '\0';
-	ret = 100;
+	ret = 1;
 	while (ft_strchr(buff, '\n') == 0 && ret != 0)
 	{
-		ret = read (fd, buff, 100);
+		ret = read (fd, buff, 1);
 		if (ret == -1)
 		{
 			free (buff);
