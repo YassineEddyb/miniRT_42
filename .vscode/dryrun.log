@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/yed-dyb/Desktop/cursus/miniRT'
+gcc miniRT.c -lmlx -framework OpenGL -framework AppKit -o miniRT
+make: Leaving directory `/Users/yed-dyb/Desktop/cursus/miniRT'
+ 
