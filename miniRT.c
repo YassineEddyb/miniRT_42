@@ -6,11 +6,12 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/06/30 21:53:22 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/03 23:22:24 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
 
 colour initColour(float red, float green, float blue)
 {
@@ -42,56 +43,44 @@ int intersectRaySphere(ray *r, sphere *s)
 	}
 }
 
-int main(int argc, char **argv){
+void print_vector(vector v)
+{
+	printf("x-> %f\ny-> %f\nz-> %f\nw-> %f\n\n", v.x, v.y, v.z, v.w);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int main(int argc, char **argv)
+{
 	void	*mlx;
 	void	*win;
-	int c_x, c_y;
-
-	sphere s;
-	ray r;
-	light light;
+	int i = 0;
+	int x;
+	int y;
+	vector v;
+	vector v1;
+	vector v2;
+	vector p;
+	vector p1;
 
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Hello world!");
-
-	light.pos = vectorInit(0, 0, -10);
-	light.rgb = initColour(1, 1, 1);
-
-	s.pos = vectorInit(300, 300, 100);
-	s.rgb = initColour(244, 32, 1);
-	s.radius = 12 * 10;
-
-	r.start = vectorInit(0, 0, 1);
-
-	int x = 0;
-	int y;
-	while(x < WIDTH)
-	{
-		y = 0;
-		while(y < HEIGHT)
-		{
-			float f;
-			float ratio;
-			float imageAspectRatio = WIDTH / (float)HEIGHT;  //assuming width > height
-			float scale = tan(deg2rad(70 * 0.5));
-			
-			r.dir.x = (2 * ((x + 0.5) / WIDTH) - 1) * tan(70 / 2 * M_PI / 180) * imageAspectRatio; 
-			r.dir.y = (1 - 2 * ((y + 0.5) / HEIGHT) * tan(70 / 2 * M_PI / 180)) * scale;
-			r.dir.z = -1;
-			
-			if((f = intersectRaySphere(&r, &s)) != -1)
-			{
-				vector p = vectorAdd(r.start, vectorScale(f,  normalize(r.dir)));
-				vector v1 = vectorSub(&light.pos, &p);
-				vector v2 = vectorSub(&s.pos, &p);
-				ratio = vectorDot(&v1, &v2);
+	win = mlx_new_window(mlx, WIDTH, HEIGHT, "miniRT");
 	
-				s.rgb = initColour(s.rgb.red * 1, s.rgb.green * 1, s.rgb.blue * 1);
-				mlx_pixel_put(mlx, win, x, y, create_trgb(1, s.rgb.red, s.rgb.green, s.rgb.blue));
-			}
-			y++;
-		}
-		x++;
+	p = vectorInit(0, 0, 0, 1);
+	v2 = vectorInit(0, 100, 0, 1);
+	p1 = translate(p, v2);
+
+	print_vector(p);
+	while(i < 12)
+	{
+		print_vector(p1);
+		p1 = rotate_x(p1, M_PI/ 6);
+
+		mlx_pixel_put(mlx, win, p1.y + WIDTH/2, p1.z+HEIGHT/2, create_trgb(1, 255, 255, 255));
+		i++;
 	}
 	mlx_loop(mlx);
 }

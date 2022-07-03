@@ -6,11 +6,29 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:55:32 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/01 13:13:45 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/03 13:28:29 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+void print_matrix(matrix m)
+{
+   int j;
+   int i = 0;
+   while(i < m.rows)
+   {
+      j = 0;
+      while(j < m.cols)
+      {
+         printf("%f|", m.m[i][j]);
+         j++;
+      }
+      printf("\n");
+      i++;
+   }
+   printf("\n");
+}
 
 matrix matrixCreate(int rows, int cols)
 {
@@ -19,21 +37,21 @@ matrix matrixCreate(int rows, int cols)
    int j;
    float **arr;
 
-   arr = malloc(cols * sizeof(float *));
+   arr = malloc(rows * sizeof(float *));
    i = 0;
-   while (i < cols)
+   while (i < rows)
    {
-      arr[i] = malloc(rows * sizeof(float));
+      arr[i] = malloc(cols * sizeof(float));
       i++;
    }
 
    matrix.rows = rows;
    matrix.cols = cols;
    i = -1;
-   while(++i < cols)
+   while(++i < rows)
    {
       j = -1;
-      while(++j < rows)
+      while(++j < cols)
          arr[i][j] = 0;
    }
    matrix.m = arr;
@@ -47,16 +65,17 @@ matrix matrixMult(matrix m1, matrix m2)
    int k;
    matrix result;
 
-   result = matrixCreate(m1.rows, m1.cols);
-
+   if (m1.cols != m2.rows)
+      exit(1);
+   result = matrixCreate(m1.rows, m2.cols);
    i = -1;
    while (++i < m1.rows)
    {
       j = -1;
-      while (++j < m1.cols)
+      while (++j < m2.cols)
       {
          k = -1;
-         while (++k < m1.rows)
+         while (++k < m1.cols)
             result.m[i][j] += m1.m[i][k] * m2.m[k][j];
       }
    }
@@ -81,58 +100,63 @@ matrix matrixTranspose(matrix m)
    return (transpose);
 }
 
-void print_matrix(matrix m)
+matrix cofactor_matrix(matrix m)
 {
-   int j;
-   int i = 0;
+   int i, j;
+   matrix matrix;
+
+   matrix = matrixCreate(m.rows, m.cols);
+
+   i = 0;
    while(i < m.rows)
    {
       j = 0;
       while(j < m.cols)
       {
-         printf("%f|", m.m[i][j]);
+         matrix.m[i][j] = cofactor(matrixDeterminant(submatrix(m, i, j)), i, j);
          j++;
       }
-      printf("\n");
       i++;
    }
+
+   return (matrix);
 }
 
-int main () {
-   matrix m1;
-   matrix m2;
-   matrix m3;
-   matrix m4;
+matrix matrix_devide_by_det(matrix m, float det)
+{
    int i;
    int j;
+   matrix inverted;
 
-   m1 = matrixCreate(4, 4);
-   m2 = matrixCreate(4, 4);
+   i = 0;
+   inverted  = matrixCreate(m.rows, m.cols);
+   while(i < m.rows)
+   {
+      j = 0;
+      while(j < m.cols)
+      {
+         inverted.m[i][j] = m.m[i][j] / det;
+         j++;
+      }
+      i++;
+   }
 
-   m1.m[0][0] = 1;
-   m1.m[0][1] = 2;
-   m1.m[0][2] = 3;
-   m1.m[0][3] = 4;
-   m1.m[1][0] = 5;
-   m1.m[1][1] = 6;
-   m1.m[1][2] = 7;
-   m1.m[1][3] = 8;
-   m1.m[2][0] = 9;
-   m1.m[2][1] = 8;
-   m1.m[2][2] = 7;
-   m1.m[2][3] = 6;
-   m1.m[3][0] = 5;
-   m1.m[3][1] = 4;
-   m1.m[3][2] = 3;
-   m1.m[3][3] = 2;
+   return(inverted);
+}
 
-   m2.m[0][0] = 1;
-   m2.m[1][1] = 1;
-   m2.m[2][2] = 1;
-   m2.m[3][3] = 1;
+matrix matrixInverse(matrix m)
+{
+   float det;
+   matrix matrix;
 
-   m3 = submatrix(m1, 1, 1);
-   m4 = submatrix(m3, 0, 2);
+   det = matrixDeterminant(m);
 
-   print_matrix(m1);
+   if (det == 0)
+      exit(1);
+   
+   matrix = cofactor_matrix(m);
+   matrix = matrixTranspose(matrix);
+   matrix = matrix_devide_by_det(matrix, det);
+
+   return (matrix);
 }

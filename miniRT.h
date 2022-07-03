@@ -28,7 +28,7 @@ typedef struct{
 
 /* The vector structure */
 typedef struct {
-      float x,y,z;
+      float x,y,z, w;
 } vector;
 
 /* The sphere */
@@ -90,16 +90,31 @@ typedef struct {
 typedef vector point;
 
 // vector functions
-vector vectorSub(vector *v1, vector *v2)
-float vectorDot(vector *v1, vector *v2)
-vector vectorScale(float c, vector v)
-vector vectorAdd(vector v1, vector v2)
-vector normalize(vector v)
-vector vectorInit(float x, float y, float z)
+vector vectorSub(vector *v1, vector *v2);
+float vectorDot(vector *v1, vector *v2);
+vector vectorScale(float c, vector v);
+vector vectorAdd(vector v1, vector v2);
+vector normalize(vector v);
+vector vectorInit(float x, float y, float z, float w);
 
 // matrix functions
+matrix matrixCreate(int rows, int cols);
 float determinant(matrix m);
 matrix submatrix(matrix m, int row, int col);
 float minor(matrix m, int rwo, int col);
+float cofactor(float det, int row, int col);
+float det(float **m);
+float matrixDeterminant(matrix m);
+void print_matrix(matrix m);
+matrix matrixMult(matrix m1, matrix m2);
+matrix matrixTranspose(matrix m);
+matrix matrixInverse(matrix m);
+
+// matrix transformatons
+vector translate(vector v, vector translator);\
+vector scale(vector v, vector scaler);
+vector rotate_x(vector v, float r);
+vector rotate_y(vector v, float r);
+vector rotate_z(vector v, float r);
 
 #endif

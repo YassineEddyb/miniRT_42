@@ -1,2 +1,0 @@
-# miniRT
-My first RayTracer
