@@ -15,6 +15,12 @@
 #define RAY_T_MAX 1.0e30f
 #define min(a,b) (((a) < (b)) ? (a) : (b))
 
+typedef struct 
+{
+    float t;
+    void *object;
+} intesection;
+
 typedef struct {
     int rows;
     int cols;
@@ -34,6 +40,7 @@ typedef struct {
 /* The sphere */
 typedef struct {
     vector pos;
+    vector transform;
     float  radius;
     float diameter;
     colour rgb;
@@ -90,9 +97,9 @@ typedef struct {
 typedef vector point;
 
 // vector functions
-vector vectorSub(vector *v1, vector *v2);
-float vectorDot(vector *v1, vector *v2);
-vector vectorScale(float c, vector v);
+vector vectorSub(vector v1, vector v2);
+float vectorDot(vector v1, vector v2);
+vector vectorScale(vector v, float t);
 vector vectorAdd(vector v1, vector v2);
 vector normalize(vector v);
 vector vectorInit(float x, float y, float z, float w);
@@ -116,5 +123,12 @@ vector scale(vector v, vector scaler);
 vector rotate_x(vector v, float r);
 vector rotate_y(vector v, float r);
 vector rotate_z(vector v, float r);
+
+// ray functions
+vector position(ray r, float t);
+ray transform(ray r, vector v, char t);
+
+// sphere functions
+float *sphereIntersection(ray r, sphere s);
 
 #endif

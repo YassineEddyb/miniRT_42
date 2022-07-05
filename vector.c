@@ -6,27 +6,27 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:52:36 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/03 23:29:29 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/04 18:49:23 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-vector vectorSub(vector *v1, vector *v2)
+vector vectorSub(vector v1, vector v2)
 {
-	vector result = {v1->x - v2->x, v1->y - v2->y, v1->z - v2->z };
+	vector result = {v1.x - v2.x, v1.y - v2.y, v1.z - v2.z};
 	return result;
 }
 
-float vectorDot(vector *v1, vector *v2)
+float vectorDot(vector v1, vector v2)
 {
-	return v1->x * v2->x + v1->y * v2->y + v1->z * v2->z;
+	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
-vector vectorScale(float c, vector v)
+vector vectorScale(vector v, float t)
 {
-        vector result = {v.x * c, v.y * c, v.z * c };
-        return result;
+    vector result = {v.x * t, v.y * t, v.z * t};
+    return result;
 }
 
 vector vectorAdd(vector v1, vector v2)

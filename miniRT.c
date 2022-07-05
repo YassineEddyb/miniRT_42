@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/03 23:22:24 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/04 18:50:29 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,25 @@ colour initColour(float red, float green, float blue)
 }
 
 /* Check if the ray and sphere intersect */
-int intersectRaySphere(ray *r, sphere *s)
-{
-	float A = vectorDot(&r->dir, &r->dir);
-	vector dist = vectorSub(&r->start, &s->pos);
-	float B = 2 * vectorDot(&r->dir, &dist);
-	float C = vectorDot(&dist, &dist) - (s->radius * s->radius);
-	float discr = B * B - 4 * A * C;
+// int intersectRaySphere(ray *r, sphere *s)
+// {
+// 	float A = vectorDot(&r->dir, &r->dir);
+// 	vector dist = vectorSub(&r->start, &s->pos);
+// 	float B = 2 * vectorDot(&r->dir, &dist);
+// 	float C = vectorDot(&dist, &dist) - (s->radius * s->radius);
+// 	float discr = B * B - 4 * A * C;
 
-	if(discr < 0)
-		return (-1);
-	else {
-		float sqrtdiscr = sqrtf(discr);
-		float t0 = (-B + sqrtdiscr)/(2);
-		float t1 = (-B - sqrtdiscr)/(2);
-		if(t0 > t1)
-			t0 = t1;
-		return t0;
-	}
-}
+// 	if(discr < 0)
+// 		return (-1);
+// 	else {
+// 		float sqrtdiscr = sqrtf(discr);
+// 		float t0 = (-B + sqrtdiscr)/(2);
+// 		float t1 = (-B - sqrtdiscr)/(2);
+// 		if(t0 > t1)
+// 			t0 = t1;
+// 		return t0;
+// 	}
+// }
 
 void print_vector(vector v)
 {
@@ -53,34 +53,32 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
+
+
 int main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*win;
-	int i = 0;
-	int x;
-	int y;
+	float *t;
+
+	ray r;
+	sphere s;
 	vector v;
-	vector v1;
-	vector v2;
-	vector p;
-	vector p1;
+	ray r2;
+	ray r3;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, WIDTH, HEIGHT, "miniRT");
+	v = vectorInit(2, 2, 2, 1);
+	s.pos = vectorInit(0, 0, 0, 1);
+	s.transform = vectorDot(s.pos, v)
+	r.start = vectorInit(0, 0, -5, 1);
+	r.dir = vectorInit(0, 0, 1, 0);
 	
-	p = vectorInit(0, 0, 0, 1);
-	v2 = vectorInit(0, 100, 0, 1);
-	p1 = translate(p, v2);
+	// r2 = transform(r, v, 't');
+	r3 = transform(r, v, 's');
+	t = sphereIntersection(r3, s);
 
-	print_vector(p);
-	while(i < 12)
-	{
-		print_vector(p1);
-		p1 = rotate_x(p1, M_PI/ 6);
+	printf("%f\n%f\n", t[0], t[1]);
 
-		mlx_pixel_put(mlx, win, p1.y + WIDTH/2, p1.z+HEIGHT/2, create_trgb(1, 255, 255, 255));
-		i++;
-	}
-	mlx_loop(mlx);
+	// print_vector(r3.start);
+	// print_vector(r3.dir);
 }
