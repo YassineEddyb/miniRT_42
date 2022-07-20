@@ -20,9 +20,9 @@
 /* t_RGB definition */
 typedef struct s_RGB
 {
-	float	red;
-	float	green;
-	float	blue;
+	int	red;
+	int	green;
+	int	blue;
 
 }	t_RGB;
 
@@ -105,6 +105,7 @@ typedef struct s_cy
 } t_cy;
 
 char	*get_next_line(int fd);
+double  ft_atof(char *str);
 // typedef t_vector point;
 
 

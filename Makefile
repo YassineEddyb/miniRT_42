@@ -1,8 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
+#    Updated: 2022/07/20 19:57:44 by ael-bach         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = miniRT
 
 SRCS =	./srcs/get_next_line/get_next_line.c\
 		./srcs/get_next_line/get_next_line_utils.c\
-		parser.c\
+		parser.c ./srcs/parser/ft_atof.c\
 
 OBJS = ${SRCS:.c=.o}
 

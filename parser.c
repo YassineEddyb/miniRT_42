@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:36:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/06/30 16:15:15 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:55:26 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,19 @@ char	**ft_map(char **av)
 int	main(int ac, char **av)
 {
 	char		**map;
-	int			i;
+	// int			i;
 
 	if (ac == 2)
 	{
 		map = ft_map(av);
-		if (!map)
-		{
-			printf("FILE/SCENE: ERROR\n");
-			return (1);
-		}
-		i = 0;
-		while(map[i])
-			printf("%s\n",map[i++]);
+		printf("num %f\n",ft_atof("16.256"));
+		// if (!map)
+		// {
+		// 	printf("FILE/SCENE: ERROR\n");
+		// 	return (1);
+		// }
+		// i = 0;
+		// while(map[i])
+		// 	printf("%s\n",map[i++]);
 	}
 }
