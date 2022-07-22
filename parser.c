@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:36:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/20 19:55:26 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:00:27 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,38 @@ char	**ft_map(char **av)
 
 int	main(int ac, char **av)
 {
-	char		**map;
+	t_data		*data;
+	char		**file;
 	// int			i;
 
 	if (ac == 2)
 	{
-		map = ft_map(av);
-		printf("num %f\n",ft_atof("16.256"));
+		file = ft_map(av);
+		data = malloc (sizeof(t_data));
+		data = check_and_fill(file, data);
+		/*******************************/
+		printf("ratio %f\n",data->A->ratio);
+		printf("red %d\n",data->A->rgb.red);
+		printf("green %d\n",data->A->rgb.green);
+		printf("blue %d\n",data->A->rgb.blue);
+		printf("/*******************************/\n");
+		printf("pos.x %f\n",data->C->pos.x);
+		printf("pos.y %f\n",data->C->pos.y);
+		printf("pos.z %f\n",data->C->pos.z);
+		printf("normal.x %f\n",data->C->normal.x);
+		printf("normal.y %f\n",data->C->normal.y);
+		printf("normal.z %f\n",data->C->normal.z);
+		printf("FOV %d\n",data->C->fov);
+		printf("/*******************************/\n");
+		printf("L pos.x %f\n",data->L->pos.x);
+		printf("L pos.y %f\n",data->L->pos.y);
+		printf("L pos.z %f\n",data->L->pos.z);
+		printf("L rgb.red %d\n",data->L->rgb.red);
+		printf("L rgb.G %d\n",data->L->rgb.green);
+		printf("L rgb.B %d\n",data->L->rgb.blue);
+		printf("light ratio %f\n", data->L->ratio);
+		printf("/*******************************/\n");
+		
 		// if (!map)
 		// {
 		// 	printf("FILE/SCENE: ERROR\n");

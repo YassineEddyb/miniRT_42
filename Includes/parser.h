@@ -58,7 +58,7 @@ typedef struct s_camera
 {
 	t_vector	pos;
 	t_vector	normal;
-	float		fov;
+	int			fov;
 
 } t_camera;
 
@@ -104,9 +104,31 @@ typedef struct s_cy
 
 } t_cy;
 
-char	*get_next_line(int fd);
-double  ft_atof(char *str);
-// typedef t_vector point;
+typedef struct s_data
+{
+	t_ambient	*A;
+	t_camera	*C;
+	t_light		*L;
+	t_sphere	*sp;
+	t_plane		*pl;
+	t_cy		*cy;
+	
+}	t_data;
+
+
+char		*get_next_line(int fd);
+double 		ft_atof(char *str);
+void		free_two_arr(char **arr);
+int			check_befor_atof(char *str);
+void		error(char *str);
+char		**ft_split_spaces(char const *s, char c);
+void		check_rgbstring(char *str);
+int			len_2d(char **str);
+t_data		*check_and_fill(char **file, t_data *data);
+t_ambient	*ambient_light(char **str);
+t_camera	*camera(char **info);
+t_light		*light(char **info);
+
 
 
 #endif
