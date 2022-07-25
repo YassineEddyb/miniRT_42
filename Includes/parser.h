@@ -7,7 +7,7 @@
 #include <math.h>
 #include <mlx.h>
 #include <fcntl.h>
-#include <stdbool.h> /* Needed for boolean datatype */
+#include <stdbool.h>
 #include "../srcs/libft/libft.h"
 
 # define WIDTH 1200
@@ -39,7 +39,6 @@ typedef struct s_vector
 typedef struct s_sphere
 {
 	t_vector	pos;
-	float		radius;
 	float		diameter;
 	t_RGB		rgb;
 
@@ -90,7 +89,7 @@ typedef struct s_plane
 {
 	t_vector	pos;
 	t_vector	normal;
-	float		fov;
+	t_RGB		rgb;
 
 }	t_plane;
 
@@ -104,14 +103,25 @@ typedef struct s_cy
 
 } t_cy;
 
+typedef struct s_index
+{
+	int	A;
+	int	L;
+	int	C;
+	int	sp;
+	int	pl;
+	int	cy;
+	
+}	t_index;
+
 typedef struct s_data
 {
-	t_ambient	*A;
-	t_camera	*C;
-	t_light		*L;
-	t_sphere	*sp;
-	t_plane		*pl;
-	t_cy		*cy;
+	t_ambient	**A;
+	t_camera	**C;
+	t_light		**L;
+	t_sphere	**sp;
+	t_plane		**pl;
+	t_cy		**cy;
 	
 }	t_data;
 
@@ -124,11 +134,18 @@ void		error(char *str);
 char		**ft_split_spaces(char const *s, char c);
 void		check_rgbstring(char *str);
 int			len_2d(char **str);
-t_data		*check_and_fill(char **file, t_data *data);
+void		is_between(float small, float big, float nbr);
+void		*check_rgb_value(t_RGB rgb);
+void		*check_normalize_value(t_vector pos);
+t_data		*allocate_data(t_index *index);
+t_index		*count_index(char **file);
+t_index		*fill_index(void);
+t_data		*check_and_fill(char **file);
 t_ambient	*ambient_light(char **str);
 t_camera	*camera(char **info);
 t_light		*light(char **info);
-
-
+t_sphere	*sphere(char **tmp);
+t_plane		*plane(char **tmp);
+t_cy		*cylinder(char **tmp);
 
 #endif

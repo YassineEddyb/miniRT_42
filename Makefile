@@ -6,7 +6,7 @@
 #    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/07/22 15:18:23 by ael-bach         ###   ########.fr        #
+#    Updated: 2022/07/25 15:02:36 by ael-bach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,14 @@ SRCS =	./srcs/get_next_line/get_next_line.c\
 		./srcs/get_next_line/get_next_line_utils.c\
 		parser.c ./srcs/parser/ft_atof.c ./srcs/parser/Ambient_light.c\
 		./srcs/parser/element.c ./srcs/parser/split_spaces.c\
-		./srcs/parser/camera.c ./srcs/parser/light.c\
+		./srcs/parser/camera.c ./srcs/parser/light.c ./srcs/parser/sphere.c\
+		./srcs/parser/helper.c\
 
 OBJS = ${SRCS:.c=.o}
 
 CC = @cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 RM = @rm -f
 

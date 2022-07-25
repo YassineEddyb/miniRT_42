@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:10:35 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/22 15:16:54 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/07/23 20:16:18 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ t_light	*light(char **info)
 	light->rgb.green = ft_atoi(xyz[1]);
 	light->rgb.blue = ft_atoi(xyz[2]);
 	free_two_arr(xyz);
+	check_rgb_value(light->rgb);
+	is_between(0, 1, light->ratio);
 	return (light);
 }
