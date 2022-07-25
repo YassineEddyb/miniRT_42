@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/04 18:50:29 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/25 16:19:53 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,59 @@ int	create_trgb(int t, int r, int g, int b)
 
 
 
+// matrix get_transform_matrix(vector v, char t)
+// {
+// 	matrix m;
+// 	m = matrixCreate(4, 4);
+	
+// }
+
 int main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*win;
-	float *t;
+	float 	t;
+	int x = 0, y = 0;
+	float wall_size = 7.0;
+	float half = wall_size / 2;
+	float pixel_size = wall_size / WIDTH;
+	float wall_z = 10;
+	float t_close;
+	
 
 	ray r;
 	sphere s;
 	vector v;
-	ray r2;
-	ray r3;
+	vector v1, v2;
 
-	v = vectorInit(2, 2, 2, 1);
-	s.pos = vectorInit(0, 0, 0, 1);
-	s.transform = vectorDot(s.pos, v)
+	// shpere
+	s = shpereInit();
+
+	// ray
 	r.start = vectorInit(0, 0, -5, 1);
-	r.dir = vectorInit(0, 0, 1, 0);
-	
-	// r2 = transform(r, v, 't');
-	r3 = transform(r, v, 's');
-	t = sphereIntersection(r3, s);
 
-	printf("%f\n%f\n", t[0], t[1]);
+	// mlx
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, WIDTH, HEIGHT, "miniRT");
 
-	// print_vector(r3.start);
-	// print_vector(r3.dir);
+	while(y < HEIGHT) {
+		float world_y = half - pixel_size * y;
+		x = 0;
+		while(x < WIDTH) {
+			float world_x = - half + pixel_size * x;
+			vector pos = vectorInit(world_x, world_y, wall_z,1);
+			r.dir = normalize(vectorSub(pos, r.start));
+
+			t = sphereIntersection(r, s);
+			// printf("%f\n", t);
+			if (t != -1)
+			{
+				mlx_pixel_put(mlx, win, x, y, create_trgb(1, 255, 0, 0));
+			}
+			x++;
+		}
+		y++;
+	}
+
+	mlx_loop(mlx);
 }

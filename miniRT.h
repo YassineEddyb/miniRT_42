@@ -8,12 +8,22 @@
 #include <mlx.h>
 #include <stdbool.h> /* Needed for boolean datatype */
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 200
+# define HEIGHT 200
 
 #define RAY_T_MIN 0.0001f
 #define RAY_T_MAX 1.0e30f
 #define min(a,b) (((a) < (b)) ? (a) : (b))
+
+/* The vector structure */
+typedef struct {
+      float x,y,z, w;
+} vector;
+
+typedef struct {
+    char type;
+    vector transform;
+} trans;
 
 typedef struct 
 {
@@ -29,18 +39,13 @@ typedef struct {
 
 /* Colour definition */
 typedef struct{
-        float red, green, blue;
+    float red, green, blue;
 } colour;
-
-/* The vector structure */
-typedef struct {
-      float x,y,z, w;
-} vector;
 
 /* The sphere */
 typedef struct {
     vector pos;
-    vector transform;
+    trans transform;
     float  radius;
     float diameter;
     colour rgb;
@@ -118,17 +123,18 @@ matrix matrixTranspose(matrix m);
 matrix matrixInverse(matrix m);
 
 // matrix transformatons
-vector translate(vector v, vector translator);\
-vector scale(vector v, vector scaler);
+vector translate(vector v, vector translator, int type);
+vector scale(vector v, vector scaler, int type);
 vector rotate_x(vector v, float r);
 vector rotate_y(vector v, float r);
 vector rotate_z(vector v, float r);
 
 // ray functions
 vector position(ray r, float t);
-ray transform(ray r, vector v, char t);
+ray transform(ray r, vector v, char t, int type);
 
 // sphere functions
-float *sphereIntersection(ray r, sphere s);
+sphere shpereInit();
+float sphereIntersection(ray r, sphere s);
 
 #endif

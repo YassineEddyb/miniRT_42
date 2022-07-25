@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/04 17:45:52 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/25 16:20:30 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,48 @@
 //     return s;
 // }
 
-float *sphereIntersection(ray r, sphere s)
+float sphereIntersection(ray r, sphere s)
 {
     float A;
     float B;
     float C;
-    float *t;
+    float t1;
+    float t2;
     vector v;
     float tmp;
     float discriminant;
+    ray r2;
 
-    t = malloc(sizeof(float) * 2);
+    r2 = transform(r, s.transform.transform, s.transform.type, -1);
+    // t = malloc(sizeof(float) * 2);
 
-    v = vectorSub(r.start, s.pos);
-    A = vectorDot(r.dir, r.dir);
-    B = 2 * vectorDot(r.dir, v);
+    v = vectorSub(r2.start, s.pos);
+    A = vectorDot(r2.dir, r2.dir);
+    B = 2 * vectorDot(r2.dir, v);
     C = vectorDot(v, v) - 1;
     discriminant =  B * B - 4 * A * C; 
     
-    if (determinant < 0)
-        return (NULL);
+    if (discriminant < 0)
+        return (-1);
     else
     {
-        t[0] = (-B - sqrt(discriminant)) / (2 * A);
-        t[1] = (-B + sqrt(discriminant)) / (2 * A);
+        t1 = (-B - sqrt(discriminant)) / (2 * A);
+        t2 = (-B + sqrt(discriminant)) / (2 * A);
 
-        if (t[0] > t[1])
-        {
-            tmp = t[0];
-            t[0] = t[1];
-            t[1] = tmp;
-        }
-        return (t);
+        if (t1 > t2)
+            return t2;
+        else 
+            return t1;
     }
+}
+
+sphere shpereInit()
+{
+    sphere s;
+
+    s.pos = vectorInit(0,0, 0, 1);
+    s.transform.transform = vectorInit(0,0,0,1);
+    s.transform.type = 't';
+
+    return s;
 }
