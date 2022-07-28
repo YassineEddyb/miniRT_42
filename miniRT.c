@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/25 16:19:53 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/28 15:31:34 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,27 +68,31 @@ int main(int argc, char **argv)
 	void	*win;
 	float 	t;
 	int x = 0, y = 0;
-	float wall_size = 7.0;
+	float wall_size = 14.0;
 	float half = wall_size / 2;
 	float pixel_size = wall_size / WIDTH;
-	float wall_z = 10;
+	float wall_z = 20;
 	float t_close;
 	
 
-	ray r;
+	ray r, r2;
 	sphere s;
-	vector v;
-	vector v1, v2;
+	vector v, n, v1, v2;
+	light l;
 
 	// shpere
 	s = shpereInit();
+	s.material.color = initColour(255, 0, 0);
 
 	// ray
-	r.start = vectorInit(0, 0, -5, 1);
+	r.start = vectorInit(0,0,-5,0);
+
+	// light
+	l = lightInit(vectorInit(10, 0, -10, 0), initColour(1, 1, 1));
 
 	// mlx
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, WIDTH, HEIGHT, "miniRT");
+	win = mlx_new_window(mlx, 800, 800, "miniRT");
 
 	while(y < HEIGHT) {
 		float world_y = half - pixel_size * y;
@@ -102,7 +106,14 @@ int main(int argc, char **argv)
 			// printf("%f\n", t);
 			if (t != -1)
 			{
-				mlx_pixel_put(mlx, win, x, y, create_trgb(1, 255, 0, 0));
+				vector point = position(r, t);
+				vector normal = normal_at(s, point);
+				vector eye = vectorScale(r.dir, -1);
+				colour color = lightning(s.material, l, point, eye, normal);
+
+				// printf("%f, %f, %f\n", color.red, color.green, color.blue);
+				
+				mlx_pixel_put(mlx, win, x, y, create_trgb(1, color.red , color.green , color.blue ));
 			}
 			x++;
 		}

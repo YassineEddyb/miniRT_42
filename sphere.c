@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/25 16:20:30 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/27 12:05:40 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ float sphereIntersection(ray r, sphere s)
     float discriminant;
     ray r2;
 
-    r2 = transform(r, s.transform.transform, s.transform.type, -1);
+    r2 = transform(r, s.transform, -1);
     // t = malloc(sizeof(float) * 2);
 
     v = vectorSub(r2.start, s.pos);
@@ -58,9 +58,25 @@ sphere shpereInit()
 {
     sphere s;
 
-    s.pos = vectorInit(0,0, 0, 1);
-    s.transform.transform = vectorInit(0,0,0,1);
-    s.transform.type = 't';
+    s.pos = vectorInit(0, 0, 0, 1);
+    s.transform = get_matrix(vectorInit(0, 0, 0, 1), 'i');
+    s.material = materials();
 
     return s;
+}
+
+vector normal_at(sphere s, vector p)
+{
+    vector obj_p = vector_mult_matrix(p, s.transform, -1);
+    vector obj_n = vectorSub(obj_p, s.pos);
+    vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(s.transform)), 1);
+
+    world_n.w = 0;
+
+    return normalize(world_n);
+}
+
+vector reflect(vector in, vector normal)
+{
+	return vectorSub(in, vectorScale(normal, 2 * vectorDot(in, normal)));
 }

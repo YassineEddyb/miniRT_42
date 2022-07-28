@@ -8,8 +8,8 @@
 #include <mlx.h>
 #include <stdbool.h> /* Needed for boolean datatype */
 
-# define WIDTH 200
-# define HEIGHT 200
+# define WIDTH 300
+# define HEIGHT 300
 
 #define RAY_T_MIN 0.0001f
 #define RAY_T_MAX 1.0e30f
@@ -19,6 +19,20 @@
 typedef struct {
       float x,y,z, w;
 } vector;
+
+/* Colour definition */
+typedef struct{
+    float red, green, blue;
+} colour;
+
+/* Material definition */
+typedef struct{
+    colour color;
+    float ambient;
+    float diffuse;
+    float specular;
+    float shininess;
+} material; 
 
 typedef struct {
     char type;
@@ -37,19 +51,14 @@ typedef struct {
     float **m;
 } matrix;
 
-/* Colour definition */
-typedef struct{
-    float red, green, blue;
-} colour;
-
 /* The sphere */
 typedef struct {
     vector pos;
-    trans transform;
+    matrix transform;
     float  radius;
     float diameter;
     colour rgb;
-    int material;
+    material material;
 } sphere; 
 
 /* The ray */
@@ -73,15 +82,9 @@ typedef struct{
 /* Light definition */
 typedef struct{
     vector pos;
-    colour rgb;
+    colour intensity;
     float ratio;
 } light;
-
-/* Material definition */
-typedef struct{
-    colour diffuse;
-    float reflection;
-} material; 
 
 // plane
 typedef struct {
@@ -108,9 +111,9 @@ vector vectorScale(vector v, float t);
 vector vectorAdd(vector v1, vector v2);
 vector normalize(vector v);
 vector vectorInit(float x, float y, float z, float w);
+vector vectorCross(vector a, vector b);
 
 // matrix functions
-matrix matrixCreate(int rows, int cols);
 float determinant(matrix m);
 matrix submatrix(matrix m, int row, int col);
 float minor(matrix m, int rwo, int col);
@@ -128,13 +131,31 @@ vector scale(vector v, vector scaler, int type);
 vector rotate_x(vector v, float r);
 vector rotate_y(vector v, float r);
 vector rotate_z(vector v, float r);
+vector vector_mult_matrix (vector v, matrix m, int type);
+
+// matrix inits
+matrix matrixCreate(int rows, int cols);
+matrix get_matrix(vector v, char type);
+matrix get_rotation_matrix(float r, int type);
 
 // ray functions
 vector position(ray r, float t);
-ray transform(ray r, vector v, char t, int type);
+ray transform(ray r, matrix m, int type);
 
 // sphere functions
 sphere shpereInit();
 float sphereIntersection(ray r, sphere s);
+vector normal_at(sphere s, vector p);
+vector reflect(vector in, vector normal);
+
+// colour functions
+colour colourInit(float r, float g, float b);
+
+// light functions
+light lightInit(vector pos, colour intensity);
+colour lightning(material m, light l, vector pos, vector v, vector n);
+
+// material functions
+material materials();
 
 #endif

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_functions.c                                    :+:      :+:    :+:   */
+/*   colour.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 23:30:25 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/26 10:56:47 by yed-dyb          ###   ########.fr       */
+/*   Created: 2022/07/27 11:37:48 by yed-dyb           #+#    #+#             */
+/*   Updated: 2022/07/27 11:42:14 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-vector position(ray r, float t)
+colour colourInit(float r, float g, float b)
 {
-    return (vectorAdd(r.start, vectorScale(r.dir, t)));
-}
+    colour c;
 
-ray transform(ray r, matrix m, int type)
-{
-    ray new_ray;
+    c.red = r;
+    c.green = g;
+    c.blue = b;
 
-    new_ray.start = vector_mult_matrix(r.start, m, type);
-    new_ray.dir = vector_mult_matrix(r.dir, m, type);
-
-    return (new_ray);
+    return c;
 }

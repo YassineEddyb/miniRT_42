@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:55:32 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/03 13:28:29 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/26 11:21:45 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,6 @@ void print_matrix(matrix m)
       i++;
    }
    printf("\n");
-}
-
-matrix matrixCreate(int rows, int cols)
-{
-   matrix matrix;
-   int i;
-   int j;
-   float **arr;
-
-   arr = malloc(rows * sizeof(float *));
-   i = 0;
-   while (i < rows)
-   {
-      arr[i] = malloc(cols * sizeof(float));
-      i++;
-   }
-
-   matrix.rows = rows;
-   matrix.cols = cols;
-   i = -1;
-   while(++i < rows)
-   {
-      j = -1;
-      while(++j < cols)
-         arr[i][j] = 0;
-   }
-   matrix.m = arr;
-   return (matrix);
 }
 
 matrix matrixMult(matrix m1, matrix m2)
