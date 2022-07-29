@@ -6,7 +6,7 @@
 #    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/07/25 15:02:36 by ael-bach         ###   ########.fr        #
+#    Updated: 2022/07/29 14:29:07 by ael-bach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS = ${SRCS:.c=.o}
 
 CC = @cc
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 RM = @rm -f
 

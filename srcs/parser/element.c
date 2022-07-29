@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/25 14:58:57 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:28:20 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ t_data	*check_and_fill(char **file)
 	t_index	*index;
 	t_index	tmpindex;
 
-	i = -1;
 	if (!file)
 		error("ERROR : EMPTY FILE");
 	index = count_index(file);
 	data = allocate_data(index);
 	free (index);
 	index = fill_index();
+	i = -1;
 	while (file[++i])
 	{
 		tmpindex = *index;
@@ -85,5 +85,6 @@ t_data	*check_and_fill(char **file)
 			error("ERROR IN FILE");
 		free_two_arr(tmp);
 	}
+	free (index);
 	return (data);
 }
