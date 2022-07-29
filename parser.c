@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:36:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/25 15:04:16 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:28:30 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,18 @@ int	calcul_len(char **av)
 
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		return (-1);
+		error("ERROR : FILE");
 	map = get_next_line(fd);
 	if (!map)
-		return (-1);
-	i = 0;
+		error("ERROR : file");
+	i = 1;
 	while (map)
 	{
 		free (map);
 		map = get_next_line(fd);
 		i++;
 	}
+	free (map);
 	close (fd);
 	return (i);
 }
@@ -70,19 +71,19 @@ char	**ft_map(char **av)
 	if (i < 0)
 		return (NULL);
 	j = i;
-	map = malloc(sizeof(char *) * i + 1);
+	map = malloc(sizeof(char *) * (i + 1));
 	if (!map)
 		return (NULL);
 	if (ft_strstr(av[1], ".tr") == 1)
 	{
 		fd = open(av[1], O_RDONLY);
 		if (fd == -1)
-			return (NULL);
-		i = 0;
-		while (i < j)
-			map[i++] = get_next_line(fd);
-		close (fd);
+			error("ERROR : OPEN FILE");
+		i = -1;
+		while (++i < j)
+			map[i] = get_next_line(fd);
 		map[i] = NULL;
+		close (fd);
 		return (map);
 	}
 	return (NULL);
