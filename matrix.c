@@ -6,12 +6,13 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:55:32 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/26 11:21:45 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/30 14:40:00 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+// print matrix
 void print_matrix(matrix m)
 {
    int j;
@@ -30,6 +31,7 @@ void print_matrix(matrix m)
    printf("\n");
 }
 
+// multiplu tow matrixes
 matrix matrixMult(matrix m1, matrix m2)
 {
    int i;
@@ -54,6 +56,7 @@ matrix matrixMult(matrix m1, matrix m2)
    return (result);
 }
 
+// transpose matrix
 matrix matrixTranspose(matrix m)
 {
    int i;
@@ -72,6 +75,7 @@ matrix matrixTranspose(matrix m)
    return (transpose);
 }
 
+// get the cofactor of the matrix
 matrix cofactor_matrix(matrix m)
 {
    int i, j;
@@ -94,6 +98,7 @@ matrix cofactor_matrix(matrix m)
    return (matrix);
 }
 
+// devide a matrix by the determinant
 matrix matrix_devide_by_det(matrix m, float det)
 {
    int i;
@@ -116,6 +121,7 @@ matrix matrix_devide_by_det(matrix m, float det)
    return(inverted);
 }
 
+// inverse the matrix
 matrix matrixInverse(matrix m)
 {
    float det;

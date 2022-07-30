@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/28 15:31:34 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/30 18:01:55 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ colour initColour(float red, float green, float blue)
 
 void print_vector(vector v)
 {
-	printf("x-> %f\ny-> %f\nz-> %f\nw-> %f\n\n", v.x, v.y, v.z, v.w);
+	printf("(x-> %f, y-> %f, z-> %f, w-> %f)\n\n", v.x, v.y, v.z, v.w);
 }
 
 int	create_trgb(int t, int r, int g, int b)
@@ -77,48 +77,73 @@ int main(int argc, char **argv)
 
 	ray r, r2;
 	sphere s;
-	vector v, n, v1, v2;
+	t_world world;
 	light l;
-
-	// shpere
-	s = shpereInit();
-	s.material.color = initColour(255, 0, 0);
-
-	// ray
-	r.start = vectorInit(0,0,-5,0);
+	t_comps comps;
 
 	// light
-	l = lightInit(vectorInit(10, 0, -10, 0), initColour(1, 1, 1));
+	l = lightInit(vectorInit(-10, 10, -10, 0), initColour(1, 1, 1));
 
-	// mlx
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 800, 800, "miniRT");
+	// world
+	world = worldInit(l);
 
-	while(y < HEIGHT) {
-		float world_y = half - pixel_size * y;
-		x = 0;
-		while(x < WIDTH) {
-			float world_x = - half + pixel_size * x;
-			vector pos = vectorInit(world_x, world_y, wall_z,1);
-			r.dir = normalize(vectorSub(pos, r.start));
+	world.s[0].transform = get_matrix(vectorInit(0.5, 0.5, 0.5, 0), 's');
+	
+	r.start = vectorInit(0, 0, -5, 1);
+	r.dir = vectorInit(0, 1, 0, 0);
 
-			t = sphereIntersection(r, s);
-			// printf("%f\n", t);
-			if (t != -1)
-			{
-				vector point = position(r, t);
-				vector normal = normal_at(s, point);
-				vector eye = vectorScale(r.dir, -1);
-				colour color = lightning(s.material, l, point, eye, normal);
+	colour c = color_at(world, r);
 
-				// printf("%f, %f, %f\n", color.red, color.green, color.blue);
+	// printf("%f, %f, %f\n", c.red, c.green, c.blue);
+	vector from = vectorInit(1, 3, 2, 1);
+	vector to = vectorInit(4, -2, 8, 0);
+	vector up = vectorInit(1, 1, 0, 0);
+
+	print_matrix(view_transform(from, to, up));
+
+	// printf("%f\n\n", comps.t);
+	// print_vector(comps.point);
+	// print_vector(comps.eyev);
+	// print_vector(comps.normalv);
+	// printf("%d\n", comps.inside);
+
+	// // shpere
+	// s = shpereInit();
+	// s.material.color = initColour(1, 0, 0);
+
+	// // ray
+	// r.start = vectorInit(0,0,-5,0);
+
+
+	// // mlx
+	// mlx = mlx_init();
+	// win = mlx_new_window(mlx, 800, 800, "miniRT");
+
+	// while(y < HEIGHT) {
+	// 	float world_y = half - pixel_size * y;
+	// 	x = 0;
+	// 	while(x < WIDTH) {
+	// 		float world_x = - half + pixel_size * x;
+	// 		vector pos = vectorInit(world_x, world_y, wall_z,1);
+	// 		r.dir = normalize(vectorSub(pos, r.start));
+
+	// 		t = sphereIntersection(r, s);
+	// 		// printf("%f\n", t);
+	// 		if (t != -1)
+	// 		{
+	// 			vector point = position(r, t);
+	// 			vector normal = normal_at(s, point);
+	// 			vector eye = vectorScale(r.dir, -1);
+	// 			colour color = lightning(s.material, l, point, eye, normal);
+
+	// 			// printf("%f, %f, %f\n", color.red, color.green, color.blue);
 				
-				mlx_pixel_put(mlx, win, x, y, create_trgb(1, color.red , color.green , color.blue ));
-			}
-			x++;
-		}
-		y++;
-	}
+	// 			mlx_pixel_put(mlx, win, x, y, create_trgb(1, color.red * 255 , color.green * 255 , color.blue * 255));
+	// 		}
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
 
-	mlx_loop(mlx);
+	// mlx_loop(mlx);
 }

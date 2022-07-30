@@ -6,12 +6,13 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:21:13 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/26 11:33:51 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/30 14:38:12 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+// create a matrix
 matrix matrixCreate(int rows, int cols)
 {
    matrix matrix;
@@ -40,6 +41,7 @@ matrix matrixCreate(int rows, int cols)
    return (matrix);
 }
 
+// get the matrix
 matrix get_matrix(vector v, char type) {
     matrix m = matrixCreate(4, 4);
 
@@ -67,6 +69,7 @@ matrix get_matrix(vector v, char type) {
     return m;
 }
 
+// get the rotation matrix
 matrix get_rotation_matrix(float r, int type)
 {
     matrix m = matrixCreate(4, 4);

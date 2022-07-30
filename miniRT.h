@@ -100,7 +100,28 @@ typedef struct {
     float diameter;
     float height;
     colour rgb;
-} cy;
+} cylinder;
+
+typedef struct s_world {
+    light light;
+    sphere *s;
+} t_world;
+
+typedef struct s_intersect {
+    void *object;
+    char type;
+    float t;
+} t_intersect;
+
+typedef struct s_comps {
+    float t;
+    void *object;
+    char type;
+    vector point;
+    vector eyev;
+    vector normalv;
+    int inside;
+} t_comps;
 
 typedef vector point;
 
@@ -157,5 +178,15 @@ colour lightning(material m, light l, vector pos, vector v, vector n);
 
 // material functions
 material materials();
+
+// world functions
+t_world worldInit(light l);
+t_intersect intersect_world(t_world world , ray r);
+t_comps prepare_computations (ray r, t_intersect i);
+colour shade_hit(t_world world, t_comps comps);
+colour color_at(t_world world, ray r);
+
+// camera functions
+matrix view_transform(vector from, vector to, vector up);
 
 #endif

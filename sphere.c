@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/27 12:05:40 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/30 14:36:22 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 //     return s;
 // }
 
+// get the intersection of a ray with a sphere
 float sphereIntersection(ray r, sphere s)
 {
     float A;
@@ -54,6 +55,7 @@ float sphereIntersection(ray r, sphere s)
     }
 }
 
+// init sphere
 sphere shpereInit()
 {
     sphere s;
@@ -65,6 +67,7 @@ sphere shpereInit()
     return s;
 }
 
+// get the normal vector in a sphere
 vector normal_at(sphere s, vector p)
 {
     vector obj_p = vector_mult_matrix(p, s.transform, -1);
@@ -76,6 +79,7 @@ vector normal_at(sphere s, vector p)
     return normalize(world_n);
 }
 
+// get the reflect vector of in vector
 vector reflect(vector in, vector normal)
 {
 	return vectorSub(in, vectorScale(normal, 2 * vectorDot(in, normal)));

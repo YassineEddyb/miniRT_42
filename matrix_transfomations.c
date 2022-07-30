@@ -6,13 +6,13 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:06:50 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/26 11:30:49 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/30 14:40:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-
+// translate a vector by a matrix
 vector translate(vector v, vector translator, int type)
 {
     matrix m1;
@@ -37,6 +37,7 @@ vector translate(vector v, vector translator, int type)
     return (res);
 }
 
+// scale a vector by a matrix
 vector scale(vector v, vector scaler, int type)
 {
     matrix m1;
@@ -61,6 +62,7 @@ vector scale(vector v, vector scaler, int type)
     return (res);
 }
 
+// rotate a vector by a matrix
 vector rotate(vector v, float r, char axis)
 {
     matrix m1;
@@ -83,6 +85,7 @@ vector rotate(vector v, float r, char axis)
     return (res);
 }
 
+// multiplu a vector by a matrix
 vector vector_mult_matrix (vector v, matrix m, int type)
 {
     matrix m2;

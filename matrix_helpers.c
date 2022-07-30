@@ -6,17 +6,19 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:01 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/02 20:06:41 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/07/30 14:43:17 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+// get the determinant of a submatrix
 float determinant(matrix m)
 {
     return (m.m[0][0] * m.m[1][1] - m.m[0][1] * m.m[1][0]);   
 }
 
+// get the submatrix base on row and col
 matrix submatrix(matrix m, int row, int col)
 {
    int i;
@@ -48,16 +50,19 @@ matrix submatrix(matrix m, int row, int col)
    return (sub);
 }
 
+// get teh minor of a matrix
 float minor(matrix m, int row, int col)
 {
     return (determinant(submatrix(m, row, col)));
 }
 
+// calculate the cofactor 
 float cofactor(float det, int row, int col)
 {
     return (pow(-1, row + col) * det);
 }
 
+// get the determinant of a matrix
 float matrixDeterminant(matrix m)
 {
     int i;
