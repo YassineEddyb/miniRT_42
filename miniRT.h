@@ -8,7 +8,7 @@
 #include <mlx.h>
 #include <stdbool.h> /* Needed for boolean datatype */
 
-# define WIDTH 300
+# define WIDTH 500
 # define HEIGHT 300
 
 #define RAY_T_MIN 0.0001f
@@ -17,21 +17,21 @@
 
 /* The vector structure */
 typedef struct {
-      float x,y,z, w;
+      double x,y,z, w;
 } vector;
 
 /* Colour definition */
 typedef struct{
-    float red, green, blue;
+    double red, green, blue;
 } colour;
 
 /* Material definition */
 typedef struct{
     colour color;
-    float ambient;
-    float diffuse;
-    float specular;
-    float shininess;
+    double ambient;
+    double diffuse;
+    double specular;
+    double shininess;
 } material; 
 
 typedef struct {
@@ -41,22 +41,22 @@ typedef struct {
 
 typedef struct 
 {
-    float t;
+    double t;
     void *object;
 } intesection;
 
 typedef struct {
     int rows;
     int cols;
-    float **m;
+    double **m;
 } matrix;
 
 /* The sphere */
 typedef struct {
     vector pos;
     matrix transform;
-    float  radius;
-    float diameter;
+    double  radius;
+    double diameter;
     colour rgb;
     material material;
 } sphere; 
@@ -68,14 +68,20 @@ typedef struct {
 } ray;
 
 // camera
-typedef struct {
+typedef struct s_camera{
     vector pos;
     vector normal;
-    float fov;
-} camera;
+    double fov;
+    matrix transform;
+    double hsize;
+    double vsize;
+    double half_width;
+    double half_height;
+    double pixel_size;
+} t_camera;
 
 typedef struct{
-    float ratio;
+    double ratio;
     colour rgb;
 } ambient;
 
@@ -83,22 +89,22 @@ typedef struct{
 typedef struct{
     vector pos;
     colour intensity;
-    float ratio;
+    double ratio;
 } light;
 
 // plane
 typedef struct {
     vector pos;
     vector normal;
-    float fov;
+    double fov;
 } plane;
 
 // cylinder
 typedef struct {
     vector pos;
     vector normal;
-    float diameter;
-    float height;
+    double diameter;
+    double height;
     colour rgb;
 } cylinder;
 
@@ -110,11 +116,11 @@ typedef struct s_world {
 typedef struct s_intersect {
     void *object;
     char type;
-    float t;
+    double t;
 } t_intersect;
 
 typedef struct s_comps {
-    float t;
+    double t;
     void *object;
     char type;
     vector point;
@@ -127,20 +133,21 @@ typedef vector point;
 
 // vector functions
 vector vectorSub(vector v1, vector v2);
-float vectorDot(vector v1, vector v2);
-vector vectorScale(vector v, float t);
+double vectorDot(vector v1, vector v2);
+vector vectorScale(vector v, double t);
 vector vectorAdd(vector v1, vector v2);
 vector normalize(vector v);
-vector vectorInit(float x, float y, float z, float w);
+vector vectorInit(double x, double y, double z, double w);
 vector vectorCross(vector a, vector b);
+double magnitude(vector v);
 
 // matrix functions
-float determinant(matrix m);
+double determinant(matrix m);
 matrix submatrix(matrix m, int row, int col);
-float minor(matrix m, int rwo, int col);
-float cofactor(float det, int row, int col);
-float det(float **m);
-float matrixDeterminant(matrix m);
+double minor(matrix m, int rwo, int col);
+double cofactor(double det, int row, int col);
+double det(double **m);
+double matrixDeterminant(matrix m);
 void print_matrix(matrix m);
 matrix matrixMult(matrix m1, matrix m2);
 matrix matrixTranspose(matrix m);
@@ -149,32 +156,33 @@ matrix matrixInverse(matrix m);
 // matrix transformatons
 vector translate(vector v, vector translator, int type);
 vector scale(vector v, vector scaler, int type);
-vector rotate_x(vector v, float r);
-vector rotate_y(vector v, float r);
-vector rotate_z(vector v, float r);
+vector rotate_x(vector v, double r);
+vector rotate_y(vector v, double r);
+vector rotate_z(vector v, double r);
 vector vector_mult_matrix (vector v, matrix m, int type);
 
 // matrix inits
 matrix matrixCreate(int rows, int cols);
 matrix get_matrix(vector v, char type);
-matrix get_rotation_matrix(float r, int type);
+matrix get_rotation_matrix(double r, int type);
 
 // ray functions
-vector position(ray r, float t);
+vector position(ray r, double t);
 ray transform(ray r, matrix m, int type);
+ray ray_for_pixel(t_camera camera, int x, int y);
 
 // sphere functions
 sphere shpereInit();
-float sphereIntersection(ray r, sphere s);
+double sphereIntersection(ray r, sphere s);
 vector normal_at(sphere s, vector p);
 vector reflect(vector in, vector normal);
 
 // colour functions
-colour colourInit(float r, float g, float b);
+colour colourInit(double r, double g, double b);
 
 // light functions
 light lightInit(vector pos, colour intensity);
-colour lightning(material m, light l, vector pos, vector v, vector n);
+colour lightning(material m, light l, vector pos, vector v, vector n, int in_shadow);
 
 // material functions
 material materials();
@@ -187,6 +195,10 @@ colour shade_hit(t_world world, t_comps comps);
 colour color_at(t_world world, ray r);
 
 // camera functions
+t_camera cameraInit(double hsize, double wsize, double fov);
 matrix view_transform(vector from, vector to, vector up);
+
+// shadows functions
+int is_shadowed(t_world world, vector point);
 
 #endif

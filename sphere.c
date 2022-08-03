@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/30 14:36:22 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@
 // }
 
 // get the intersection of a ray with a sphere
-float sphereIntersection(ray r, sphere s)
+double sphereIntersection(ray r, sphere s)
 {
-    float A;
-    float B;
-    float C;
-    float t1;
-    float t2;
+    double A;
+    double B;
+    double C;
+    double t1;
+    double t2;
     vector v;
-    float tmp;
-    float discriminant;
+    double tmp;
+    double discriminant;
     ray r2;
 
     r2 = transform(r, s.transform, -1);
-    // t = malloc(sizeof(float) * 2);
+    // t = malloc(sizeof(double) * 2);
 
     v = vectorSub(r2.start, s.pos);
     A = vectorDot(r2.dir, r2.dir);

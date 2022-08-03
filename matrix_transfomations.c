@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:06:50 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/30 14:40:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ vector scale(vector v, vector scaler, int type)
 }
 
 // rotate a vector by a matrix
-vector rotate(vector v, float r, char axis)
+vector rotate(vector v, double r, char axis)
 {
     matrix m1;
     matrix m2;

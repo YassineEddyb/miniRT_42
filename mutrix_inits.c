@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:21:13 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/30 14:38:12 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ matrix matrixCreate(int rows, int cols)
    matrix matrix;
    int i;
    int j;
-   float **arr;
+   double **arr;
 
-   arr = malloc(rows * sizeof(float *));
+   arr = malloc(rows * sizeof(double *));
    i = 0;
    while (i < rows)
    {
-      arr[i] = malloc(cols * sizeof(float));
+      arr[i] = malloc(cols * sizeof(double));
       i++;
    }
 
@@ -70,7 +70,7 @@ matrix get_matrix(vector v, char type) {
 }
 
 // get the rotation matrix
-matrix get_rotation_matrix(float r, int type)
+matrix get_rotation_matrix(double r, int type)
 {
     matrix m = matrixCreate(4, 4);
 

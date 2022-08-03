@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:55:32 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/30 14:40:00 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ matrix cofactor_matrix(matrix m)
 }
 
 // devide a matrix by the determinant
-matrix matrix_devide_by_det(matrix m, float det)
+matrix matrix_devide_by_det(matrix m, double det)
 {
    int i;
    int j;
@@ -124,7 +124,7 @@ matrix matrix_devide_by_det(matrix m, float det)
 // inverse the matrix
 matrix matrixInverse(matrix m)
 {
-   float det;
+   double det;
    matrix matrix;
 
    det = matrixDeterminant(m);

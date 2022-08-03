@@ -6,14 +6,14 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:37:48 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/30 14:44:37 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 // init colour
-colour colourInit(float r, float g, float b)
+colour colourInit(double r, double g, double b)
 {
     colour c;
 

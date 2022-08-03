@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:52:36 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/07/30 14:34:14 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ vector vectorSub(vector v1, vector v2)
 }
 
 // get the dot product of tow vectors
-float vectorDot(vector v1, vector v2)
+double vectorDot(vector v1, vector v2)
 {
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
 // scale a vector with a number
-vector vectorScale(vector v, float t)
+vector vectorScale(vector v, double t)
 {
     vector result = {v.x * t, v.y * t, v.z * t, v.w};
     return result;
@@ -42,13 +42,19 @@ vector vectorAdd(vector v1, vector v2)
 // normalize the vector 
 vector normalize(vector v)
 {
-	float len = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+	double len = magnitude(v);
 	vector result = {v.x / len, v.y / len, v.z / len, v.w};
 	return result;
 }
 
+// get the length of a vector
+double magnitude(vector v)
+{
+	return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+}
+
 // init vector
-vector vectorInit(float x, float y, float z, float w)
+vector vectorInit(double x, double y, double z, double w)
 {
 	vector v;
 

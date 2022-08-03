@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.c                                         :+:      :+:    :+:   */
+/*   shadows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 11:54:53 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 15:07:51 by yed-dyb          ###   ########.fr       */
+/*   Created: 2022/08/02 15:42:08 by yed-dyb           #+#    #+#             */
+/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-// materail init
-material materials()
+int is_shadowed(t_world world, vector point)
 {
-    material m;
+    ray r;
+    t_intersect intersect;
 
-    m.color = colourInit(1, 0, 0);
-	m.ambient = 0.1;
-    m.diffuse = 0.7;
-    m.specular = 0.6;
-    m.shininess = 200.0;
+    vector v = vectorSub(world.light.pos, point);
+    double distance = magnitude(v);
+    vector dir = normalize(v);
 
-    return m;
+    r.start = point;
+    r.dir = dir;
+
+    intersect = intersect_world(world, r);
+
+    if (intersect.t != -1 && intersect.t < distance)
+        return 1;
+    else return 0;
 }

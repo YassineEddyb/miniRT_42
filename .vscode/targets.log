@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Sat Jul 30 18:05:32 2022
+# Make data base, printed on Wed Aug  3 09:45:08 2022
 
 # Variables
 
@@ -29,22 +30,21 @@ CURDIR := /Users/yed-dyb/Desktop/miniRT
 SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
-# makefile (from `Makefile', line 3)
+# makefile (from `Makefile', line 17)
 MLX = -lmlx -framework OpenGL -framework AppKit
 # environment
 _ = /usr/bin/make
-# makefile (from `Makefile', line 4)
+# makefile (from `Makefile', line 18)
 CFLAGS = -Wall -Wextra -Werror
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.1vCqW2K20I/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.qzf4V1kC3S/Render
 # environment
 PATH = /Users/yed-dyb/.nvm/versions/node/v16.15.0/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
- 
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 HOME_BREW = /Users/yed-dyb/goinfre/yed-dyb
@@ -55,7 +55,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.XcErKom2ds/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.8MHYRCt5UG/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -89,10 +89,10 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from `Makefile', line 1)
-SRCS = miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c
+SRCS = miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 5)
+# makefile (from `Makefile', line 19)
 CC = gcc
 # default
 MAKE_VERSION := 3.81
@@ -100,7 +100,7 @@ MAKE_VERSION := 3.81
 USER = yed-dyb
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from `Makefile', line 2)
+# makefile (from `Makefile', line 16)
 NAME = miniRT
 # environment
 LESS = -R
@@ -127,13 +127,15 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/yed-dyb/.nvm
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1192
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000004.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
 __CF_USER_TEXT_ENCODING = 0x11C4:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -142,6 +144,8 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -153,9 +157,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3967
+VSCODE_PID = 57082
 # variable set hash-table stats:
-# Load=71/1024=7%, Rehash=0, Collisions=1/98=1%
+# Load=73/1024=7%, Rehash=0, Collisions=1/106=1%
 
 # Pattern-specific Variable Values
 
@@ -163,9 +167,9 @@ VSCODE_PID = 3967
 
 # Directories
 
-# . (device 16777228, inode 2981521): 21 files, no impossibilities.
+# . (device 16777227, inode 2981521): 23 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -179,9 +183,9 @@ all: miniRT
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
@@ -194,21 +198,38 @@ all: miniRT
 #  Modification time never checked.
 #  File has not been updated.
 
-miniRT: miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c
+miniRT: miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-30 18:01:57
+#  Implicit/static pattern stem: `'
+#  Last modified 2022-08-02 16:21:33
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := miniRT
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c
+# automatic
+# | := 
+# automatic
+# < := miniRT.c
+# automatic
+# ^ := miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c
+# automatic
+# ? := miniRT.c
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 11):
+# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
+#  commands to execute (from `Makefile', line 25):
 	$(CC) $(SRCS) $(MLX) -o $(NAME) -g -fsanitize=address
 	
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 18:01:31
+#  Last modified 2022-08-02 15:59:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -217,7 +238,7 @@ Makefile:
 # Not a target:
 colour.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:44:37
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -226,7 +247,7 @@ colour.c:
 # Not a target:
 material.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 16:17:42
+#  Last modified 2022-08-02 15:07:51
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -235,7 +256,7 @@ material.c:
 # Not a target:
 mutrix_inits.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:38:12
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -246,14 +267,14 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 16):
+#  commands to execute (from `Makefile', line 30):
 	rm -rf $(NAME)
 	
 
 # Not a target:
 ray_functions.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:37:33
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -262,7 +283,7 @@ ray_functions.c:
 # Not a target:
 world.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 16:40:18
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -277,7 +298,7 @@ world.c:
 # Not a target:
 miniRT.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 18:01:55
+#  Last modified 2022-08-02 18:49:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -292,9 +313,10 @@ re: fclean all
 # Not a target:
 camera.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 17:58:09
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
+ 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -307,7 +329,16 @@ clean:
 # Not a target:
 matrix_transfomations.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:40:57
+#  Last modified 2022-08-02 16:20:57
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+shadows.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -316,7 +347,7 @@ matrix_transfomations.c:
 # Not a target:
 sphere.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:36:22
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -325,7 +356,7 @@ sphere.c:
 # Not a target:
 matrix_helpers.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:43:17
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -334,7 +365,7 @@ matrix_helpers.c:
 # Not a target:
 matrix.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:40:00
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -343,7 +374,7 @@ matrix.c:
 # Not a target:
 vector.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:34:14
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -352,14 +383,14 @@ vector.c:
 # Not a target:
 light.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-30 14:44:23
+#  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=22/1024=2%, Rehash=0, Collisions=0/56=0%
+# Load=23/1024=2%, Rehash=0, Collisions=0/59=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -368,10 +399,9 @@ light.c:
 
 # # of strings in strcache: 1
 # # of strcache buffers: 1
- 
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Jul 30 18:05:32 2022
+# Finished Make data base on Wed Aug  3 09:45:09 2022
 
  
