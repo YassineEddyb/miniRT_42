@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/04 15:20:34 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,13 @@ double sphereIntersection(ray r, sphere s)
         t1 = (-B - sqrt(discriminant)) / (2 * A);
         t2 = (-B + sqrt(discriminant)) / (2 * A);
 
-        if (t1 > t2)
-            return t2;
-        else 
+        if(t1 > t2)
+                t1 = t2;
+
+        if((t1 > 0.001f))
             return t1;
+        else
+            return (-1);
     }
 }
 
@@ -68,7 +71,7 @@ sphere shpereInit()
 }
 
 // get the normal vector in a sphere
-vector normal_at(sphere s, vector p)
+vector normal_at_sphere(sphere s, vector p)
 {
     vector obj_p = vector_mult_matrix(p, s.transform, -1);
     vector obj_n = vectorSub(obj_p, s.pos);

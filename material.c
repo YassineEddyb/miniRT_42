@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:54:53 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 15:07:51 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/03 11:56:15 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ material materials()
 {
     material m;
 
-    m.color = colourInit(1, 0, 0);
+    m.color = colourInit(0.8, 1.0, 0.6);
 	m.ambient = 0.1;
     m.diffuse = 0.7;
-    m.specular = 0.6;
-    m.shininess = 200.0;
+    m.specular = 0.2;
+    m.shininess = 100.0;
 
     return m;
 }

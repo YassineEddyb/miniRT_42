@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:52:36 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/03 12:36:51 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ vector normalize(vector v)
 // get the length of a vector
 double magnitude(vector v)
 {
-	return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+	return sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
 }
 
 // init vector

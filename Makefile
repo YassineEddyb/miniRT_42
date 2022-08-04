@@ -10,7 +10,9 @@ SRCS = 	miniRT.c\
 		material.c\
 		world.c\
 		camera.c\
-		shadows.c
+		shadows.c\
+		render.c\
+		planes.c
 
 
 NAME = miniRT

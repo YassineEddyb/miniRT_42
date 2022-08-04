@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
+#include <float.h>
 #include <mlx.h>
 #include <stdbool.h> /* Needed for boolean datatype */
 
@@ -14,6 +15,15 @@
 #define RAY_T_MIN 0.0001f
 #define RAY_T_MAX 1.0e30f
 #define min(a,b) (((a) < (b)) ? (a) : (b))
+
+// mlx data
+ typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
 
 /* The vector structure */
 typedef struct {
@@ -93,11 +103,13 @@ typedef struct{
 } light;
 
 // plane
-typedef struct {
+typedef struct s_plane {
     vector pos;
     vector normal;
+    matrix transform;
     double fov;
-} plane;
+    material material;
+} t_plane;
 
 // cylinder
 typedef struct {
@@ -123,6 +135,7 @@ typedef struct s_comps {
     double t;
     void *object;
     char type;
+    vector over_point;
     vector point;
     vector eyev;
     vector normalv;
@@ -130,6 +143,10 @@ typedef struct s_comps {
 } t_comps;
 
 typedef vector point;
+
+// mlx
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int     create_trgb(int t, int r, int g, int b);
 
 // vector functions
 vector vectorSub(vector v1, vector v2);
@@ -174,7 +191,7 @@ ray ray_for_pixel(t_camera camera, int x, int y);
 // sphere functions
 sphere shpereInit();
 double sphereIntersection(ray r, sphere s);
-vector normal_at(sphere s, vector p);
+vector normal_at_sphere(sphere s, vector p);
 vector reflect(vector in, vector normal);
 
 // colour functions
@@ -200,5 +217,13 @@ matrix view_transform(vector from, vector to, vector up);
 
 // shadows functions
 int is_shadowed(t_world world, vector point);
+
+// render functions
+void render(t_camera camera, t_world world, t_data *img);
+
+// plane functions
+t_plane planeInit();
+float planeIntersection(ray r, t_plane plane);
+
 
 #endif

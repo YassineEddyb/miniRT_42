@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/04 16:18:40 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ t_world worldInit(light l)
     t_world world;
 
     world.s = malloc(6 * sizeof(sphere));
+    world.p = malloc(1 * sizeof(t_plane));
 
     world.s[0] = shpereInit();
     world.s[1] = shpereInit();
-    world.s[2] = shpereInit();
-    world.s[3] = shpereInit();
-    world.s[4] = shpereInit();
-    world.s[5] = shpereInit();
+    // world.s[2] = shpereInit();
+    // world.s[3] = shpereInit();
+    // world.s[4] = shpereInit();
+    // world.s[5] = shpereInit();
     world.light = l;
 
     return world;
@@ -42,7 +43,7 @@ t_intersect intersect_world(t_world world , ray r)
     double tmp = intersect.t;
 
     i = 1;
-    while(i < 6)
+    while(i < 2)
     {
         tmp = sphereIntersection(r, world.s[i]);
         if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))
@@ -67,7 +68,8 @@ t_comps prepare_computations (ray r, t_intersect i)
     comps.type = i.type;
     comps.point = position(r, i.t);
     comps.eyev = vectorScale(r.dir, -1);
-    comps.normalv = normal_at(*((sphere *)i.object), comps.point);
+    comps.normalv = normal_at_sphere(*((sphere *)i.object), comps.point);
+    comps.over_point = vectorAdd(comps.point, vectorScale(comps.normalv, 0.0000000001f));
 
     // if (vectorDot(comps.normalv, comps.eyev) < 0)
     // {
@@ -87,7 +89,7 @@ colour shade_hit(t_world world, t_comps comps)
     if (comps.type == 's')
     {
         s = (sphere *)comps.object;
-        return lightning(s->material, world.light, comps.point, comps.eyev, comps.normalv, is_shadowed(world, comps.point));
+        return lightning(s->material, world.light, comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
     }
     // else if (comps.type == 'p')
     // {
