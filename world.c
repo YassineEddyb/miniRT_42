@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/04 16:18:40 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/05 14:37:10 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ t_world worldInit(light l)
 {
     t_world world;
 
-    world.s = malloc(6 * sizeof(sphere));
+    world.s = malloc(1 * sizeof(sphere));
     world.p = malloc(1 * sizeof(t_plane));
 
     world.s[0] = shpereInit();
-    world.s[1] = shpereInit();
-    // world.s[2] = shpereInit();
+    // world.s[1] = shpereInit();
+    world.p[0] = planeInit();
+    // world.p[1] = planeInit();
+    // world.p[1].transform = matrixMult(get_rotation_matrix(M_PI_2, 'x'), get_matrix(vectorInit(0, 0, 30, 0), 't'));
+    // world.p[1].material.color = colourInit(0, 0, 1);
     // world.s[3] = shpereInit();
     // world.s[4] = shpereInit();
     // world.s[5] = shpereInit();
@@ -43,7 +46,7 @@ t_intersect intersect_world(t_world world , ray r)
     double tmp = intersect.t;
 
     i = 1;
-    while(i < 2)
+    while(i < 1)
     {
         tmp = sphereIntersection(r, world.s[i]);
         if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))
@@ -54,6 +57,20 @@ t_intersect intersect_world(t_world world , ray r)
         }
         i++;
     }
+
+    i = 0;
+    while(i < 1)
+    {
+        tmp = planeIntersection(r, world.p[i]);
+        if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))
+        {
+            intersect.t = tmp;
+            intersect.object = (void *)(&world.p[i]);
+            intersect.type = 'p';
+        }
+        i++;
+    }
+
 
     return intersect;
 }
@@ -68,8 +85,11 @@ t_comps prepare_computations (ray r, t_intersect i)
     comps.type = i.type;
     comps.point = position(r, i.t);
     comps.eyev = vectorScale(r.dir, -1);
-    comps.normalv = normal_at_sphere(*((sphere *)i.object), comps.point);
-    comps.over_point = vectorAdd(comps.point, vectorScale(comps.normalv, 0.0000000001f));
+    if (i.type == 's')
+        comps.normalv = normal_at_sphere(*((sphere *)i.object), comps.point);
+    else if (i.type == 'p')
+        comps.normalv = normal_at_plane(*((t_plane *)i.object), comps.point);
+    comps.over_point = vectorAdd(comps.point, vectorScale(comps.normalv, 0.000001f));
 
     // if (vectorDot(comps.normalv, comps.eyev) < 0)
     // {
@@ -84,18 +104,18 @@ t_comps prepare_computations (ray r, t_intersect i)
 colour shade_hit(t_world world, t_comps comps)
 {
     sphere *s;
-    // plane *p;
+    t_plane *p;
     // cylinder *c;
     if (comps.type == 's')
     {
         s = (sphere *)comps.object;
         return lightning(s->material, world.light, comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
     }
-    // else if (comps.type == 'p')
-    // {
-    //     p = (plane *)comps.object;
-    //     return lightning(p->material, world.light, comps.point, comps.eyev, comps.normalv);
-    // } else {
+    else if (comps.type == 'p')
+    {
+        p = (t_plane *)comps.object;
+        return lightning(p->material, world.light, comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
+    } // else {
     //     s = (sphere *)comps.object;
     //     return lightning(s->material, world.light, comps.point, comps.eyev, comps.normalv);
     // }

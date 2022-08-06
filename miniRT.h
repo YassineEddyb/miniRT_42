@@ -123,6 +123,7 @@ typedef struct {
 typedef struct s_world {
     light light;
     sphere *s;
+    t_plane *p;
 } t_world;
 
 typedef struct s_intersect {
@@ -223,7 +224,8 @@ void render(t_camera camera, t_world world, t_data *img);
 
 // plane functions
 t_plane planeInit();
-float planeIntersection(ray r, t_plane plane);
+double planeIntersection(ray r, t_plane plane);
+vector normal_at_plane(t_plane plane, vector p);
 
 
 #endif
