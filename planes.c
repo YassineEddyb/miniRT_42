@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/05 11:35:06 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/07 14:51:18 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ double planeIntersection(ray r, t_plane plane)
         return (-1);
     
     t = -r2.start.y / r2.dir.y;
-
+    
     if (t > 0.001f)
         return (t);
     else return (-1);
@@ -49,5 +49,6 @@ vector normal_at_plane(t_plane plane, vector p)
 
     // world_n.w = 0;
 
-    return vectorInit(0, 1, 0, 0);
+    // return normalize(world_n);
+    return (vectorInit(0,1,0,0));
 }

@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Fri Aug  5 10:49:34 2022
+# Make data base, printed on Sun Aug  7 19:03:54 2022
 
 # Variables
 
@@ -40,7 +41,7 @@ MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.zV9VBGz1QU/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.NZxCDUym4Z/Render
 # environment
 PATH = /Users/yed-dyb/.nvm/versions/node/v16.15.0/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -54,7 +55,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.u95NADzwsY/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.cZPa9XAsrE/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -126,7 +127,7 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/yed-dyb/.nvm
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1308
+XPC_SERVICE_NAME = com.microsoft.VSCode.2580
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -152,7 +153,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 87506
+VSCODE_PID = 11904
 # variable set hash-table stats:
 # Load=71/1024=7%, Rehash=0, Collisions=1/98=1%
 
@@ -204,7 +205,7 @@ render.c:
 
 miniRT: miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-04 22:11:01
+#  Last modified 2022-08-07 16:06:36
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -270,7 +271,7 @@ ray_functions.c:
 # Not a target:
 world.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 21:48:46
+#  Last modified 2022-08-07 16:06:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -285,7 +286,7 @@ world.c:
 # Not a target:
 miniRT.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 22:02:11
+#  Last modified 2022-08-07 16:06:09
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -308,7 +309,6 @@ camera.c:
 
 clean:
 #  Phony target (prerequisite of .PHONY).
- 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -319,13 +319,14 @@ matrix_transfomations.c:
 #  Last modified 2022-08-02 16:20:57
 #  File has been updated.
 #  Successfully updated.
+ 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 shadows.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 21:59:51
+#  Last modified 2022-08-07 14:41:32
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -352,7 +353,7 @@ matrix_helpers.c:
 # Not a target:
 matrix.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-02 16:20:57
+#  Last modified 2022-08-06 16:03:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -361,7 +362,7 @@ matrix.c:
 # Not a target:
 planes.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 22:11:00
+#  Last modified 2022-08-07 14:51:18
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -398,6 +399,6 @@ light.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Aug  5 10:49:34 2022
+# Finished Make data base on Sun Aug  7 19:03:54 2022
 
  

@@ -166,7 +166,6 @@ double minor(matrix m, int rwo, int col);
 double cofactor(double det, int row, int col);
 double det(double **m);
 double matrixDeterminant(matrix m);
-void print_matrix(matrix m);
 matrix matrixMult(matrix m1, matrix m2);
 matrix matrixTranspose(matrix m);
 matrix matrixInverse(matrix m);
@@ -197,6 +196,7 @@ vector reflect(vector in, vector normal);
 
 // colour functions
 colour colourInit(double r, double g, double b);
+colour stripe_at(vector point);
 
 // light functions
 light lightInit(vector pos, colour intensity);
@@ -226,6 +226,10 @@ void render(t_camera camera, t_world world, t_data *img);
 t_plane planeInit();
 double planeIntersection(ray r, t_plane plane);
 vector normal_at_plane(t_plane plane, vector p);
+
+// test functions
+void print_vector(vector v);
+void print_matrix(matrix m);
 
 
 #endif
