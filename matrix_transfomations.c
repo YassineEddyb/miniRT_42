@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:06:50 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/08 20:46:17 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ vector translate(vector v, vector translator, int type)
     m1 = matrixCreate(4, 4);
     m2 = matrixCreate(4, 1);
 
-    m1 = get_matrix(translator, 't');
+    m1 = get_matrix(translator.x, translator.y, translator.z, 't');
 
     m2.m[0][0] = v.x;
     m2.m[1][0] = v.y;
@@ -48,7 +48,7 @@ vector scale(vector v, vector scaler, int type)
     m1 = matrixCreate(4, 4);
     m2 = matrixCreate(4, 1);
 
-    m1 = get_matrix(scaler, 's');
+    m1 = get_matrix(scaler.x, scaler.y, scaler.z, 's');
 
     m2.m[0][0] = v.x;
     m2.m[1][0] = v.y;

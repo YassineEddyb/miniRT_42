@@ -116,14 +116,19 @@ typedef struct {
     vector pos;
     vector normal;
     double diameter;
+    double max;
+    double min;
     double height;
     colour rgb;
+    matrix transform;
+    material material;
 } cylinder;
 
 typedef struct s_world {
     light light;
     sphere *s;
     t_plane *p;
+    cylinder *cy;
 } t_world;
 
 typedef struct s_intersect {
@@ -180,7 +185,7 @@ vector vector_mult_matrix (vector v, matrix m, int type);
 
 // matrix inits
 matrix matrixCreate(int rows, int cols);
-matrix get_matrix(vector v, char type);
+matrix get_matrix(double x, double y, double z, char type);
 matrix get_rotation_matrix(double r, int type);
 
 // ray functions
@@ -226,6 +231,11 @@ void render(t_camera camera, t_world world, t_data *img);
 t_plane planeInit();
 double planeIntersection(ray r, t_plane plane);
 vector normal_at_plane(t_plane plane, vector p);
+
+// cylinder functions
+cylinder cylinderInit();
+float cylinderIntersection(ray r, cylinder cy);
+vector normal_at_cylinder(cylinder cy, point p);
 
 // test functions
 void print_vector(vector v);

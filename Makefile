@@ -12,7 +12,8 @@ SRCS = 	miniRT.c\
 		camera.c\
 		shadows.c\
 		render.c\
-		planes.c
+		planes.c\
+		cylinder.c
 
 
 NAME = miniRT

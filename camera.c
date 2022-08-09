@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/08 20:45:50 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_camera cameraInit(double hsize, double vsize, double fov)
     camera.hsize = hsize;
     camera.vsize = vsize;
     camera.fov = fov;
-    camera.transform = get_matrix(vectorInit(0, 0, 0, 0), 'i');
+    camera.transform = get_matrix(0, 0, 0, 'i');
 
     double half_view = tan(fov / 2);
     double aspect = hsize / vsize;
@@ -60,7 +60,7 @@ matrix view_transform(vector from, vector to, vector up)
     or.m[2][2] = -forward.z;
     or.m[3][3] = 1;
 
-    matrix m = get_matrix(vectorInit(-from.x, -from.y, -from.z, 1), 't');
+    matrix m = get_matrix(-from.x, -from.y, -from.z, 't');
 
     return matrixMult(or, m);
 }

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:21:13 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/08 20:42:58 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ matrix matrixCreate(int rows, int cols)
 }
 
 // get the matrix
-matrix get_matrix(vector v, char type) {
+matrix get_matrix(double x, double y, double z, char type)
+{
     matrix m = matrixCreate(4, 4);
 
     if (type == 't') {
@@ -50,14 +51,14 @@ matrix get_matrix(vector v, char type) {
         m.m[1][1] = 1;
         m.m[2][2] = 1;
         m.m[3][3] = 1;
-        m.m[0][3] = v.x;
-        m.m[1][3] = v.y;
-        m.m[2][3] = v.z;
+        m.m[0][3] = x;
+        m.m[1][3] = y;
+        m.m[2][3] = z;
     } else if (type == 's')
     {
-        m.m[0][0] = v.x;
-        m.m[1][1] = v.y;
-        m.m[2][2] = v.z;
+        m.m[0][0] = x;
+        m.m[1][1] = y;
+        m.m[2][2] = z;
         m.m[3][3] = 1;
     } else {
         m.m[0][0] = 1;

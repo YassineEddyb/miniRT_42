@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/07 21:10:16 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/09 20:34:30 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,6 @@ int main(int argc, char **argv)
 	void	*win;
 	double 	t;
 	int x = 0, y = 0;
-	double wall_size = 14.0;
-	double half = wall_size / 2;
-	double pixel_size = wall_size / WIDTH;
-	double wall_z = 20;
-	double t_close;
 
 	t_data img;
 	
@@ -67,21 +62,20 @@ int main(int argc, char **argv)
 	light l;
 	t_camera camera;
 	ray r;
-	t_plane p;
 
 	// light
-	l = lightInit(vectorInit(-10, 10, -10, 0), initColour(1, 1, 1));
+	l = lightInit(vectorInit(-10, 10, -10, 1), initColour(1, 1, 1));
 
 	// world
 	world = worldInit(l);
-	world.s[0].transform = get_matrix(vectorInit(-0.5, 1, 0.5, 0), 't');
+	world.s[0].transform = get_matrix(0, 1, 0.5, 't');
 	world.s[0].material.color = colourInit(1, 0, 0);
 
-	// world.s[1].transform = matrixMult(get_matrix(vectorInit(1.5, 0.5, -0.5, 0), 't'), get_matrix(vectorInit(0.5, 0.5, 0.5, 1), 's'));
-	// world.s[1].material.color = colourInit(0, 0, 1);
+	world.s[1].transform = matrixMult(get_matrix(1.5, 0.5, -0.5, 't'), get_matrix(0.5, 0.5, 0.5, 's'));
+	world.s[1].material.color = colourInit(0, 0, 1);
 
-	// world.s[1].transform = matrixMult(get_matrix(vectorInit(-1.5, 0.33, -0.75, 0), 't'), get_matrix(vectorInit(0.3, 0.3, 0.3, 1), 's'));
-	// world.s[1].material.color = colourInit(0, 1, 0);
+	world.s[2].transform = matrixMult(get_matrix(-1.5, 0.33, -0.75, 't'), get_matrix(0.3, 0.3, 0.3, 's'));
+	world.s[2].material.color = colourInit(0, 1, 0);
 
 	// world.s[0].transform = get_matrix(vectorInit(10, 0.01, 10, 0), 's');
 	// world.s[0].material.color = colourInit(1, 0.9, 0.9);
@@ -101,21 +95,17 @@ int main(int argc, char **argv)
 	camera = cameraInit(WIDTH, HEIGHT, M_PI/3);
 
 	// vectors
-	vector from = vectorInit(0, 1.5, -5, 1);
-	vector to = vectorInit(0, 1, 0, 1);
+	vector from = vectorInit(0, 1.5, -5, 0);
+	vector to = vectorInit(0, 1, 0, 0);
 	vector up = vectorInit(0, 1, 0, 0);
 
 	camera.transform = view_transform(from, to, up);
 
 
 	// test ------------------------------
-	// r.start = vectorInit(0, -1, 0, 1);
-	// r.dir = vectorInit(0, 1, 0, 0);
-
-	// p = planeInit();
-
-	// printf("%f\n", planeIntersection(r, p));
-	
+	// t_plane p = planeInit();
+	// // p.transform = matrixMult(get_matrix(vectorInit(1, 0.5, 1, 1), 's'), get_rotation_matrix(M_PI/5, 'z'));
+    // print_vector(normal_at_plane(p, vectorInit(10, 0, -10, 1)));
 	// test ------------------------------
 
 	// mlx
@@ -129,8 +119,6 @@ int main(int argc, char **argv)
 		while(x < WIDTH) {
 			r = ray_for_pixel(camera, x, y);
 			colour color = color_at(world, r);
-			// printf("%f, %f, %f\n", color.red, color.green, color.blue);
-			// print_vector(r.dir);
 			my_mlx_pixel_put(&img, x, y, create_trgb(1, color.red * 255 , color.green * 255 , color.blue * 255));
 			x++;
 		}

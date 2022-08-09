@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/04 15:20:34 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/08 20:48:01 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ sphere shpereInit()
     sphere s;
 
     s.pos = vectorInit(0, 0, 0, 1);
-    s.transform = get_matrix(vectorInit(0, 0, 0, 1), 'i');
+    s.transform = get_matrix(0, 0, 0, 'i');
     s.material = materials();
 
     return s;
