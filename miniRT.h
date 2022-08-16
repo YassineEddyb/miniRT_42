@@ -7,11 +7,12 @@
 #include <math.h>
 #include <float.h>
 #include <mlx.h>
-#include <stdbool.h> /* Needed for boolean datatype */
+#include <pthread.h>
 
-# define WIDTH 500
-# define HEIGHT 300
+# define WIDTH 400
+# define HEIGHT 350
 
+#define EPSILON 0.0000001f
 #define RAY_T_MIN 0.0001f
 #define RAY_T_MAX 1.0e30f
 #define min(a,b) (((a) < (b)) ? (a) : (b))
@@ -195,7 +196,7 @@ ray ray_for_pixel(t_camera camera, int x, int y);
 
 // sphere functions
 sphere shpereInit();
-double sphereIntersection(ray r, sphere s);
+double sphereIntersection(sphere s, ray r);
 vector normal_at_sphere(sphere s, vector p);
 vector reflect(vector in, vector normal);
 
@@ -225,16 +226,17 @@ matrix view_transform(vector from, vector to, vector up);
 int is_shadowed(t_world world, vector point);
 
 // render functions
-void render(t_camera camera, t_world world, t_data *img);
+// void render(t_camera camera, t_world world, t_data *img);
 
 // plane functions
 t_plane planeInit();
-double planeIntersection(ray r, t_plane plane);
+double planeIntersection(t_plane plane, ray r);
 vector normal_at_plane(t_plane plane, vector p);
 
 // cylinder functions
 cylinder cylinderInit();
-float cylinderIntersection(ray r, cylinder cy);
+double cylinderIntersection(cylinder cy, ray r);
+double cylinder_caps_intersect(cylinder cy, ray r);
 vector normal_at_cylinder(cylinder cy, point p);
 
 // test functions

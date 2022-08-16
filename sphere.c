@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/08 20:48:01 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 13:29:29 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // }
 
 // get the intersection of a ray with a sphere
-double sphereIntersection(ray r, sphere s)
+double sphereIntersection(sphere s, ray r)
 {
     double A;
     double B;

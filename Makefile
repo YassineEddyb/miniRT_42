@@ -25,7 +25,7 @@ CC = gcc
 all : $(NAME)
 
 $(NAME): $(SRCS)
-	$(CC) $(SRCS) $(MLX) -o $(NAME) -g -fsanitize=address
+	$(CC) $(SRCS) $(MLX) -o $(NAME) -O3
 
 clean :
 
