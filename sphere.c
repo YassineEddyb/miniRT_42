@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 13:29:29 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 16:55:32 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 // }
 
 // get the intersection of a ray with a sphere
-double sphereIntersection(sphere s, ray r)
+double sphereIntersection(t_sphere s, ray r)
 {
     double A;
     double B;
     double C;
     double t1;
     double t2;
-    vector v;
+    t_vector v;
     double tmp;
     double discriminant;
     ray r2;

@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:54:18 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/23 20:14:33 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:21:26 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,15 @@ t_camera	*camera(char **info)
 	camera->pos.x = ft_atof(xyz[0]);
 	camera->pos.y = ft_atof(xyz[1]);
 	camera->pos.z = ft_atof(xyz[2]);
+	camera->pos.w = 1;
 	free_two_arr(xyz);
 	xyz = ft_split(info[2], ',');
 	camera->normal.x = ft_atof(xyz[0]);
 	camera->normal.y = ft_atof(xyz[1]);
 	camera->normal.z = ft_atof(xyz[2]);
+	camera->normal.w = 0;
 	free_two_arr(xyz);
-	camera->fov = ft_atoi(info[3]);
+	camera->fov = ft_atof(info[3]);
 	check_normalize_value(camera->normal);
 	is_between(0, 180, camera->fov);
 	return (camera);

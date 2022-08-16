@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:13:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/25 17:23:53 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:12:02 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ t_ambient	*ambient_light(char **str)
 	ambient->ratio = ft_atof(str[1]);
 	check_rgbstring(str[2]);
 	rgb = ft_split(str[2], ',');
-	ambient->rgb.red = ft_atoi(rgb[0]);
-	ambient->rgb.green = ft_atoi(rgb[1]);
-	ambient->rgb.blue = ft_atoi(rgb[2]);
+	ambient->rgb.red = ft_atof(rgb[0]);
+	ambient->rgb.green = ft_atof(rgb[1]);
+	ambient->rgb.blue = ft_atof(rgb[2]);
 	free_two_arr(rgb);
 	check_rgb_value(ambient->rgb);
 	is_between(0.0, 1.0, ambient->ratio);

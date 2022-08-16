@@ -10,28 +10,40 @@
 #include <stdbool.h>
 #include "../srcs/libft/libft.h"
 
-# define WIDTH 1200
-# define HEIGHT 700
-
-
-#define RAY_T_MIN 0.0001f
-#define RAY_T_MAX 1.0e30f
-
 /* t_RGB definition */
 typedef struct s_RGB
 {
-	int	red;
-	int	green;
-	int	blue;
+	double		red;
+	double		green;
+	double		blue;
 
 }	t_RGB;
+
+typedef struct s_material
+{
+    t_RGB		color;
+    double		ambient;
+    double		diffuse;
+    double		specular;
+    double		shininess;
+
+} t_material; 
+
+typedef struct s_matrix
+{
+    int		rows;
+    int		cols;
+    double	**m;
+
+} t_matrix;
 
 /* The vector structure */
 typedef struct s_vector
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
+	double	w;
 
 }	t_vector;
 
@@ -39,8 +51,10 @@ typedef struct s_vector
 typedef struct s_sphere
 {
 	t_vector	pos;
-	float		diameter;
+	double		diameter;
 	t_RGB		rgb;
+	t_matrix		transform;
+	t_material	material;
 
 }	t_sphere; 
 
@@ -57,13 +71,19 @@ typedef struct s_camera
 {
 	t_vector	pos;
 	t_vector	normal;
-	int			fov;
+	double			fov;/////double
+	t_matrix		transform;
+    double		hsize;
+    double		vsize;
+    double		half_width;
+    double		half_height;
+    double		pixel_size;
 
 } t_camera;
 
 typedef struct s_ambient
 {
-	float	ratio;
+	double	ratio;
 	t_RGB	rgb;
 
 } t_ambient;
@@ -73,7 +93,7 @@ typedef struct s_light
 {
 	t_vector	pos;
 	t_RGB		rgb;
-	float		ratio;
+	double		ratio;
 
 }	t_light;
 
@@ -81,7 +101,7 @@ typedef struct s_light
 typedef struct s_material
 {
 	t_RGB	diffuse;
-	float	reflection;
+	double	reflection;
 
 }	t_material; 
 
@@ -90,6 +110,8 @@ typedef struct s_plane
 	t_vector	pos;
 	t_vector	normal;
 	t_RGB		rgb;
+	t_matrix	transform;
+    t_material	material;
 
 }	t_plane;
 
@@ -97,9 +119,13 @@ typedef struct s_cy
 {
 	t_vector	pos;
 	t_vector	normal;
-	float		diameter;
-	float		height;
+	double		diameter;
+	double		height;
 	t_RGB		rgb;
+	double		max;
+    double		min;
+	t_material 	material;
+	t_matrix	transform;
 
 } t_cy;
 
@@ -114,16 +140,16 @@ typedef struct s_index
 	
 }	t_index;
 
-typedef struct s_data
+typedef struct s_world
 {
-	t_ambient	**A;
-	t_camera	**C;
-	t_light		**L;
-	t_sphere	**sp;
-	t_plane		**pl;
+	t_ambient	**ambient;
+	t_camera	**camera;
+	t_light		**light;
+	t_sphere	**sphere;
+	t_plane		**plane;
 	t_cy		**cy;
 	
-}	t_data;
+}	t_world;
 
 
 char		*get_next_line(int fd);
@@ -137,10 +163,10 @@ int			len_2d(char **str);
 void		is_between(float small, float big, float nbr);
 void		*check_rgb_value(t_RGB rgb);
 void		*check_normalize_value(t_vector pos);
-t_data		*allocate_data(t_index *index);
+t_world		*allocate_data(t_index *index);
 t_index		*count_index(char **file);
 t_index		*fill_index(void);
-t_data		*check_and_fill(char **file);
+t_world		*check_and_fill(char **file);
 t_ambient	*ambient_light(char **str);
 t_camera	*camera(char **info);
 t_light		*light(char **info);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 14:59:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/14 21:21:30 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 16:25:24 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-// void render(t_camera camera, t_world world, t_data *img)
+// void render(t_camera camera, t_world world, t_world *img)
 // {
 //     int x;
 //     int y = 0;

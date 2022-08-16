@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:36:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/29 14:28:30 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/16 16:28:10 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ char	**ft_map(char **av)
 	return (NULL);
 }
 
-int	main(int ac, char **av)
+t_world	*parser(int ac, char **av)
 {
-	t_data		*data;
+	t_world		*data;
 	char		**file;
 	// int			i;
 
@@ -99,62 +99,6 @@ int	main(int ac, char **av)
 	{
 		file = ft_map(av);
 		data = check_and_fill(file);
-		printf("/*******************************/\n");
-		printf("ambient ratio %f\n",data->A[0]->ratio);
-		printf("ambient red   %d\n",data->A[0]->rgb.red);
-		printf("ambient green %d\n",data->A[0]->rgb.green);
-		printf("ambient blue  %d\n",data->A[0]->rgb.blue);
-		printf("/*******************************/\n");
-		printf("camera pos.x    %f\n",data->C[0]->pos.x);
-		printf("camera pos.y    %f\n",data->C[0]->pos.y);
-		printf("camera pos.z    %f\n",data->C[0]->pos.z);
-		printf("camera normal.x %f\n",data->C[0]->normal.x);
-		printf("camera normal.y %f\n",data->C[0]->normal.y);
-		printf("camera normal.z %f\n",data->C[0]->normal.z);
-		printf("camera FOV      %d\n",data->C[0]->fov);
-		printf("/*******************************/\n");
-		printf("L pos.x     %f\n",data->L[0]->pos.x);
-		printf("L pos.y     %f\n",data->L[0]->pos.y);
-		printf("L pos.z     %f\n",data->L[0]->pos.z);
-		printf("L rgb.red   %d\n",data->L[0]->rgb.red);
-		printf("L rgb.G     %d\n",data->L[0]->rgb.green);
-		printf("L rgb.B     %d\n",data->L[0]->rgb.blue);
-		printf("light ratio %f\n", data->L[0]->ratio);
-		printf("/*******************************/\n");
-		printf("sphere pos.x   %f\n",data->sp[0]->pos.x);
-		printf("sphere pos.y   %f\n",data->sp[0]->pos.y);
-		printf("sphere pos.z   %f\n",data->sp[0]->pos.z);
-		printf("sphere rgb.red %d\n",data->sp[0]->rgb.red);
-		printf("sphere rgb.G   %d\n",data->sp[0]->rgb.green);
-		printf("sphere rgb.B   %d\n",data->sp[0]->rgb.blue);
-		printf("diameter       %f\n", data->sp[0]->diameter);
-		printf("/*******************************/\n");
-		printf("plane pos.x    %f\n",data->pl[0]->pos.x);
-		printf("plane pos.y    %f\n",data->pl[0]->pos.y);
-		printf("plane pos.z    %f\n",data->pl[0]->pos.z);
-		printf("plane normal.x %f\n",data->pl[0]->normal.x);
-		printf("plane normal.y %f\n",data->pl[0]->normal.y);
-		printf("plane normal.z %f\n",data->pl[0]->normal.z);
-		printf("plane rgb.red  %d\n",data->pl[0]->rgb.red);
-		printf("plane rgb.G    %d\n",data->pl[0]->rgb.green);
-		printf("plane rgb.B    %d\n",data->pl[0]->rgb.blue);
-		printf("/*******************************/\n");
-		printf("clinder pos.x     %f\n",data->cy[0]->pos.x);
-		printf("clinder pos.y     %f\n",data->cy[0]->pos.y);
-		printf("clinder pos.z     %f\n",data->cy[0]->pos.z);
-		printf("clinder normal.x  %f\n",data->cy[0]->normal.x);
-		printf("clinder normal.y  %f\n",data->cy[0]->normal.y);
-		printf("clinder normal.z  %f\n",data->cy[0]->normal.z);
-		printf("clinder rgb.red   %d\n",data->cy[0]->rgb.red);
-		printf("clinder rgb.G     %d\n",data->cy[0]->rgb.green);
-		printf("clinder rgb.B     %d\n",data->cy[0]->rgb.blue);
-		printf("cylinder diameter %f\n",data->cy[0]->diameter);
-		printf("cylinder height   %f\n",data->cy[0]->height);
-		printf("/*******************************/\n");
-		// if (!map)
-		// {
-		// 	printf("FILE/SCENE: ERROR\n");
-		// 	return (1);
-		// }
 	}
+	return (data);
 }

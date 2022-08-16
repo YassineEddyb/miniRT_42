@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/29 14:28:20 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/16 16:25:24 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_two_arr(char **arr)
 }
 
 
-t_data	*identifier(char **tmp, t_data *data, t_index *index)
+t_world	*identifier(char **tmp, t_world *data, t_index *index)
 {
 	int	len;
 
@@ -38,12 +38,12 @@ t_data	*identifier(char **tmp, t_data *data, t_index *index)
 		len = ft_strlen(tmp[0]);
 	if (!ft_strncmp(tmp[0], "sp", len))
 	{
-		data->sp[index->sp++] = sphere(tmp);
+		data->sphere[index->sp++] = sphere(tmp);
 		return (data);
 	}
 	if (!ft_strncmp(tmp[0], "pl", len))
 	{
-		data->pl[index->pl++] = plane(tmp);
+		data->plane[index->pl++] = plane(tmp);
 		return (data);
 	}
 	if (!ft_strncmp(tmp[0], "cy", len))
@@ -54,11 +54,11 @@ t_data	*identifier(char **tmp, t_data *data, t_index *index)
 	return (NULL);	
 }
 
-t_data	*check_and_fill(char **file)
+t_world	*check_and_fill(char **file)
 {
 	int		i;
 	char	**tmp;
-	t_data	*data;
+	t_world	*data;
 	t_index	*index;
 	t_index	tmpindex;
 
@@ -74,11 +74,11 @@ t_data	*check_and_fill(char **file)
 		tmpindex = *index;
 		tmp = ft_split_spaces(file[i], ' ');
 		if (!ft_strncmp(tmp[0], "A", ft_strlen(tmp[0])))
-			data->A[index->A++] = ambient_light(tmp);
+			data->ambient[index->A++] = ambient_light(tmp);
 		else if (!ft_strncmp(tmp[0], "C", ft_strlen(tmp[0])))
-			data->C[index->C++] = camera(tmp);
+			data->camera[index->C++] = camera(tmp);
 		else if (!ft_strncmp(tmp[0], "L", ft_strlen(tmp[0])))
-			data->L[index->L++] = light(tmp);
+			data->light[index->L++] = light(tmp);
 		else if (identifier(tmp,data, &tmpindex))
 			data = identifier(tmp,data, index);
 		else

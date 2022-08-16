@@ -6,11 +6,9 @@
 #    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/07/29 14:29:07 by ael-bach         ###   ########.fr        #
+#    Updated: 2022/08/16 16:06:22 by ael-bach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-NAME = miniRT
 
 SRCS =	./srcs/get_next_line/get_next_line.c\
 		./srcs/get_next_line/get_next_line_utils.c\
@@ -19,19 +17,39 @@ SRCS =	./srcs/get_next_line/get_next_line.c\
 		./srcs/parser/camera.c ./srcs/parser/light.c ./srcs/parser/sphere.c\
 		./srcs/parser/helper.c\
 
+SRCS_RENDER = 	miniRT.c\
+		vector.c\
+		matrix.c\
+		matrix_helpers.c\
+		matrix_transfomations.c\
+		ray_functions.c\
+		sphere.c mutrix_inits.c\
+		colour.c\
+		light.c\
+		material.c\
+		world.c\
+		camera.c\
+		shadows.c\
+		render.c\
+		planes.c\
+		cylinder.c
+
+NAME = miniRT
+MLX = -lmlx -framework OpenGL -framework AppKit
+
 OBJS = ${SRCS:.c=.o}
 
 CC = @cc
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = #-Wall -Wextra -Werror #-fsanitize=address -g
 
 RM = @rm -f
 
 libft = srcs/Libft/libft.a
 
-${NAME} : ${SRCS}
+${NAME} : ${SRCS} ${SRCS_RENDER}
 	@make -C srcs/Libft
-	${CC}  ${CFLAGS} ${SRCS} ${libft} -o ${NAME} 
+	${CC}  ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o $(NAME) -o ${NAME} 
 	@tput setaf 2; echo "miniRT IS READY"
 
 all : ${NAME}
@@ -49,4 +67,3 @@ fclean : clean
 re : fclean all
 
 .phony: all clean fclean re
-

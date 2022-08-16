@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 23:28:32 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/29 12:59:48 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:03:34 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,27 +82,27 @@ t_index	*count_index(char **file)
 	return (index);
 }
 
-t_data	*allocate_data(t_index *index)
+t_world	*allocate_data(t_index *index)
 {
-	t_data	*data;
+	t_world	*data;
 
-	data = malloc (sizeof(t_data));
+	data = malloc (sizeof(t_world));
 	if (!data)
 		error("ERROR: ALLOCATION !!");
-	data->A = malloc (sizeof(t_ambient*) * index->A);
-	if (!data->A)
+	data->ambient = malloc (sizeof(t_ambient*) * index->A);
+	if (!data->ambient)
 		error("ERROR: ALLOCATION !!");
-	data->C = malloc (sizeof(t_camera*) * index->C);
-	if (!data->C)
+	data->camera = malloc (sizeof(t_camera*) * index->C);
+	if (!data->camera)
 		error("ERROR: ALLOCATION !!");
-	data->L = malloc (sizeof(t_light*) * index->L);
-	if (!data->L)
+	data->light = malloc (sizeof(t_light*) * index->L);
+	if (!data->light)
 		error("ERROR: ALLOCATION !!");
-	data->sp = malloc (sizeof(t_sphere*) * index->sp);
-	if (!data->sp)
+	data->sphere = malloc (sizeof(t_sphere*) * index->sp);
+	if (!data->sphere)
 		error("ERROR: ALLOCATION !!");
-	data->pl = malloc (sizeof(t_plane*) * index->pl);
-	if (!data->pl)
+	data->plane = malloc (sizeof(t_plane*) * index->pl);
+	if (!data->plane)
 		error("ERROR: ALLOCATION !!");
 	data->cy = malloc (sizeof(t_cy*) * index->cy);
 	if (!data->cy)

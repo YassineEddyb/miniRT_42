@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:10:35 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/23 20:16:18 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:19:41 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ t_light	*light(char **info)
 	light->pos.x = ft_atof(xyz[0]);
 	light->pos.y = ft_atof(xyz[1]);
 	light->pos.z = ft_atof(xyz[2]);
+	light->pos.w = 1;
 	free_two_arr(xyz);
 	light->ratio = ft_atof(info[2]);
 	xyz = ft_split(info[3], ',');
-	light->rgb.red = ft_atoi(xyz[0]);
-	light->rgb.green = ft_atoi(xyz[1]);
-	light->rgb.blue = ft_atoi(xyz[2]);
+	light->rgb.red = ft_atof(xyz[0]);
+	light->rgb.green = ft_atof(xyz[1]);
+	light->rgb.blue = ft_atof(xyz[2]);
 	free_two_arr(xyz);
 	check_rgb_value(light->rgb);
 	is_between(0, 1, light->ratio);
