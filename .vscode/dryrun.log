@@ -1,5 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/yed-dyb/Desktop/miniRT'
-gcc miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c -lmlx -framework OpenGL -framework AppKit -o miniRT -O3
-make: Leaving directory `/Users/yed-dyb/Desktop/miniRT'
- 

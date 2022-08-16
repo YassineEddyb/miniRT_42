@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/08 20:45:50 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:40:56 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ t_camera cameraInit(double hsize, double vsize, double fov)
 }
 
 // transform the view of the camera
-matrix view_transform(vector from, vector to, vector up)
+t_matrix view_transform(t_vector from, t_vector to, t_vector up)
 {
-    vector forward  = normalize(vectorSub(to, from));
-    vector upn = normalize(up);
-    vector left =  vectorCross(forward, upn);
-    vector true_up = vectorCross(left, forward);
+    t_vector forward  = normalize(vectorSub(to, from));
+    t_vector upn = normalize(up);
+    t_vector left =  vectorCross(forward, upn);
+    t_vector true_up = vectorCross(left, forward);
 
-    matrix or = matrixCreate(4, 4);
+    t_matrix or = matrixCreate(4, 4);
     
     or.m[0][0] = left.x;
     or.m[0][1] = left.y;
@@ -60,7 +60,7 @@ matrix view_transform(vector from, vector to, vector up)
     or.m[2][2] = -forward.z;
     or.m[3][3] = 1;
 
-    matrix m = get_matrix(-from.x, -from.y, -from.z, 't');
+    t_matrix m = get_matrix(-from.x, -from.y, -from.z, 't');
 
     return matrixMult(or, m);
 }

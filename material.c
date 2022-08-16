@@ -6,16 +6,16 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:54:53 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/03 11:56:15 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:20:37 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 // materail init
-material materials()
+t_material materials()
 {
-    material m;
+    t_material m;
 
     m.color = colourInit(0.8, 1.0, 0.6);
 	m.ambient = 0.1;

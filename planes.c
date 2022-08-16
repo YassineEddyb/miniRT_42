@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 13:29:16 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:16:48 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ double planeIntersection(t_plane plane, ray r)
 }
 
 
-vector normal_at_plane(t_plane plane, vector p)
+t_vector normal_at_plane(t_plane plane, t_vector p)
 {
     // vector obj_p = vector_mult_matrix(p, plane.transform, -1);
     // if (obj_p.x == p.x && obj_p.y == p.y && obj_p.z == p.z)

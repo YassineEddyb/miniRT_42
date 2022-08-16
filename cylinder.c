@@ -6,15 +6,15 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 13:54:18 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:39:52 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-cylinder cylinderInit()
+t_cy cylinderInit()
 {
-    cylinder cy;
+    t_cy cy;
 
     cy.transform = get_matrix(0, 0, 0, 'i');             
     cy.material = materials();
@@ -34,7 +34,7 @@ int check_cap (ray r, double t, double diameter)
     return (0);
 }
 
-double intersect_caps(cylinder cy, ray r)
+double intersect_caps(t_cy cy, ray r)
 {
     if (r.dir.y < 0.001f)
         return (-1);
@@ -50,7 +50,7 @@ double intersect_caps(cylinder cy, ray r)
         return (-1);
 }
 
-double cylinderIntersection(cylinder cy, ray r)
+double cylinderIntersection(t_cy cy, ray r)
 {
     double t0, t1;
 
@@ -84,7 +84,7 @@ double cylinderIntersection(cylinder cy, ray r)
     }
 }
 
-double cylinder_caps_intersect(cylinder cy, ray r)
+double cylinder_caps_intersect(t_cy cy, ray r)
 {
     ray r2;
 
@@ -104,10 +104,10 @@ double cylinder_caps_intersect(cylinder cy, ray r)
     return (t0);
 }
 
-vector normal_at_cylinder(cylinder cy, point p)
+t_vector normal_at_cylinder(t_cy cy, t_vector p)
 {
-    vector obj_p = vector_mult_matrix(p, cy.transform, -1);
-    vector obj_n;
+    t_vector obj_p = vector_mult_matrix(p, cy.transform, -1);
+    t_vector obj_n;
     double dist = p.x * p.x + p.z * p.z;
     if (dist < 1 && p.y >= cy.max - EPSILON)
         obj_n = vectorInit(0, 1, 0, 0);
@@ -115,7 +115,7 @@ vector normal_at_cylinder(cylinder cy, point p)
         obj_n = vectorInit(0, -1, 0, 0);
     else 
         obj_n = vectorInit(obj_p.x, 0, obj_p.z, 0);
-    vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(cy.transform)), 1);
+    t_vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(cy.transform)), 1);
 
     world_n.w = 0;
 

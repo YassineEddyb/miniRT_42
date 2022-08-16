@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 16:55:32 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:14:28 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ double sphereIntersection(t_sphere s, ray r)
 }
 
 // init sphere
-sphere shpereInit()
+t_sphere shpereInit()
 {
-    sphere s;
+    t_sphere s;
 
     s.pos = vectorInit(0, 0, 0, 1);
     s.transform = get_matrix(0, 0, 0, 'i');
@@ -71,11 +71,11 @@ sphere shpereInit()
 }
 
 // get the normal vector in a sphere
-vector normal_at_sphere(sphere s, vector p)
+t_vector normal_at_sphere(t_sphere s, t_vector p)
 {
-    vector obj_p = vector_mult_matrix(p, s.transform, -1);
-    vector obj_n = vectorSub(obj_p, s.pos);
-    vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(s.transform)), 1);
+    t_vector obj_p = vector_mult_matrix(p, s.transform, -1);
+    t_vector obj_n = vectorSub(obj_p, s.pos);
+    t_vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(s.transform)), 1);
 
     world_n.w = 0;
 
@@ -83,7 +83,7 @@ vector normal_at_sphere(sphere s, vector p)
 }
 
 // get the reflect vector of in vector
-vector reflect(vector in, vector normal)
+t_vector reflect(t_vector in, t_vector normal)
 {
 	return vectorSub(in, vectorScale(normal, 2 * vectorDot(in, normal)));
 }

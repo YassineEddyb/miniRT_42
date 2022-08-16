@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 17:10:46 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:53:19 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-typedef struct {
+typedef struct s_th {
 	pthread_t th_id;
 	int max;
 	int min;
 	t_world world;
 	t_camera camera;
-	t_world *img;
-} thread;
+	t_data *img;
+} t_th;
 
-colour initColour(double red, double green, double blue)
+t_RGB initColour(double red, double green, double blue)
 {
-	colour rgb;
+	t_RGB rgb;
 	rgb.red = red;
 	rgb.green = green;
 	rgb.blue = blue;
 	return (rgb);
 }
 
-void print_vector(vector v)
+void print_vector(t_vector v)
 {
 	printf("(x-> %f, y-> %f, z-> %f, w-> %f)\n\n", v.x, v.y, v.z, v.w);
 }
@@ -42,9 +42,9 @@ int	create_trgb(int t, int r, int g, int b)
 
 void *render(void *arg)
 {
-	thread *th;
+	t_th *th;
 
-	th = (thread *)arg;
+	th = (t_th *)arg;
 
 	ray r;
 	int x, y = 0;
@@ -54,7 +54,7 @@ void *render(void *arg)
 		x = th->min;
 		while(x < th->max) {
 			r = ray_for_pixel(th->camera, x, y);
-			colour color = color_at(th->world, r);
+			t_RGB color = color_at(th->world, r);
 			my_mlx_pixel_put(th->img, x, y, create_trgb(1, color.red * 255 , color.green * 255 , color.blue * 255));
 			x++;
 		}
@@ -64,7 +64,7 @@ void *render(void *arg)
 	return NULL;
 }
 
-void	my_mlx_pixel_put(t_world *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -78,19 +78,21 @@ int main(int argc, char **argv)
 	void	*win;
 	double 	t;
 
-	t_world img;
+	t_data img;
 	
-	t_world world;
-	t_light l;
+	// t_world world;
+	// t_light l;
 	t_camera camera;
 
-	// light
-	l = lightInit(vectorInit(-1, 5, -1, 1), initColour(1, 1, 1));
+	t_world *world = parser(argc, argv);
 
-	// world
-	world = worldInit(l);
-	world.s[0].transform = get_matrix(0, 1, 0.5, 't');
-	world.s[0].material.color = colourInit(1, 0, 0);
+	// // light
+	// l = lightInit(vectorInit(-1, 5, -1, 1), initColour(1, 1, 1));
+
+	// // world
+	// world = worldInit(l);
+	// world.s[0].transform = get_matrix(0, 1, 0.5, 't');
+	// world.s[0].material.color = colourInit(1, 0, 0);
 
 	// world.s[1].transform = matrixMult(get_matrix(1.5, 0.5, -0.5, 't'), get_matrix(0.5, 0.5, 0.5, 's'));
 	// world.s[1].material.color = colourInit(0, 0, 1);
@@ -99,14 +101,14 @@ int main(int argc, char **argv)
 	// world.s[2].material.color = colourInit(0, 1, 0);
 
 	// camera
-	camera = cameraInit(WIDTH, HEIGHT, M_PI/3);
+	// camera = cameraInit(WIDTH, HEIGHT, M_PI/3);
 
-	// vectors
-	t_vector from = vectorInit(0, 3.5, -2, 0);
-	t_vector to = vectorInit(0, 1, 0, 0);
-	t_vector up = vectorInit(0, 1, 0, 0);
+	// // vectors
+	// t_vector from = vectorInit(0, 3.5, -2, 0);
+	// t_vector to = vectorInit(0, 1, 0, 0);
+	// t_vector up = vectorInit(0, 1, 0, 0);
 
-	camera.transform = view_transform(from, to, up);
+	// camera.transform = view_transform(from, to, up);
 
 	/* test */
 	// cylinder cy;
@@ -126,12 +128,12 @@ int main(int argc, char **argv)
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "miniRT");
 	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_world_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
-	thread *th;
+	t_th *th;
 	int len = ceil(WIDTH / 50);
 
-	th = malloc(len * sizeof(thread));
+	th = malloc(len * sizeof(t_th));
 	
 	int i = 0;
 	while(i < len)
@@ -139,7 +141,7 @@ int main(int argc, char **argv)
 		th[i].min = i * 50;
 		th[i].max = i * 50 + 50;
 		th[i].camera = camera;
-		th[i].world = world;
+		th[i].world = *world;
 		th[i].img = &img;
 		
 		// printf("len %d, min : %d, max = %d\n", len, th[i].min, th[i].max);
