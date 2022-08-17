@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 18:41:10 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/17 11:31:38 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,39 +57,39 @@ t_intersect intersect_world(t_world world , ray r)
     double tmp;
 
     i = 0;
-    while(i < 0)
+    while(i < 1)
     {
         tmp = sphereIntersection(*(world.sphere[i]), r);
         if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))
         {
             intersect.t = tmp;
-            intersect.object = (void *)(&world.sphere[i]);
+            intersect.object = (void *)world.sphere[i];
             intersect.type = 's';
         }
         i++;
     }
 
     i = 0;
-    while(i < 4)
+    while(i < 0)
     {
         tmp = planeIntersection(*(world.plane[i]), r);
         if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))
         {
             intersect.t = tmp;
-            intersect.object = (void *)(&world.plane[i]);
+            intersect.object = (void *)world.plane[i];
             intersect.type = 'p';
         }
         i++;
     }
 
     i = 0;
-    while(i < 1)
+    while(i < 0)
     {
         tmp = cylinder_caps_intersect(*(world.cy[i]), r);
         if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))
         {
             intersect.t = tmp;
-            intersect.object = (void *)(&world.cy[i]);
+            intersect.object = (void *)world.cy[i];
             intersect.type = 'c';
         }
         i++;

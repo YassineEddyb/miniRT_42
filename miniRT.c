@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 18:53:19 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/17 13:54:39 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,40 @@ int main(int argc, char **argv)
 
 	t_world *world = parser(argc, argv);
 
-	// // light
+	int i = 0;
+	while( world->sphere[i])
+	{
+		world->sphere[i]->transform = matrixMult(get_matrix(world->sphere[i]->pos.x, world->sphere[i]->pos.y, world->sphere[i]->pos.z, 't'), get_matrix(world->sphere[i]->diameter, world->sphere[i]->diameter, world->sphere[i]->diameter, 's'));
+		world->sphere[i]->pos = vectorInit(0, 0, 0, 1);
+		world->sphere[i]->material = materials();
+		cameraInit(world->camera[0], WIDTH, HEIGHT);
+		i++;
+	}
+
+	// t_vector from = vectorInit(0, 3.5, -2, 1);
+	// t_vector to = vectorInit(0, 1, 0, 0);
+
+
+	// print_vector(world->camera[0]->pos);
+	// print_vector(world->camera[0]->normal);
+	// print_vector(up);
+	// printf("%f\n%f\n%f\n", world->camera[0]->fov, world->camera[0]->hsize, world->camera[0]->vsize);
+	// exit(1);
+	
+
+	// camera = cameraInit(WIDTH, HEIGHT, M_PI/3);
+
+	// t_vector from = vectorInit(0, 3.5, -2, 1);
+	// t_vector to = vectorInit(0, 1, 0, 0);
+	// t_vector up = vectorInit(0, 1, 0, 0);
+
+	// camera.transform = view_transform(from, to, up);
+
+	// t_vector up = vectorInit(0, 1, 0, 0);
+	// world->camera[0]->transform = view_transform(world->camera[0]->pos, world->camera[0]->normal, up);
+	
+
+	// light
 	// l = lightInit(vectorInit(-1, 5, -1, 1), initColour(1, 1, 1));
 
 	// // world
@@ -100,29 +133,7 @@ int main(int argc, char **argv)
 	// world.s[2].transform = matrixMult(get_matrix(-1.5, 0.33, -0.75, 't'), get_matrix(0.3, 0.3, 0.3, 's'));
 	// world.s[2].material.color = colourInit(0, 1, 0);
 
-	// camera
-	// camera = cameraInit(WIDTH, HEIGHT, M_PI/3);
 
-	// // vectors
-	// t_vector from = vectorInit(0, 3.5, -2, 0);
-	// t_vector to = vectorInit(0, 1, 0, 0);
-	// t_vector up = vectorInit(0, 1, 0, 0);
-
-	// camera.transform = view_transform(from, to, up);
-
-	/* test */
-	// cylinder cy;
-
-	// cy.min = 1;
-	// cy.max = 2;
-	// cy.transform = get_matrix(0, 0,0, 'i');
-
-	// ray r;
-	// r.start = vectorInit(0, 3, 0, 1);
-	// r.dir = normalize(vectorInit(0, -1 , 0, 0));
-
-	// printf("%f\n", cylinder_caps_intersect(cy, r));
-	/* test */
 
 	// mlx
 	mlx = mlx_init();
@@ -135,12 +146,12 @@ int main(int argc, char **argv)
 
 	th = malloc(len * sizeof(t_th));
 	
-	int i = 0;
+	i = 0;
 	while(i < len)
 	{
 		th[i].min = i * 50;
 		th[i].max = i * 50 + 50;
-		th[i].camera = camera;
+		th[i].camera = *(world->camera[0]);
 		th[i].world = *world;
 		th[i].img = &img;
 		

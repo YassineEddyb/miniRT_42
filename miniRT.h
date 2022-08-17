@@ -70,7 +70,7 @@ typedef struct
 //     double diameter;
 //     colour rgb;
 //     material material;
-// } sphere; 
+// } sphere;
 
 /* The ray */
 typedef struct {
@@ -220,7 +220,7 @@ t_RGB shade_hit(t_world world, t_comps comps);
 t_RGB color_at(t_world world, ray r);
 
 // camera functions
-t_camera cameraInit(double hsize, double wsize, double fov);
+void cameraInit(t_camera *camera, double hsize, double vsize);
 t_matrix view_transform(t_vector from, t_vector to, t_vector up);
 
 // shadows functions

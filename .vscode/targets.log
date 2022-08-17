@@ -1,0 +1,530 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Wed Aug 17 12:43:19 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+NVM_INC = /Users/yed-dyb/.nvm/versions/node/v16.15.0/include/node
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/yed-dyb/Desktop/merged_miniRT
+# makefile
+SHELL = /bin/sh
+# makefile (from `Makefile', line 46)
+RM = @rm -f
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from `Makefile', line 38)
+MLX = -lmlx -framework OpenGL -framework AppKit
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 44)
+CFLAGS = 
+# makefile (from `Makefile', line 20)
+SRCS_RENDER = miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# makefile (from `Makefile', line 40)
+OBJS = ${SRCS:.c=.o}
+# environment
+VSCODE_CWD = /
+# environment
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.0atF6cWVZ5/Render
+# environment
+PATH = /Users/yed-dyb/.nvm/versions/node/v16.15.0/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+HOME_BREW = /Users/yed-dyb/goinfre/yed-dyb
+# environment
+NVM_BIN = /Users/yed-dyb/.nvm/versions/node/v16.15.0/bin
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.BL2o6i9YWA/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+PWD = /Users/yed-dyb/Desktop/merged_miniRT
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/yed-dyb
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/yed-dyb/Library/Application Support/Code/CachedData/6d9b74a70ca9c7733b29f0456fd8195364076dda
+# environment
+LOGNAME = yed-dyb
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+NVM_CD_FLAGS = -q
+# environment
+ZSH = /Users/yed-dyb/.oh-my-zsh
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# makefile (from `Makefile', line 13)
+SRCS = ./srcs/get_next_line/get_next_line.c ./srcs/get_next_line/get_next_line_utils.c parser.c ./srcs/parser/ft_atof.c ./srcs/parser/Ambient_light.c ./srcs/parser/element.c ./srcs/parser/split_spaces.c ./srcs/parser/camera.c ./srcs/parser/light.c ./srcs/parser/sphere.c ./srcs/parser/helper.c 
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 42)
+CC = @cc
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = yed-dyb
+# makefile
+.DEFAULT_GOAL := miniRT
+# makefile (from `Makefile', line 37)
+NAME = miniRT
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n0000jrh0004f4/T/
+# automatic
+*F = $(notdir $*)
+# makefile (from `Makefile', line 48)
+libft = srcs/Libft/libft.a
+# environment
+VSCODE_IPC_HOOK = /Users/yed-dyb/Library/Application Support/Code/1.70.1-main.sock
+# environment
+MallocNanoZone = 0
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+NVM_DIR = /Users/yed-dyb/.nvm
+# environment
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0x11C4:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+PAGER = less
+# environment
+LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a9
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 13121
+# variable set hash-table stats:
+# Load=77/1024=8%, Rehash=0, Collisions=3/105=3%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777227, inode 3516217): 29 files, no impossibilities.
+
+# 29 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+srcs/parser/element.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:55:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/parser/helper.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:55:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+all: miniRT
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/parser/Ambient_light.c:
+ 
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:55:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+.phony: all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+cylinder.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:39:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+render.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:55:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/parser/ft_atof.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:14:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+miniRT: srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_utils.c parser.c srcs/parser/ft_atof.c srcs/parser/Ambient_light.c srcs/parser/element.c srcs/parser/split_spaces.c srcs/parser/camera.c srcs/parser/light.c srcs/parser/sphere.c srcs/parser/helper.c miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c
+#  Implicit rule search has not been done.
+#  Last modified 2022-08-17 11:31:42
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	@make -C srcs/Libft
+	${CC}  ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o $(NAME) -o ${NAME} -g -fsanitize=address
+	@tput setaf 2; echo "miniRT IS READY"
+	
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-17 11:02:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+colour.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:40:33
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+material.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:20:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+mutrix_inits.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:17:21
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+vector.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:13:23
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+fclean: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 63):
+	${RM} ${NAME}
+	${RM} ${libft}
+	@tput setaf 1; echo "miniRT REMOVED"
+	
+
+# Not a target:
+srcs/get_next_line/get_next_line_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:14:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+ray_functions.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:16:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+world.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-17 11:31:38
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/parser/light.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:55:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+miniRT.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-17 11:16:25
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+camera.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:40:56
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/parser/camera.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:55:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 58):
+	${RM} ${OBJS}
+	@make clean -C srcs/Libft
+	@tput setaf 1; echo "OBJECTS REMOVED"
+	
+
+# Not a target:
+matrix_transfomations.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:19:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+shadows.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:32:27
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+matrix_helpers.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:20:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sphere.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-17 11:26:41
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/parser/sphere.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:55:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+matrix.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:19:00
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+planes.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:16:48
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/get_next_line/get_next_line.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:14:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/parser/split_spaces.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:14:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+parser.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 17:55:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+light.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 18:40:05
+ 
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# files hash-table stats:
+# Load=37/1024=4%, Rehash=0, Collisions=4/86=5%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Wed Aug 17 12:43:19 2022
+
+ 

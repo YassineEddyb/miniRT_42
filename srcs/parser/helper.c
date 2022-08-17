@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 23:28:32 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/16 17:03:34 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/17 13:42:31 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,22 +89,22 @@ t_world	*allocate_data(t_index *index)
 	data = malloc (sizeof(t_world));
 	if (!data)
 		error("ERROR: ALLOCATION !!");
-	data->ambient = malloc (sizeof(t_ambient*) * index->A);
+	data->ambient = malloc (sizeof(t_ambient*) * (index->A+1));
 	if (!data->ambient)
 		error("ERROR: ALLOCATION !!");
-	data->camera = malloc (sizeof(t_camera*) * index->C);
+	data->camera = malloc (sizeof(t_camera*) * (index->C+1));
 	if (!data->camera)
 		error("ERROR: ALLOCATION !!");
-	data->light = malloc (sizeof(t_light*) * index->L);
+	data->light = malloc (sizeof(t_light*) * (index->L+1));
 	if (!data->light)
 		error("ERROR: ALLOCATION !!");
-	data->sphere = malloc (sizeof(t_sphere*) * index->sp);
+	data->sphere = malloc (sizeof(t_sphere*) * (index->sp+1));
 	if (!data->sphere)
 		error("ERROR: ALLOCATION !!");
-	data->plane = malloc (sizeof(t_plane*) * index->pl);
+	data->plane = malloc (sizeof(t_plane*) * (index->pl+1));
 	if (!data->plane)
 		error("ERROR: ALLOCATION !!");
-	data->cy = malloc (sizeof(t_cy*) * index->cy);
+	data->cy = malloc (sizeof(t_cy*) * (index->cy+1));
 	if (!data->cy)
 		error("ERROR: ALLOCATION !!");
 	return (data);	

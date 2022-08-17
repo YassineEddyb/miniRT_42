@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 18:14:28 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/17 12:48:43 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ double sphereIntersection(t_sphere s, ray r)
 
     r2 = transform(r, s.transform, -1);
     // t = malloc(sizeof(double) * 2);
+
+    // print_vector(r2.start);
 
     v = vectorSub(r2.start, s.pos);
     A = vectorDot(r2.dir, r2.dir);
