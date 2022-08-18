@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/18 12:00:33 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/18 17:25:24 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void planeInit(t_plane *plane, t_ambient ambient)
 {
-    plane->transform = get_matrix(plane->pos.x, plane->pos.y, plane->pos.z, 'i');
+    plane->transform = matrixMult(matrixMult(matrixMult(
+                        get_rotation_matrix(plane->normal.y * M_PI_2, 'y'),
+                        get_matrix(plane->pos.x, plane->pos.y, plane->pos.z, 't')),
+                        get_rotation_matrix(plane->normal.z * M_PI_2, 'x')),
+                        get_rotation_matrix(plane->normal.z * M_PI_2, 'z'));
     plane->pos = vectorInit(0, 0, 0, 1);
     plane->material = materials(plane->rgb, ambient.ratio);
 }

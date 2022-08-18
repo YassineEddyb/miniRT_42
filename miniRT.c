@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/18 13:30:28 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/18 17:18:00 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,12 @@ int main(int argc, char **argv)
 		sphereInit(world->sphere[i], *(world->ambient[0]));
 		i++;
 	}
-
-	planeInit(world->plane[0], *(world->ambient[0]));
+	i = 0;
+	while(world->plane[i])
+	{
+		planeInit(world->plane[i], *(world->ambient[0]));
+		i++;
+	}
 	cylinderInit(world->cy[0], *(world->ambient[0]));
 	cameraInit(world->camera[0], WIDTH, HEIGHT);
 
