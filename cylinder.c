@@ -6,22 +6,18 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/17 14:12:56 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/18 13:45:26 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_cy cylinderInit()
+void cylinderInit(t_cy *cy, t_ambient ambient)
 {
-    t_cy cy;
-
-    cy.transform = get_matrix(0, 0, 0, 'i');             
-    // cy.material = materials();
-    cy.min = -1;
-    cy.max = 2;
-
-    return cy;
+    cy->transform = get_matrix(cy->pos.x, cy->pos.y, cy->pos.z, 't');
+    cy->material = materials(cy->rgb, ambient.ratio);
+    cy->min = -1;
+    cy->max = 2;
 }
 
 int check_cap (ray r, double t, double diameter)
@@ -91,16 +87,16 @@ double cylinder_caps_intersect(t_cy cy, ray r)
     r2 = transform(r, cy.transform, -1);
 
     double t0 = cylinderIntersection(cy, r2);
-    double t1 = intersect_caps(cy, r2);
+    // double t1 = intersect_caps(cy, r2);
 
-    if (t0 == -1 && t1 == -1)
-        return (-1);
-    if (t0 == -1)
-        return (t1);
-    if (t1 == -1)
-        return (t0);
-    if (t0 > t1)
-        t0 = t1;
+    // if (t0 == -1 && t1 == -1)
+    //     return (-1);
+    // if (t0 == -1)
+    //     return (t1);
+    // if (t1 == -1)
+    //     return (t0);
+    // if (t0 > t1)
+    //     t0 = t1;
     return (t0);
 }
 

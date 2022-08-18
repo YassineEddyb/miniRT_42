@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/18 11:23:31 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/18 13:28:59 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_intersect intersect_world(t_world world , ray r)
     }
 
     i = 0;
-    while(i < 0)
+    while(i < 1)
     {
         tmp = cylinder_caps_intersect(*(world.cy[i]), r);
         if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))

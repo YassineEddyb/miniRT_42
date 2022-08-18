@@ -235,7 +235,7 @@ double planeIntersection(t_plane plane, ray r);
 t_vector normal_at_plane(t_plane plane, t_vector p);
 
 // cylinder functions
-t_cy cylinderInit();
+void cylinderInit(t_cy *cy, t_ambient ambient);
 double cylinderIntersection(t_cy cy, ray r);
 double cylinder_caps_intersect(t_cy cy, ray r);
 t_vector normal_at_cylinder(t_cy cy, t_vector p);
