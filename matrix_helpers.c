@@ -6,26 +6,26 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:01 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/02 16:20:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:20:28 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 // get the determinant of a submatrix
-double determinant(matrix m)
+double determinant(t_matrix m)
 {
     return (m.m[0][0] * m.m[1][1] - m.m[0][1] * m.m[1][0]);   
 }
 
 // get the submatrix base on row and col
-matrix submatrix(matrix m, int row, int col)
+t_matrix submatrix(t_matrix m, int row, int col)
 {
    int i;
    int j;
    int k;
    int n;
-   matrix sub;
+   t_matrix sub;
 
    sub = matrixCreate(m.rows - 1, m.cols - 1);
    i = -1;
@@ -51,7 +51,7 @@ matrix submatrix(matrix m, int row, int col)
 }
 
 // get teh minor of a matrix
-double minor(matrix m, int row, int col)
+double minor(t_matrix m, int row, int col)
 {
     return (determinant(submatrix(m, row, col)));
 }
@@ -63,7 +63,7 @@ double cofactor(double det, int row, int col)
 }
 
 // get the determinant of a matrix
-double matrixDeterminant(matrix m)
+double matrixDeterminant(t_matrix m)
 {
     int i;
     double det;

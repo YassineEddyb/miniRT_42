@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 16:55:32 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/18 07:48:42 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-// sphere sphereInit(vector transform)
-// {
-//     sphere s;
-//     s.pos = vectorInit(0, 0, 0, 1);
-//     return s;
-// }
+// init sphere
+void sphereInit(t_sphere *sphere, t_ambient ambient)
+{
+    sphere->transform = matrixMult(get_matrix(sphere->pos.x, sphere->pos.y, sphere->pos.z, 't'), get_matrix(sphere->diameter, sphere->diameter, sphere->diameter, 's'));
+    sphere->pos = vectorInit(0, 0, 0, 1);
+    sphere->material = materials(sphere->rgb, ambient.ratio);
+}
 
 // get the intersection of a ray with a sphere
 double sphereIntersection(t_sphere s, ray r)
@@ -34,6 +35,8 @@ double sphereIntersection(t_sphere s, ray r)
 
     r2 = transform(r, s.transform, -1);
     // t = malloc(sizeof(double) * 2);
+
+    // print_vector(r2.start);
 
     v = vectorSub(r2.start, s.pos);
     A = vectorDot(r2.dir, r2.dir);
@@ -58,24 +61,12 @@ double sphereIntersection(t_sphere s, ray r)
     }
 }
 
-// init sphere
-sphere shpereInit()
-{
-    sphere s;
-
-    s.pos = vectorInit(0, 0, 0, 1);
-    s.transform = get_matrix(0, 0, 0, 'i');
-    s.material = materials();
-
-    return s;
-}
-
 // get the normal vector in a sphere
-vector normal_at_sphere(sphere s, vector p)
+t_vector normal_at_sphere(t_sphere s, t_vector p)
 {
-    vector obj_p = vector_mult_matrix(p, s.transform, -1);
-    vector obj_n = vectorSub(obj_p, s.pos);
-    vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(s.transform)), 1);
+    t_vector obj_p = vector_mult_matrix(p, s.transform, -1);
+    t_vector obj_n = vectorSub(obj_p, s.pos);
+    t_vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(s.transform)), 1);
 
     world_n.w = 0;
 
@@ -83,7 +74,7 @@ vector normal_at_sphere(sphere s, vector p)
 }
 
 // get the reflect vector of in vector
-vector reflect(vector in, vector normal)
+t_vector reflect(t_vector in, t_vector normal)
 {
 	return vectorSub(in, vectorScale(normal, 2 * vectorDot(in, normal)));
 }

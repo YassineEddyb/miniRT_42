@@ -1,5 +1,5 @@
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef PARSER_H
+# define PARSER_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +26,6 @@ typedef struct s_material
     double		diffuse;
     double		specular;
     double		shininess;
-
 } t_material; 
 
 typedef struct s_matrix
@@ -53,7 +52,7 @@ typedef struct s_sphere
 	t_vector	pos;
 	double		diameter;
 	t_RGB		rgb;
-	t_matrix		transform;
+	t_matrix	transform;
 	t_material	material;
 
 }	t_sphere; 
@@ -71,8 +70,8 @@ typedef struct s_camera
 {
 	t_vector	pos;
 	t_vector	normal;
-	double			fov;/////double
-	t_matrix		transform;
+	double		fov;/////double
+	t_matrix	transform;
     double		hsize;
     double		vsize;
     double		half_width;
@@ -85,7 +84,6 @@ typedef struct s_ambient
 {
 	double	ratio;
 	t_RGB	rgb;
-
 } t_ambient;
 
 /* Light definition */
@@ -94,7 +92,6 @@ typedef struct s_light
 	t_vector	pos;
 	t_RGB		rgb;
 	double		ratio;
-
 }	t_light;
 
 typedef struct s_plane
@@ -165,5 +162,6 @@ t_light		*light(char **info);
 t_sphere	*sphere(char **tmp);
 t_plane		*plane(char **tmp);
 t_cy		*cylinder(char **tmp);
+t_world	*parser(int ac, char **av);
 
 #endif

@@ -1,6 +1,7 @@
 #ifndef MINIRT_H
 # define MINIRT_H
 
+#include "Includes/parser.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,7 +9,6 @@
 #include <float.h>
 #include <mlx.h>
 #include <pthread.h>
-#include "Includes/parser.h"
 
 # define WIDTH 400
 # define HEIGHT 350
@@ -70,7 +70,7 @@ typedef struct
 //     double diameter;
 //     colour rgb;
 //     material material;
-// } sphere; 
+// } sphere;
 
 /* The ray */
 typedef struct {
@@ -149,40 +149,40 @@ typedef struct s_comps {
     int inside;
 } t_comps;
 
-typedef vector point;
+// typedef vector point;
 
 // mlx
-void	my_mlx_pixel_put(t_world *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int     create_trgb(int t, int r, int g, int b);
 
 // vector functions
-t_vector vectorSub(vector v1, vector v2);
-double vectorDot(vector v1, vector v2);
-t_vector vectorScale(vector v, double t);
-t_vector vectorAdd(vector v1, vector v2);
-t_vector normalize(vector v);
+t_vector vectorSub(t_vector v1, t_vector v2);
+double vectorDot(t_vector v1, t_vector v2);
+t_vector vectorScale(t_vector v, double t);
+t_vector vectorAdd(t_vector v1, t_vector v2);
+t_vector normalize(t_vector v);
 t_vector vectorInit(double x, double y, double z, double w);
-t_vector vectorCross(vector a, vector b);
-double magnitude(vector v);
+t_vector vectorCross(t_vector a, t_vector b);
+double magnitude(t_vector v);
 
 // matrix functions
-double determinant(matrix m);
-t_matrix submatrix(matrix m, int row, int col);
-double minor(matrix m, int rwo, int col);
+double determinant(t_matrix m);
+t_matrix submatrix(t_matrix m, int row, int col);
+double minor(t_matrix m, int rwo, int col);
 double cofactor(double det, int row, int col);
 double det(double **m);
-double matrixDeterminant(matrix m);
-t_matrix matrixMult(matrix m1, matrix m2);
-t_matrix matrixTranspose(matrix m);
-t_matrix matrixInverse(matrix m);
+double matrixDeterminant(t_matrix m);
+t_matrix matrixMult(t_matrix m1, t_matrix m2);
+t_matrix matrixTranspose(t_matrix m);
+t_matrix matrixInverse(t_matrix m);
 
 // matrix transformatons
-t_vector translate(vector v, vector translator, int type);
-t_vector scale(vector v, vector scaler, int type);
-t_vector rotate_x(vector v, double r);
-t_vector rotate_y(vector v, double r);
-t_vector rotate_z(vector v, double r);
-t_vector vector_mult_matrix (vector v, matrix m, int type);
+t_vector translate(t_vector v, t_vector translator, int type);
+t_vector scale(t_vector v, t_vector scaler, int type);
+t_vector rotate_x(t_vector v, double r);
+t_vector rotate_y(t_vector v, double r);
+t_vector rotate_z(t_vector v, double r);
+t_vector vector_mult_matrix (t_vector v, t_matrix m, int type);
 
 // matrix inits
 t_matrix matrixCreate(int rows, int cols);
@@ -190,58 +190,59 @@ t_matrix get_matrix(double x, double y, double z, char type);
 t_matrix get_rotation_matrix(double r, int type);
 
 // ray functions
-vector position(ray r, double t);
-ray transform(ray r, matrix m, int type);
+t_vector position(ray r, double t);
+ray transform(ray r, t_matrix m, int type);
 ray ray_for_pixel(t_camera camera, int x, int y);
 
 // sphere functions
-sphere shpereInit();
-double sphereIntersection(sphere s, ray r);
-vector normal_at_sphere(sphere s, vector p);
-vector reflect(vector in, vector normal);
+void sphereInit(t_sphere *sphere, t_ambient ambient);
+double sphereIntersection(t_sphere s, ray r);
+t_vector normal_at_sphere(t_sphere s, t_vector p);
+t_vector reflect(t_vector in, t_vector normal);
 
 // colour functions
-colour colourInit(double r, double g, double b);
-t_RGB stripe_at(vector point);
-t_RGB
-t_RGBht functions
-t_RGBlightInit(vector pos, colour intensity);
-t_RGB lightning(material m, light l, vector pos, vector v, vector n, int in_shadow);
+t_RGB colourInit(double r, double g, double b);
+t_RGB stripe_at(t_vector point);
+
+
+// color functions
+t_light lightInit(t_vector pos, t_RGB intensity);
+t_RGB lightning(t_material m, t_light l, t_vector pos, t_vector v, t_vector n, int in_shadow);
 
 // material functions
-material materials();
+t_material materials(t_RGB color, double ratio);
 
 // world functions
-t_world worldInit(light l);
+t_world worldInit(t_light l);
 t_intersect intersect_world(t_world world , ray r);
 t_comps prepare_computations (ray r, t_intersect i);
 t_RGB shade_hit(t_world world, t_comps comps);
 t_RGB color_at(t_world world, ray r);
 
 // camera functions
-t_camera cameraInit(double hsize, double wsize, double fov);
-t_matrix view_transform(vector from, vector to, vector up);
+void cameraInit(t_camera *camera, double hsize, double vsize);
+t_matrix view_transform(t_vector from, t_vector to, t_vector up);
 
 // shadows functions
-int is_shadowed(t_world world, vector point);
+int is_shadowed(t_world world, t_vector point);
 
 // render functions
 // void render(t_camera camera, t_world world, t_world *img);
 
 // plane functions
-t_plane planeInit();
+void planeInit(t_plane *plane, t_ambient ambient);
 double planeIntersection(t_plane plane, ray r);
-vector normal_at_plane(t_plane plane, vector p);
+t_vector normal_at_plane(t_plane plane, t_vector p);
 
 // cylinder functions
-cylinder cylinderInit();
-double cylinderIntersection(cylinder cy, ray r);
-double cylinder_caps_intersect(cylinder cy, ray r);
-vector normal_at_cylinder(cylinder cy, point p);
+void cylinderInit(t_cy *cy, t_ambient ambient);
+double cylinderIntersection(t_cy cy, ray r);
+double cylinder_caps_intersect(t_cy cy, ray r);
+t_vector normal_at_cylinder(t_cy cy, t_vector p);
 
 // test functions
-void print_vector(vector v);
-void print_matrix(matrix m);
+void print_vector(t_vector v);
+void print_matrix(t_matrix m);
 
 
 #endif

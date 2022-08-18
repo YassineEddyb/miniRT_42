@@ -6,48 +6,49 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/08 20:45:50 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/17 13:55:50 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 // init camera
-t_camera cameraInit(double hsize, double vsize, double fov)
+void cameraInit(t_camera *camera, double hsize, double vsize)
 {
-    t_camera camera;
+    t_vector up;
 
-    camera.hsize = hsize;
-    camera.vsize = vsize;
-    camera.fov = fov;
-    camera.transform = get_matrix(0, 0, 0, 'i');
+    camera->hsize = hsize;
+    camera->vsize = vsize;
+    camera->transform = get_matrix(0, 0, 0, 'i');
+    camera->fov = camera->fov * M_PI / 180;
 
-    double half_view = tan(fov / 2);
+    double half_view = tan(camera->fov / 2);
     double aspect = hsize / vsize;
 
-    if (aspect >= 1 )
+    if (aspect >= 1)
     {
-        camera.half_width = half_view;
-        camera.half_height = half_view / aspect;
+        camera->half_width = half_view;
+        camera->half_height = half_view / aspect;
     } else {
-        camera.half_width = half_view * aspect;
-        camera.half_height = half_view;
+        camera->half_width = half_view * aspect;
+        camera->half_height = half_view;
     }
 
-    camera.pixel_size = (camera.half_width * 2) / camera.hsize;
+    camera->pixel_size = (camera->half_width * 2) / camera->hsize;
 
-    return camera;
+    up = vectorInit(0, 1, 0, 0);
+	camera->transform = view_transform(camera->pos, camera->normal, up);
 }
 
 // transform the view of the camera
-matrix view_transform(vector from, vector to, vector up)
+t_matrix view_transform(t_vector from, t_vector to, t_vector up)
 {
-    vector forward  = normalize(vectorSub(to, from));
-    vector upn = normalize(up);
-    vector left =  vectorCross(forward, upn);
-    vector true_up = vectorCross(left, forward);
+    t_vector forward  = normalize(vectorSub(to, from));
+    t_vector upn = normalize(up);
+    t_vector left =  vectorCross(forward, upn);
+    t_vector true_up = vectorCross(left, forward);
 
-    matrix or = matrixCreate(4, 4);
+    t_matrix or = matrixCreate(4, 4);
     
     or.m[0][0] = left.x;
     or.m[0][1] = left.y;
@@ -60,7 +61,7 @@ matrix view_transform(vector from, vector to, vector up)
     or.m[2][2] = -forward.z;
     or.m[3][3] = 1;
 
-    matrix m = get_matrix(-from.x, -from.y, -from.z, 't');
+    t_matrix m = get_matrix(-from.x, -from.y, -from.z, 't');
 
     return matrixMult(or, m);
 }

@@ -6,21 +6,17 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 13:29:16 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/18 12:00:33 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_plane planeInit()
+void planeInit(t_plane *plane, t_ambient ambient)
 {
-    t_plane p;
-
-    p.pos = vectorInit(0, 0, 0, 1);
-    p.transform = get_matrix(0, 0, 0, 'i');
-    p.material = materials();
-
-    return p;
+    plane->transform = get_matrix(plane->pos.x, plane->pos.y, plane->pos.z, 'i');
+    plane->pos = vectorInit(0, 0, 0, 1);
+    plane->material = materials(plane->rgb, ambient.ratio);
 }
 
 double planeIntersection(t_plane plane, ray r)
@@ -35,14 +31,13 @@ double planeIntersection(t_plane plane, ray r)
     
     t = -r2.start.y / r2.dir.y;
     
-    if (t > 0.001f)
-        return (t);
+    if (t > 0.001f) return (t);
     else return (-1);
 
 }
 
 
-vector normal_at_plane(t_plane plane, vector p)
+t_vector normal_at_plane(t_plane plane, t_vector p)
 {
     // vector obj_p = vector_mult_matrix(p, plane.transform, -1);
     // if (obj_p.x == p.x && obj_p.y == p.y && obj_p.z == p.z)

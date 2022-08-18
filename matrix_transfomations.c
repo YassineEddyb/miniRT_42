@@ -6,19 +6,19 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:06:50 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/08 20:46:17 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:19:40 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 // translate a vector by a matrix
-vector translate(vector v, vector translator, int type)
+t_vector translate(t_vector v, t_vector translator, int type)
 {
-    matrix m1;
-    matrix m2;
-    matrix m3;
-    vector res;
+    t_matrix m1;
+    t_matrix m2;
+    t_matrix m3;
+    t_vector res;
 
     m1 = matrixCreate(4, 4);
     m2 = matrixCreate(4, 1);
@@ -38,12 +38,12 @@ vector translate(vector v, vector translator, int type)
 }
 
 // scale a vector by a matrix
-vector scale(vector v, vector scaler, int type)
+t_vector scale(t_vector v, t_vector scaler, int type)
 {
-    matrix m1;
-    matrix m2;
-    matrix m3;
-    vector res;
+    t_matrix m1;
+    t_matrix m2;
+    t_matrix m3;
+    t_vector res;
 
     m1 = matrixCreate(4, 4);
     m2 = matrixCreate(4, 1);
@@ -63,12 +63,12 @@ vector scale(vector v, vector scaler, int type)
 }
 
 // rotate a vector by a matrix
-vector rotate(vector v, double r, char axis)
+t_vector rotate(t_vector v, double r, char axis)
 {
-    matrix m1;
-    matrix m2;
-    matrix m3;
-    vector res;
+    t_matrix m1;
+    t_matrix m2;
+    t_matrix m3;
+    t_vector res;
 
     m1 = matrixCreate(4, 4);
     m2 = matrixCreate(4, 1);
@@ -86,11 +86,11 @@ vector rotate(vector v, double r, char axis)
 }
 
 // multiplu a vector by a matrix
-vector vector_mult_matrix (vector v, matrix m, int type)
+t_vector vector_mult_matrix (t_vector v, t_matrix m, int type)
 {
-    matrix m2;
-    matrix m3;
-    vector res;
+    t_matrix m2;
+    t_matrix m3;
+    t_vector res;
 
     m2 = matrixCreate(4, 1);
 

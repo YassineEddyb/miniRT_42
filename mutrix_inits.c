@@ -6,16 +6,16 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:21:13 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/08 20:42:58 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/16 18:17:21 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 // create a matrix
-matrix matrixCreate(int rows, int cols)
+t_matrix matrixCreate(int rows, int cols)
 {
-   matrix matrix;
+   t_matrix matrix;
    int i;
    int j;
    double **arr;
@@ -42,9 +42,9 @@ matrix matrixCreate(int rows, int cols)
 }
 
 // get the matrix
-matrix get_matrix(double x, double y, double z, char type)
+t_matrix get_matrix(double x, double y, double z, char type)
 {
-    matrix m = matrixCreate(4, 4);
+    t_matrix m = matrixCreate(4, 4);
 
     if (type == 't') {
         m.m[0][0] = 1;
@@ -71,9 +71,9 @@ matrix get_matrix(double x, double y, double z, char type)
 }
 
 // get the rotation matrix
-matrix get_rotation_matrix(double r, int type)
+t_matrix get_rotation_matrix(double r, int type)
 {
-    matrix m = matrixCreate(4, 4);
+    t_matrix m = matrixCreate(4, 4);
 
     if (type == 'x') {
         m.m[0][0] = 1;
