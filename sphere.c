@@ -6,18 +6,19 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/17 12:48:43 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/18 07:48:42 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-// sphere sphereInit(vector transform)
-// {
-//     sphere s;
-//     s.pos = vectorInit(0, 0, 0, 1);
-//     return s;
-// }
+// init sphere
+void sphereInit(t_sphere *sphere, t_ambient ambient)
+{
+    sphere->transform = matrixMult(get_matrix(sphere->pos.x, sphere->pos.y, sphere->pos.z, 't'), get_matrix(sphere->diameter, sphere->diameter, sphere->diameter, 's'));
+    sphere->pos = vectorInit(0, 0, 0, 1);
+    sphere->material = materials(sphere->rgb, ambient.ratio);
+}
 
 // get the intersection of a ray with a sphere
 double sphereIntersection(t_sphere s, ray r)
@@ -58,18 +59,6 @@ double sphereIntersection(t_sphere s, ray r)
         else
             return (-1);
     }
-}
-
-// init sphere
-t_sphere shpereInit()
-{
-    t_sphere s;
-
-    s.pos = vectorInit(0, 0, 0, 1);
-    s.transform = get_matrix(0, 0, 0, 'i');
-    s.material = materials();
-
-    return s;
 }
 
 // get the normal vector in a sphere

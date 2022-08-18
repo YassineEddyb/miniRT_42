@@ -195,7 +195,7 @@ ray transform(ray r, t_matrix m, int type);
 ray ray_for_pixel(t_camera camera, int x, int y);
 
 // sphere functions
-t_sphere shpereInit();
+void sphereInit(t_sphere *sphere, t_ambient ambient);
 double sphereIntersection(t_sphere s, ray r);
 t_vector normal_at_sphere(t_sphere s, t_vector p);
 t_vector reflect(t_vector in, t_vector normal);
@@ -210,7 +210,7 @@ t_light lightInit(t_vector pos, t_RGB intensity);
 t_RGB lightning(t_material m, t_light l, t_vector pos, t_vector v, t_vector n, int in_shadow);
 
 // material functions
-t_material materials();
+t_material materials(t_RGB color, double ratio);
 
 // world functions
 t_world worldInit(t_light l);
@@ -230,7 +230,7 @@ int is_shadowed(t_world world, t_vector point);
 // void render(t_camera camera, t_world world, t_world *img);
 
 // plane functions
-t_plane planeInit();
+void planeInit(t_plane *plane, t_ambient ambient);
 double planeIntersection(t_plane plane, ray r);
 t_vector normal_at_plane(t_plane plane, t_vector p);
 

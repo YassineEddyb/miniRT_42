@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 18:39:52 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/17 14:12:56 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_cy cylinderInit()
     t_cy cy;
 
     cy.transform = get_matrix(0, 0, 0, 'i');             
-    cy.material = materials();
+    // cy.material = materials();
     cy.min = -1;
     cy.max = 2;
 

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:30:33 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/16 18:40:05 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/17 14:03:26 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,11 @@ t_RGB lightning(t_material m, t_light l, t_vector pos, t_vector v, t_vector n, i
         double reflect_dot_eye = vectorDot(reflectv, v);
 
         if (reflect_dot_eye <= 0)
-        {
-                specular = colourInit(0, 0, 0);
-        } else {
-                double factor  = pow(reflect_dot_eye, m.shininess);
-                double light_specular = m.specular * factor;
-                specular = colourInit(l.rgb.red * light_specular, l.rgb.green * light_specular, l.rgb.blue * light_specular);
+            specular = colourInit(0, 0, 0);
+        else {
+            double factor  = pow(reflect_dot_eye, m.shininess);
+            double light_specular = m.specular * factor;
+            specular = colourInit(l.rgb.red * light_specular, l.rgb.green * light_specular, l.rgb.blue * light_specular);
         }
     }
     

@@ -84,7 +84,6 @@ typedef struct s_ambient
 {
 	double	ratio;
 	t_RGB	rgb;
-
 } t_ambient;
 
 /* Light definition */
