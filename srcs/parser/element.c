@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/16 16:25:24 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/17 13:47:43 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ t_world	*check_and_fill(char **file)
 			error("ERROR IN FILE");
 		free_two_arr(tmp);
 	}
+
 	free (index);
 	return (data);
 }

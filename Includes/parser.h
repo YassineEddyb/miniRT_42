@@ -97,14 +97,6 @@ typedef struct s_light
 
 }	t_light;
 
-/* Material definition */
-typedef struct s_material
-{
-	t_RGB	diffuse;
-	double	reflection;
-
-}	t_material; 
-
 typedef struct s_plane
 {
 	t_vector	pos;

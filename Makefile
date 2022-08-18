@@ -6,7 +6,7 @@
 #    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/08/16 16:06:22 by ael-bach         ###   ########.fr        #
+#    Updated: 2022/08/17 09:57:34 by ael-bach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS =	./srcs/get_next_line/get_next_line.c\
 		./srcs/parser/camera.c ./srcs/parser/light.c ./srcs/parser/sphere.c\
 		./srcs/parser/helper.c\
 
-SRCS_RENDER = 	miniRT.c\
+#SRCS_RENDER = 	miniRT.c\
 		vector.c\
 		matrix.c\
 		matrix_helpers.c\
