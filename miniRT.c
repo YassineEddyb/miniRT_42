@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/18 17:18:00 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/20 14:52:58 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void *render(void *arg)
 		while(x < th->max) {
 			r = ray_for_pixel(th->camera, x, y);
 			t_RGB color = color_at(th->world, r);
-			my_mlx_pixel_put(th->img, x, y, create_trgb(1, color.red * 255 , color.green * 255 , color.blue * 255));
+			my_mlx_pixel_put(th->img, x, y, create_trgb(1,
+								min(color.red * 255, 255),
+								min(color.green * 255, 255),
+								min(color.blue * 255, 255)));
 			x++;
 		}
 		y++;
@@ -98,7 +101,12 @@ int main(int argc, char **argv)
 		planeInit(world->plane[i], *(world->ambient[0]));
 		i++;
 	}
-	cylinderInit(world->cy[0], *(world->ambient[0]));
+	i = 0;
+	while(world->cy[i])
+	{
+		cylinderInit(world->cy[i], *(world->ambient[0]));
+		i++;
+	}
 	cameraInit(world->camera[0], WIDTH, HEIGHT);
 
 	// mlx

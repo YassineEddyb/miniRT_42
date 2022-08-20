@@ -8,10 +8,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Thu Aug 18 16:21:15 2022
+# Make data base, printed on Sat Aug 20 16:55:09 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -45,7 +46,7 @@ OBJS = ${SRCS:.c=.o}
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.eZ3ZJP9XKB/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.zQ2PjxsXHf/Render
 # environment
 PATH = /usr/bin:/bin:/usr/sbin:/sbin
 # environment
@@ -53,7 +54,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.PIewQwUSyO/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.UgdEIZIS7i/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -71,7 +72,7 @@ VSCODE_CODE_CACHE_PATH = /Users/yed-dyb/Library/Application Support/Code/CachedD
 # environment
 LOGNAME = yed-dyb
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -119,7 +120,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000002.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -147,9 +148,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 11077
+VSCODE_PID = 14695
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=3/96=3%
+# Load=68/1024=7%, Rehash=0, Collisions=4/106=4%
 
 # Pattern-specific Variable Values
 
@@ -190,9 +191,9 @@ all: miniRT
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
 
 # Not a target:
 srcs/parser/Ambient_light.c:
@@ -211,7 +212,7 @@ srcs/parser/Ambient_light.c:
 # Not a target:
 cylinder.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 13:45:26
+#  Last modified 2022-08-20 12:01:54
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -220,7 +221,7 @@ cylinder.c:
 # Not a target:
 render.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-16 17:55:11
+#  Last modified 2022-08-19 10:02:33
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -243,11 +244,28 @@ srcs/parser/ft_atof.c:
 
 miniRT: srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_utils.c parser.c srcs/parser/ft_atof.c srcs/parser/Ambient_light.c srcs/parser/element.c srcs/parser/split_spaces.c srcs/parser/camera.c srcs/parser/light.c srcs/parser/sphere.c srcs/parser/helper.c miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-18 13:45:52
+#  Implicit/static pattern stem: `'
+#  Last modified 2022-08-20 12:02:00
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := miniRT
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_utils.c parser.c srcs/parser/ft_atof.c srcs/parser/Ambient_light.c srcs/parser/element.c srcs/parser/split_spaces.c srcs/parser/camera.c srcs/parser/light.c srcs/parser/sphere.c srcs/parser/helper.c miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c
+# automatic
+# | := 
+# automatic
+# < := srcs/get_next_line/get_next_line.c
+# automatic
+# ^ := srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_utils.c parser.c srcs/parser/ft_atof.c srcs/parser/Ambient_light.c srcs/parser/element.c srcs/parser/split_spaces.c srcs/parser/camera.c srcs/parser/light.c srcs/parser/sphere.c srcs/parser/helper.c miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c
+# automatic
+# ? := miniRT.c material.c
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=8/32=25%, Rehash=0, Collisions=1/18=6%
 #  commands to execute (from `Makefile', line 51):
 	@make -C srcs/Libft
 	${CC}  ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o $(NAME) -o ${NAME} -g -fsanitize=address
@@ -256,6 +274,7 @@ miniRT: srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_util
 
 # Not a target:
 Makefile:
+ 
 #  Implicit rule search has been done.
 #  Last modified 2022-08-17 11:02:43
 #  File has been updated.
@@ -275,7 +294,7 @@ colour.c:
 # Not a target:
 material.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-17 14:29:02
+#  Last modified 2022-08-20 14:53:38
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -299,7 +318,6 @@ vector.c:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
- 
 fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -331,7 +349,7 @@ ray_functions.c:
 # Not a target:
 world.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 13:28:59
+#  Last modified 2022-08-18 17:15:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -355,7 +373,7 @@ srcs/parser/light.c:
 # Not a target:
 miniRT.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 13:30:28
+#  Last modified 2022-08-20 14:52:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -451,7 +469,7 @@ matrix.c:
 # Not a target:
 planes.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 12:00:33
+#  Last modified 2022-08-20 11:37:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -487,14 +505,14 @@ parser.c:
 # Not a target:
 light.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-17 14:03:26
+#  Last modified 2022-08-20 10:48:54
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=37/1024=4%, Rehash=0, Collisions=4/86=5%
+# Load=37/1024=4%, Rehash=0, Collisions=4/87=5%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -506,6 +524,6 @@ light.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Aug 18 16:21:15 2022
+# Finished Make data base on Sat Aug 20 16:55:09 2022
 
  
