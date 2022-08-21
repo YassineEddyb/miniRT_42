@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/18 13:28:59 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/18 16:10:09 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ t_RGB shade_hit(t_world world, t_comps comps)
         cy = (t_cy *)comps.object;
         return lightning(cy->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
     } 
+    return (colourInit(0, 0, 0));
 }
 
 // get the color at the intersection of the ray with the sphere

@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/18 16:01:32 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:02:33 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,12 @@ t_world	*check_and_fill(char **file)
 			error("ERROR IN FILE");
 		free_two_arr(tmp);
 	}
-<<<<<<< HEAD
-
-=======
 	data->ambient[index->A] = NULL;
     data->camera[index->C] = NULL;
     data->light[index->L] = NULL;
     data->cy[index->cy] = NULL;
     data->plane[index->pl] = NULL;
     data->sphere[index->sp] = NULL;
->>>>>>> f8b18cef961c8449af0d5a2294118114979290dd
 	free (index);
 	return (data);
 }
