@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/20 11:37:44 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/21 18:27:52 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ double planeIntersection(t_plane plane, ray r)
 
     r2 = transform(r, plane.transform, -1);
 
-    if (fabs(r2.dir.y) < 0.001f)
+    if (fabs(r2.dir.y) < RAY_T_MIN)
         return (-1);
     
     t = -r2.start.y / r2.dir.y;
     
-    if (t > 0.001f) return (t);
+    if (t > RAY_T_MIN) return (t);
     else return (-1);
 
 }

@@ -11,10 +11,10 @@
 #include <pthread.h>
 
 # define WIDTH 400
-# define HEIGHT 350
+# define HEIGHT 300
 
 #define EPSILON 0.0000001f
-#define RAY_T_MIN 0.0001f
+#define RAY_T_MIN 0.001f
 #define RAY_T_MAX 1.0e30f
 #define min(a,b) (((a) < (b)) ? (a) : (b))
 
@@ -205,9 +205,10 @@ t_RGB colourInit(double r, double g, double b);
 t_RGB stripe_at(t_vector point);
 
 
-// color functions
-t_light lightInit(t_vector pos, t_RGB intensity);
-t_RGB lightning(t_material m, t_light l, t_vector pos, t_vector v, t_vector n, int in_shadow);
+// light functions
+void lightInit(t_light *light);
+void ambientInit(t_ambient *ambient);
+t_RGB lightning(t_ambient am, t_material m, t_light l, t_vector pos, t_vector v, t_vector n, int in_shadow);
 
 // material functions
 t_material materials(t_RGB color, double ratio);

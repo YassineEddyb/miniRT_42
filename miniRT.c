@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/20 14:52:58 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/27 16:10:05 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ int main(int argc, char **argv)
 		i++;
 	}
 	cameraInit(world->camera[0], WIDTH, HEIGHT);
+	lightInit(world->light[0]);
+	ambientInit(world->ambient[0]);
 
 	// mlx
 	mlx = mlx_init();
@@ -116,15 +118,15 @@ int main(int argc, char **argv)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
 	t_th *th;
-	int len = ceil(WIDTH / 50);
+	int len = ceil(WIDTH / 100);
 
 	th = malloc(len * sizeof(t_th));
 	
 	i = 0;
 	while(i < len)
 	{
-		th[i].min = i * 50;
-		th[i].max = i * 50 + 50;
+		th[i].min = i * 100;
+		th[i].max = i * 100 + 100;
 		th[i].camera = *(world->camera[0]);
 		th[i].world = *world;
 		th[i].img = &img;

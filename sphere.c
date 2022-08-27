@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/18 07:48:42 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/21 18:27:52 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ double sphereIntersection(t_sphere s, ray r)
         if(t1 > t2)
                 t1 = t2;
 
-        if((t1 > 0.001f))
+        if((t1 > RAY_T_MIN))
             return t1;
         else
             return (-1);

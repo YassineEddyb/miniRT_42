@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/18 17:15:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/27 16:00:10 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,7 @@ t_comps prepare_computations (ray r, t_intersect i)
     else if (i.type == 'c')
         comps.normalv = normal_at_cylinder(*((t_cy *)i.object), comps.point);
 
-    comps.over_point = vectorAdd(comps.point, vectorScale(comps.normalv, EPSILON));
-
-    // if (vectorDot(comps.normalv, comps.eyev) < 0)
-    // {
-    //     comps.inside = 1;
-    //     comps.normalv = vectorScale(comps.normalv, -1);
-    // } else
-    //     comps.inside = 0;
+    comps.over_point = vectorAdd(comps.point, vectorScale(comps.normalv, FLT_EPSILON));
 
     return comps;
 }
@@ -132,21 +125,23 @@ t_RGB shade_hit(t_world world, t_comps comps)
     t_sphere *s;
     t_plane *p;
     t_cy *cy;
+
+    
     if (comps.type == 's')
     {
         s = (t_sphere *)comps.object;
-        return lightning(s->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
+        return lightning(*(world.ambient[0]), s->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
     }
     else if (comps.type == 'p')
     {
         p = (t_plane *)comps.object;
         // p->material.color = stripe_at(comps.point);
-        return lightning(p->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
+        return lightning(*(world.ambient[0]), p->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
     }
     else if (comps.type == 'c')
     {
         cy = (t_cy *)comps.object;
-        return lightning(cy->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
+        return lightning(*(world.ambient[0]), cy->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
     } 
 }
 

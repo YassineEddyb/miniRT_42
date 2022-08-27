@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/20 12:01:54 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/26 10:28:02 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void cylinderInit(t_cy *cy, t_ambient ambient)
 {
     cy->transform = matrixMult(matrixMult(matrixMult(
-                        get_rotation_matrix(cy->normal.y * M_PI_2, 'z'),
+                        get_rotation_matrix(cy->normal.y * M_PI_2, 'y'),
                         get_matrix(cy->pos.x, cy->pos.y, cy->pos.z, 't')),
                         get_rotation_matrix(cy->normal.z * M_PI_2, 'x')),
-                        get_rotation_matrix(cy->normal.x * M_PI_2, 'y'));
+                        get_rotation_matrix(cy->normal.x * M_PI_2, 'z'));
     cy->pos = vectorInit(0, 0, 0, 1);
     cy->material = materials(cy->rgb, ambient.ratio);
     cy->min = 0;
@@ -37,12 +37,18 @@ int check_cap (ray r, double t, double diameter)
 
 double intersect_caps(t_cy cy, ray r)
 {
-    if (r.dir.y < 0.001f)
+    if (r.dir.y < RAY_T_MIN)
         return (-1);
     
     double t0 = (cy.min - r.start.y) / r.dir.y;
     double t1 = (cy.max - r.start.y) / r.dir.y;
 
+    if (check_cap(r, t0, cy.diameter) && check_cap(r, t1, cy.diameter))
+    {
+        if (t0 > t1)
+            t0 = t1;
+        return (t0);
+    }
     if (check_cap(r, t0, cy.diameter))
         return (t0);
     else if (check_cap(r, t1, cy.diameter))
@@ -57,7 +63,7 @@ double cylinderIntersection(t_cy cy, ray r)
 
     double a = r.dir.x * r.dir.x + r.dir.z * r.dir.z;
     
-    if (a < 0.001f)
+    if (a < 0)
         return (-1);
     
     double b = 2 * r.start.x * r.dir.x + 2 * r.start.z * r.dir.z;
@@ -77,9 +83,9 @@ double cylinderIntersection(t_cy cy, ray r)
 
         double y0 = r.start.y + t0 * r.dir.y;
         double y1 = r.start.y + t1 * r.dir.y;
-        if (t0 > 0.001f && cy.min < y0 && y0 < cy.max)
+        if (t0 > RAY_T_MIN && cy.min < y0 && y0 < cy.max)
             return (t0);
-        else if (t1 > 0.001f && cy.min < y1 && y1 < cy.max)
+        else if (t1 > RAY_T_MIN && cy.min < y1 && y1 < cy.max)
             return (t1);
         else return (-1);
     }
@@ -109,12 +115,12 @@ t_vector normal_at_cylinder(t_cy cy, t_vector p)
 {
     t_vector obj_p = vector_mult_matrix(p, cy.transform, -1);
     t_vector obj_n;
-    double dist = p.x * p.x + p.z * p.z;
-    if (dist < 1 && p.y >= cy.max - EPSILON)
-        obj_n = vectorInit(0, 1, 0, 0);
-    else if (dist < 1 && p.y <= cy.min + EPSILON)
-        obj_n = vectorInit(0, -1, 0, 0);
-    else 
+    // double dist = p.x * p.x + p.z * p.z;
+    // if (dist < 1 && p.y >= cy.max - EPSILON)
+    //     obj_n = vectorInit(0, 1, 0, 0);
+    // else if (dist < 1 && p.y <= cy.min + EPSILON)
+    //     obj_n = vectorInit(0, -1, 0, 0);
+    // else 
         obj_n = vectorInit(obj_p.x, 0, obj_p.z, 0);
     t_vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(cy.transform)), 1);
 
