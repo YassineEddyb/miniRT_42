@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/27 16:10:05 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:56:50 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,10 @@ int main(int argc, char **argv)
 	i = 0;
 	while(world->cy[i])
 	{
-		cylinderInit(world->cy[i], *(world->ambient[0]));
+		cylinder_init(world->cy[i], *(world->ambient[0]));
 		i++;
 	}
-	cameraInit(world->camera[0], WIDTH, HEIGHT);
+	camera_init(world->camera[0], WIDTH, HEIGHT);
 	lightInit(world->light[0]);
 	ambientInit(world->ambient[0]);
 

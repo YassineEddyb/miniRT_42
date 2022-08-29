@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/21 18:27:52 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/28 11:41:02 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // init sphere
 void sphereInit(t_sphere *sphere, t_ambient ambient)
 {
-    sphere->transform = matrixMult(get_matrix(sphere->pos.x, sphere->pos.y, sphere->pos.z, 't'), get_matrix(sphere->diameter, sphere->diameter, sphere->diameter, 's'));
+    sphere->transform = matrix_mult(get_matrix(sphere->pos.x, sphere->pos.y, sphere->pos.z, 't'), get_matrix(sphere->diameter, sphere->diameter, sphere->diameter, 's'));
     sphere->pos = vectorInit(0, 0, 0, 1);
     sphere->material = materials(sphere->rgb, ambient.ratio);
 }
@@ -66,7 +66,7 @@ t_vector normal_at_sphere(t_sphere s, t_vector p)
 {
     t_vector obj_p = vector_mult_matrix(p, s.transform, -1);
     t_vector obj_n = vectorSub(obj_p, s.pos);
-    t_vector world_n = vector_mult_matrix(obj_n, matrixTranspose(matrixInverse(s.transform)), 1);
+    t_vector world_n = vector_mult_matrix(obj_n, matrix_transpose(matrix_inverse(s.transform)), 1);
 
     world_n.w = 0;
 

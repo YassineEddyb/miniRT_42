@@ -27,6 +27,14 @@
 	int		endian;
 }	t_data;
 
+
+typedef struct s_delta {
+    double a;
+    double b;
+    double c;
+    double discriminant;
+} t_delta;
+
 /* The vector structure */
 // typedef struct {
 //       double x,y,z, w;
@@ -171,10 +179,10 @@ t_matrix submatrix(t_matrix m, int row, int col);
 double minor(t_matrix m, int rwo, int col);
 double cofactor(double det, int row, int col);
 double det(double **m);
-double matrixDeterminant(t_matrix m);
-t_matrix matrixMult(t_matrix m1, t_matrix m2);
-t_matrix matrixTranspose(t_matrix m);
-t_matrix matrixInverse(t_matrix m);
+double matrix_determinant(t_matrix m);
+t_matrix matrix_mult(t_matrix m1, t_matrix m2);
+t_matrix matrix_transpose(t_matrix m);
+t_matrix matrix_inverse(t_matrix m);
 
 // matrix transformatons
 t_vector translate(t_vector v, t_vector translator, int type);
@@ -185,7 +193,7 @@ t_vector rotate_z(t_vector v, double r);
 t_vector vector_mult_matrix (t_vector v, t_matrix m, int type);
 
 // matrix inits
-t_matrix matrixCreate(int rows, int cols);
+t_matrix matrix_create(int rows, int cols);
 t_matrix get_matrix(double x, double y, double z, char type);
 t_matrix get_rotation_matrix(double r, int type);
 
@@ -201,7 +209,7 @@ t_vector normal_at_sphere(t_sphere s, t_vector p);
 t_vector reflect(t_vector in, t_vector normal);
 
 // colour functions
-t_RGB colourInit(double r, double g, double b);
+t_RGB colour_init(double r, double g, double b);
 t_RGB stripe_at(t_vector point);
 
 
@@ -221,7 +229,7 @@ t_RGB shade_hit(t_world world, t_comps comps);
 t_RGB color_at(t_world world, ray r);
 
 // camera functions
-void cameraInit(t_camera *camera, double hsize, double vsize);
+void camera_init(t_camera *camera, double hsize, double vsize);
 t_matrix view_transform(t_vector from, t_vector to, t_vector up);
 
 // shadows functions
@@ -236,8 +244,8 @@ double planeIntersection(t_plane plane, ray r);
 t_vector normal_at_plane(t_plane plane, t_vector p);
 
 // cylinder functions
-void cylinderInit(t_cy *cy, t_ambient ambient);
-double cylinderIntersection(t_cy cy, ray r);
+void cylinder_init(t_cy *cy, t_ambient ambient);
+double cylinder_intersection(t_cy cy, ray r);
 double cylinder_caps_intersect(t_cy cy, ray r);
 t_vector normal_at_cylinder(t_cy cy, t_vector p);
 
