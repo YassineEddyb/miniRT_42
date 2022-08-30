@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:36:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/16 16:28:10 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:39:36 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**ft_map(char **av)
 	map = malloc(sizeof(char *) * (i + 1));
 	if (!map)
 		return (NULL);
-	if (ft_strstr(av[1], ".tr") == 1)
+	if (ft_strstr(av[1], ".rt") == 1)
 	{
 		fd = open(av[1], O_RDONLY);
 		if (fd == -1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:11:43 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/22 14:17:00 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:35:07 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	check_befor_atof(char *str)
 	int i;
 	int point;
 
+	if (!str)
+		error("ERROR : GHYRHA");
 	point = 0;
 	i = 0;
 	while (str[i])
