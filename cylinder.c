@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/29 16:49:47 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/31 11:12:11 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	cylinder_init(t_cy *cy, t_ambient ambient)
 					get_matrix(cy->pos.x, cy->pos.y, cy->pos.z, 't')),
 				get_rotation_matrix(cy->normal.z * M_PI_2, 'x')),
 			get_rotation_matrix(cy->normal.x * M_PI_2, 'z'));
-	cy->pos = vectorInit(0, 0, 0, 1);
+	cy->pos = vector_init(0, 0, 0, 1);
 	cy->material = materials(cy->rgb, ambient.ratio);
 	cy->min = 0;
 	cy->max = cy->height;
@@ -72,7 +72,7 @@ t_vector	normal_at_cylinder(t_cy cy, t_vector p)
 	t_vector	world_n;
 
 	obj_p = vector_mult_matrix(p, cy.transform, -1);
-	obj_n = vectorInit(obj_p.x, 0, obj_p.z, 0);
+	obj_n = vector_init(obj_p.x, 0, obj_p.z, 0);
 	world_n = vector_mult_matrix(obj_n,
 			matrix_transpose(matrix_inverse(cy.transform)), 1);
 	world_n.w = 0;
