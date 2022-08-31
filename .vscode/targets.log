@@ -6,17 +6,17 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Thu Aug 18 07:51:38 2022
+# Make data base, printed on Sat Aug 20 16:55:09 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-NVM_INC = /Users/yed-dyb/.nvm/versions/node/v16.15.0/include/node
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -46,21 +46,15 @@ OBJS = ${SRCS:.c=.o}
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.VKKdviaWje/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.zQ2PjxsXHf/Render
 # environment
-PATH = /Users/yed-dyb/.nvm/versions/node/v16.15.0/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/Users/yed-dyb/goinfre/yed-dyb/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
-# environment
-LSCOLORS = Gxfxcxdxbxegedabagacad
-# environment
-HOME_BREW = /Users/yed-dyb/goinfre/yed-dyb
-# environment
-NVM_BIN = /Users/yed-dyb/.nvm/versions/node/v16.15.0/bin
+PATH = /usr/bin:/bin:/usr/sbin:/sbin
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.fzx7BiPpPX/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.UgdEIZIS7i/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -79,10 +73,6 @@ VSCODE_CODE_CACHE_PATH = /Users/yed-dyb/Library/Application Support/Code/CachedD
 LOGNAME = yed-dyb
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# environment
-NVM_CD_FLAGS = -q
-# environment
-ZSH = /Users/yed-dyb/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -107,8 +97,6 @@ USER = yed-dyb
 .DEFAULT_GOAL := miniRT
 # makefile (from `Makefile', line 37)
 NAME = miniRT
-# environment
-LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -132,9 +120,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-NVM_DIR = /Users/yed-dyb/.nvm
-# environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000002.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -147,8 +133,6 @@ COMMAND_MODE = unix2003
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# environment
-PAGER = less
 # environment
 LC_ALL = C
 # environment
@@ -164,9 +148,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 32503
+VSCODE_PID = 14695
 # variable set hash-table stats:
-# Load=77/1024=8%, Rehash=0, Collisions=3/105=3%
+# Load=68/1024=7%, Rehash=0, Collisions=4/106=4%
 
 # Pattern-specific Variable Values
 
@@ -174,9 +158,9 @@ VSCODE_PID = 32503
 
 # Directories
 
-# . (device 16777227, inode 3516217): 30 files, no impossibilities.
+# . (device 16777227, inode 3516217): 29 files, no impossibilities.
 
-# 30 files, no impossibilities in 1 directories.
+# 29 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -207,9 +191,9 @@ all: miniRT
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
 
 # Not a target:
 srcs/parser/Ambient_light.c:
@@ -228,7 +212,7 @@ srcs/parser/Ambient_light.c:
 # Not a target:
 cylinder.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-17 14:12:56
+#  Last modified 2022-08-20 12:01:54
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -237,7 +221,7 @@ cylinder.c:
 # Not a target:
 render.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-16 17:55:11
+#  Last modified 2022-08-19 10:02:33
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -260,11 +244,28 @@ srcs/parser/ft_atof.c:
 
 miniRT: srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_utils.c parser.c srcs/parser/ft_atof.c srcs/parser/Ambient_light.c srcs/parser/element.c srcs/parser/split_spaces.c srcs/parser/camera.c srcs/parser/light.c srcs/parser/sphere.c srcs/parser/helper.c miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-18 07:50:14
+#  Implicit/static pattern stem: `'
+#  Last modified 2022-08-20 12:02:00
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := miniRT
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_utils.c parser.c srcs/parser/ft_atof.c srcs/parser/Ambient_light.c srcs/parser/element.c srcs/parser/split_spaces.c srcs/parser/camera.c srcs/parser/light.c srcs/parser/sphere.c srcs/parser/helper.c miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c
+# automatic
+# | := 
+# automatic
+# < := srcs/get_next_line/get_next_line.c
+# automatic
+# ^ := srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_utils.c parser.c srcs/parser/ft_atof.c srcs/parser/Ambient_light.c srcs/parser/element.c srcs/parser/split_spaces.c srcs/parser/camera.c srcs/parser/light.c srcs/parser/sphere.c srcs/parser/helper.c miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c
+# automatic
+# ? := miniRT.c material.c
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=8/32=25%, Rehash=0, Collisions=1/18=6%
 #  commands to execute (from `Makefile', line 51):
 	@make -C srcs/Libft
 	${CC}  ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o $(NAME) -o ${NAME} -g -fsanitize=address
@@ -273,6 +274,7 @@ miniRT: srcs/get_next_line/get_next_line.c srcs/get_next_line/get_next_line_util
 
 # Not a target:
 Makefile:
+ 
 #  Implicit rule search has been done.
 #  Last modified 2022-08-17 11:02:43
 #  File has been updated.
@@ -281,7 +283,6 @@ Makefile:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
- 
 colour.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-08-16 18:40:33
@@ -293,7 +294,7 @@ colour.c:
 # Not a target:
 material.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-17 14:29:02
+#  Last modified 2022-08-20 14:53:38
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -348,7 +349,7 @@ ray_functions.c:
 # Not a target:
 world.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 07:44:51
+#  Last modified 2022-08-18 17:15:57
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -372,7 +373,7 @@ srcs/parser/light.c:
 # Not a target:
 miniRT.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 07:50:10
+#  Last modified 2022-08-20 14:52:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -468,7 +469,7 @@ matrix.c:
 # Not a target:
 planes.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 07:46:17
+#  Last modified 2022-08-20 11:37:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -504,14 +505,14 @@ parser.c:
 # Not a target:
 light.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-17 14:03:26
+#  Last modified 2022-08-20 10:48:54
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=37/1024=4%, Rehash=0, Collisions=4/86=5%
+# Load=37/1024=4%, Rehash=0, Collisions=4/87=5%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -523,6 +524,6 @@ light.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Aug 18 07:51:38 2022
+# Finished Make data base on Sat Aug 20 16:55:09 2022
 
  
