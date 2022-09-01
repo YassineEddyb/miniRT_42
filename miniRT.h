@@ -18,6 +18,7 @@
 #define RAY_T_MAX 1.0e30f
 #define min(a,b) (((a) < (b)) ? (a) : (b))
 
+
 // mlx data
  typedef struct	s_data {
 	void	*img;
@@ -26,7 +27,6 @@
 	int		line_length;
 	int		endian;
 }	t_data;
-
 
 typedef struct s_delta {
     double a;
@@ -40,33 +40,7 @@ typedef struct s_light_data {
     t_ambient am;
     t_light l;
     t_vector pos;
-    t_vector eyev;
-    t_vector normalv;
 } t_light_data;
-
-/* The vector structure */
-// typedef struct {
-//       double x,y,z, w;
-// } vector;
-
-/* Colour definition */
-// typedef struct{
-//     double red, green, blue;
-// } colour;
-
-/* Material definition */
-// typedef struct{
-//     colour color;
-//     double ambient;
-//     double diffuse;
-//     double specular;
-//     double shininess;
-// } material; 
-
-// typedef struct {
-//     char type;
-//     t_vector transform;
-// } trans;
 
 typedef struct 
 {
@@ -74,80 +48,11 @@ typedef struct
     void *object;
 } intesection;
 
-// typedef struct {
-//     int rows;
-//     int cols;
-//     double **m;
-// } matrix;
-
-/* The sphere */
-// typedef struct {
-//     vector pos;
-    
-//     double diameter;
-//     colour rgb;
-//     material material;
-// } sphere;
-
 /* The ray */
 typedef struct {
     t_vector start;
     t_vector dir;
 } ray;
-
-// camera
-// typedef struct s_camera{
-//     vector pos;
-//     vector normal;
-//     double fov;
-//     matrix transform;
-//     double hsize;
-//     double vsize;
-//     double half_width;
-//     double half_height;
-//     double pixel_size;
-// } t_camera;
-
-// typedef struct{
-//     double ratio;
-//     colour rgb;
-// } ambient;
-
-/* Light definition */
-// typedef struct{
-//     vector pos;
-//     colour intensity;
-//     double ratio;
-// } light;
-
-// plane
-// typedef struct s_plane {
-//     vector pos;
-//     vector normal;
-//     matrix transform;
-//     double fov;
-//     material material;
-// } t_plane;
-
-// cylinder
-// typedef struct {
-//     vector pos;
-//     vector normal;
-//     double diameter;
-//     double max;
-//     double min;
-//     double height;
-//     colour rgb;
-//     matrix transform;
-//     material material;
-// } cylinder;
-
-// typedef struct s_world {
-//     light light;
-//     sphere *s;
-//     t_plane *p;
-//     cylinder *cy;
-// } t_world;
 
 typedef struct s_intersect {
     void *object;
@@ -166,7 +71,24 @@ typedef struct s_comps {
     int inside;
 } t_comps;
 
-// typedef vector point;
+typedef struct s_th {
+	pthread_t th_id;
+	int max;
+	int min;
+	t_world world;
+	t_camera camera;
+	t_data *img;
+} t_th;
+
+typedef struct s_phong {
+    t_RGB diffuse;
+	t_RGB specular;
+	t_RGB eff_color;
+	t_vector lightv;
+	t_RGB ambient;
+	double light_dot_n;
+	double light_diffuse;
+} t_phong;
 
 // mlx
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -205,6 +127,7 @@ t_vector vector_mult_matrix (t_vector v, t_matrix m, int type);
 t_matrix matrix_create(int rows, int cols);
 t_matrix get_matrix(double x, double y, double z, char type);
 t_matrix get_rotation_matrix(double r, int type);
+void	init_light_data(t_light_data *data, t_world world, t_comps comps);
 
 // ray functions
 t_vector position(ray r, double t);
@@ -220,12 +143,15 @@ t_vector reflect(t_vector in, t_vector normal);
 // colour functions
 t_RGB colour_init(double r, double g, double b);
 t_RGB stripe_at(t_vector point);
+t_RGB	mult_colors(t_RGB color1, t_RGB color2);
+t_RGB	add_colors(t_RGB color1, t_RGB color2);
+t_RGB	scale_colors(t_RGB color1, double scaler);
 
 
 // light functions
-void lightInit(t_light *light);
-void ambientInit(t_ambient *ambient);
-t_RGB	lightning(t_light_data light_data, int in_shadow);
+void light_init(t_light *light);
+void ambient_init(t_ambient *ambient);
+t_RGB	lightning(t_light_data data, t_comps comps, int in_shadow);
 
 // material functions
 t_material materials(t_RGB color, double ratio);
@@ -234,7 +160,7 @@ t_material materials(t_RGB color, double ratio);
 t_world worldInit(t_light l);
 t_intersect intersect_world(t_world world , ray r);
 t_comps prepare_computations (ray r, t_intersect i);
-t_RGB shade_hit(t_world world, t_comps comps);
+t_RGB	shade_hit(t_world world, t_comps comps);
 t_RGB color_at(t_world world, ray r);
 
 // camera functions

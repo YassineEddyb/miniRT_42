@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:21:13 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/30 11:49:00 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/01 12:49:33 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,11 @@ t_matrix	get_rotation_matrix(double r, int type)
 		m.m[2][2] = 1;
 	}
 	return (m);
+}
+
+void	init_light_data(t_light_data *data, t_world world, t_comps comps)
+{
+	data->am = **(world.ambient);
+	data->l = **(world.light);
+	data->pos = comps.over_point;
 }
