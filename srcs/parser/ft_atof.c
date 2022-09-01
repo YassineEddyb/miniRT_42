@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:11:43 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/07/22 14:17:00 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:23:34 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	check_befor_atof(char *str)
 	int i;
 	int point;
 
+	if (!str)
+		error("ERROR : Missing element");
 	point = 0;
 	i = 0;
 	while (str[i])

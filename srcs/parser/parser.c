@@ -6,11 +6,11 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:36:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/18 16:03:18 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/08/31 08:49:33 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Includes/parser.h"
+#include "../../Includes/parser.h"
 
 int	ft_strstr(const char *haystack, const char *needle)
 {
@@ -74,7 +74,7 @@ char	**ft_map(char **av)
 	map = malloc(sizeof(char *) * (i + 1));
 	if (!map)
 		return (NULL);
-	if (ft_strstr(av[1], ".tr") == 1)
+	if (ft_strstr(av[1], ".rt") == 1)
 	{
 		fd = open(av[1], O_RDONLY);
 		if (fd == -1)

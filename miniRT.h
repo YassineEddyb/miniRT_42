@@ -11,10 +11,10 @@
 #include <pthread.h>
 
 # define WIDTH 400
-# define HEIGHT 350
+# define HEIGHT 300
 
 #define EPSILON 0.0000001f
-#define RAY_T_MIN 0.0001f
+#define RAY_T_MIN 0.001f
 #define RAY_T_MAX 1.0e30f
 #define min(a,b) (((a) < (b)) ? (a) : (b))
 
@@ -26,6 +26,14 @@
 	int		line_length;
 	int		endian;
 }	t_data;
+
+
+typedef struct s_delta {
+    double a;
+    double b;
+    double c;
+    double discriminant;
+} t_delta;
 
 /* The vector structure */
 // typedef struct {
@@ -171,10 +179,10 @@ t_matrix submatrix(t_matrix m, int row, int col);
 double minor(t_matrix m, int rwo, int col);
 double cofactor(double det, int row, int col);
 double det(double **m);
-double matrixDeterminant(t_matrix m);
-t_matrix matrixMult(t_matrix m1, t_matrix m2);
-t_matrix matrixTranspose(t_matrix m);
-t_matrix matrixInverse(t_matrix m);
+double matrix_determinant(t_matrix m);
+t_matrix matrix_mult(t_matrix m1, t_matrix m2);
+t_matrix matrix_transpose(t_matrix m);
+t_matrix matrix_inverse(t_matrix m);
 
 // matrix transformatons
 t_vector translate(t_vector v, t_vector translator, int type);
@@ -185,7 +193,7 @@ t_vector rotate_z(t_vector v, double r);
 t_vector vector_mult_matrix (t_vector v, t_matrix m, int type);
 
 // matrix inits
-t_matrix matrixCreate(int rows, int cols);
+t_matrix matrix_create(int rows, int cols);
 t_matrix get_matrix(double x, double y, double z, char type);
 t_matrix get_rotation_matrix(double r, int type);
 
@@ -201,13 +209,14 @@ t_vector normal_at_sphere(t_sphere s, t_vector p);
 t_vector reflect(t_vector in, t_vector normal);
 
 // colour functions
-t_RGB colourInit(double r, double g, double b);
+t_RGB colour_init(double r, double g, double b);
 t_RGB stripe_at(t_vector point);
 
 
-// color functions
-t_light lightInit(t_vector pos, t_RGB intensity);
-t_RGB lightning(t_material m, t_light l, t_vector pos, t_vector v, t_vector n, int in_shadow);
+// light functions
+void lightInit(t_light *light);
+void ambientInit(t_ambient *ambient);
+t_RGB lightning(t_ambient am, t_material m, t_light l, t_vector pos, t_vector v, t_vector n, int in_shadow);
 
 // material functions
 t_material materials(t_RGB color, double ratio);
@@ -220,7 +229,7 @@ t_RGB shade_hit(t_world world, t_comps comps);
 t_RGB color_at(t_world world, ray r);
 
 // camera functions
-void cameraInit(t_camera *camera, double hsize, double vsize);
+void camera_init(t_camera *camera, double hsize, double vsize);
 t_matrix view_transform(t_vector from, t_vector to, t_vector up);
 
 // shadows functions
@@ -235,8 +244,8 @@ double planeIntersection(t_plane plane, ray r);
 t_vector normal_at_plane(t_plane plane, t_vector p);
 
 // cylinder functions
-void cylinderInit(t_cy *cy, t_ambient ambient);
-double cylinderIntersection(t_cy cy, ray r);
+void cylinder_init(t_cy *cy, t_ambient ambient);
+double cylinder_intersection(t_cy cy, ray r);
 double cylinder_caps_intersect(t_cy cy, ray r);
 t_vector normal_at_cylinder(t_cy cy, t_vector p);
 
