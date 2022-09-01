@@ -6,11 +6,22 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:55:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/16 17:17:32 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:52:45 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/parser.h"
+
+t_vector fill_vector(char **xyz , int _w)
+{
+	t_vector vc;
+
+	vc.x = ft_atof(xyz[0]);
+	vc.y = ft_atof(xyz[1]);
+	vc.z = ft_atof(xyz[2]);
+	vc.w = _w;
+	return (vc);
+}
 
 t_cy	*cylinder(char **tmp)
 {
@@ -24,16 +35,10 @@ t_cy	*cylinder(char **tmp)
 	check_rgbstring(tmp[2]);
 	check_rgbstring(tmp[5]);
 	xyz = ft_split(tmp[1], ',');
-	cy->pos.x = ft_atof(xyz[0]);
-	cy->pos.y = ft_atof(xyz[1]);
-	cy->pos.z = ft_atof(xyz[2]);
-	cy->pos.w = 1;
+	cy->pos = fill_vector(xyz, 1);
 	free_two_arr(xyz);
 	xyz = ft_split(tmp[2], ',');
-	cy->normal.x = ft_atof(xyz[0]);
-	cy->normal.y = ft_atof(xyz[1]);
-	cy->normal.z = ft_atof(xyz[2]);
-	cy->normal.w = 0;
+	cy->normal = fill_vector(xyz, 0);
 	free_two_arr(xyz);
 	xyz = ft_split(tmp[5], ',');
 	cy->rgb.red = ft_atof(xyz[0]);
@@ -59,16 +64,10 @@ t_plane	*plane(char **tmp)
 	check_rgbstring(tmp[2]);
 	check_rgbstring(tmp[3]);
 	xyz = ft_split(tmp[1], ',');
-	plane->pos.x = ft_atof(xyz[0]);
-	plane->pos.y = ft_atof(xyz[1]);
-	plane->pos.z = ft_atof(xyz[2]);
-	plane->pos.w = 1;
+	plane->pos = fill_vector(xyz, 1);
 	free_two_arr(xyz);
 	xyz = ft_split(tmp[2], ',');
-	plane->normal.x = ft_atof(xyz[0]);
-	plane->normal.y = ft_atof(xyz[1]);
-	plane->normal.z = ft_atof(xyz[2]);
-	plane->normal.w = 0;
+	plane->normal = fill_vector(xyz, 0);
 	free_two_arr(xyz);
 	xyz = ft_split(tmp[3], ',');
 	plane->rgb.red = ft_atof(xyz[0]);
@@ -91,10 +90,7 @@ t_sphere *sphere(char **tmp)
 	check_rgbstring(tmp[1]);
 	check_rgbstring(tmp[3]);
 	xyz = ft_split(tmp[1], ',');
-	sphere->pos.x = ft_atof(xyz[0]);
-	sphere->pos.y = ft_atof(xyz[1]);
-	sphere->pos.z = ft_atof(xyz[2]);
-	sphere->pos.w = 1;
+	sphere->pos = fill_vector(xyz, 1);
 	free_two_arr(xyz);
 	sphere->diameter = ft_atof(tmp[2]);
 	xyz = ft_split(tmp[3], ',');

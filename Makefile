@@ -6,13 +6,14 @@
 #    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/08/31 19:35:17 by yed-dyb          ###   ########.fr        #
+#    Updated: 2022/09/01 22:27:28 by yed-dyb          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 SRCS =	./srcs/get_next_line/get_next_line.c\
 		./srcs/get_next_line/get_next_line_utils.c\
-		parser.c ./srcs/parser/ft_atof.c ./srcs/parser/Ambient_light.c\
+		./srcs/parser/parser.c ./srcs/parser/ft_atof.c ./srcs/parser/Ambient_light.c\
 		./srcs/parser/element.c ./srcs/parser/split_spaces.c\
 		./srcs/parser/camera.c ./srcs/parser/light.c ./srcs/parser/sphere.c\
 		./srcs/parser/helper.c\
