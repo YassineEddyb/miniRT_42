@@ -6,46 +6,12 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/31 10:28:43 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:28:01 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "miniRT.h"
-
-// create a new world
-// t_world worldInit(t_light l)
-// {
-//     t_world world;
-
-//     world.sphere = malloc(3 * sizeof(sphere));
-//     world.pa = malloc(4 * sizeof(t_plane));
-//     world.cy = malloc(2 * sizeof(cylinder));
-
-//     world.s[0] = shpereInit();
-//     world.p[0] = planeInit();
-//     world.p[0].material.color = colour_init(0, 0.54, 0.54);
-//     world.p[1] = planeInit();
-//     world.p[1].transform = matrix_mult(get_matrix(0, 0, 4, 't'), get_rotation_matrix(M_PI / 2, 'x'));
-//     world.p[1].material.color = colour_init(0.91, 0.58, 0.47);
-//     world.p[2] = planeInit();
-//     world.p[2].transform = matrix_mult(get_matrix(4, 0, 0, 't'), get_rotation_matrix(M_PI / 2.5, 'z'));
-//     world.p[2].material.color = colour_init(0.11, 0.56, 1);
-//     world.p[3] = planeInit();
-//     world.p[3].transform = matrix_mult(get_matrix(-4, 0, 0, 't'), get_rotation_matrix(M_PI / 2.5, 'z'));
-//     world.p[3].material.color = colour_init(0.11, 0.56, 1);
-//     // world.p[1].material.color = colour_init(0.3, 0.8, 0.9);
-//     // world.p[3].transform =  matrix_mult(get_matrix(-10, 0, 0, 't'), get_rotation_matrix(M_PI_2, 'z'));
-//     // world.p[3].material.color = colour_init(0.3, 0.8, 0.9);
-//     // world.p[2].transform =  matrix_mult(get_matrix(10, 0, 0, 't'), get_rotation_matrix(M_PI_2, 'z'));
-//     // world.p[2].material.color = colour_init(0.3, 0.8, 0.9);
-//     world.cy[0] = cylinder_init();
-//     // world.cy[0].transform = get_matrix(2, 0, 0, 't');
-//     world.cy[0].diameter = 1;
-
-//     world.light = l;
-
-//     return world;
-// }
 
 
 // the nearest ray intersection in this world
@@ -59,7 +25,7 @@ t_intersect intersect_world(t_world world , ray r)
     i = 0;
     while(world.sphere[i])
     {
-        tmp = sphereIntersection(*(world.sphere[i]), r);
+        tmp = sphere_intersection(*(world.sphere[i]), r);
         if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))
         {
             intersect.t = tmp;
@@ -72,7 +38,7 @@ t_intersect intersect_world(t_world world , ray r)
     i = 0;
     while(world.plane[i])
     {
-        tmp = planeIntersection(*(world.plane[i]), r);
+        tmp = plane_intersection(*(world.plane[i]), r);
         if ((tmp < intersect.t && tmp != -1) || (intersect.t == -1 && tmp != -1))
         {
             intersect.t = tmp;
@@ -107,7 +73,7 @@ t_comps prepare_computations (ray r, t_intersect i)
     comps.object = i.object;
     comps.type = i.type;
     comps.point = position(r, i.t);
-    comps.eyev = vectorScale(r.dir, -1);
+    comps.eyev = vector_scale(r.dir, -1);
     if (i.type == 's')
         comps.normalv = normal_at_sphere(*((t_sphere *)i.object), comps.point);
     else if (i.type == 'p')
@@ -115,7 +81,7 @@ t_comps prepare_computations (ray r, t_intersect i)
     else if (i.type == 'c')
         comps.normalv = normal_at_cylinder(*((t_cy *)i.object), comps.point);
 
-    comps.over_point = vectorAdd(comps.point, vectorScale(comps.normalv, FLT_EPSILON));
+    comps.over_point = vector_add(comps.point, vector_scale(comps.normalv, FLT_EPSILON));
 
     return comps;
 }
@@ -125,23 +91,31 @@ t_RGB shade_hit(t_world world, t_comps comps)
     t_sphere *s;
     t_plane *p;
     t_cy *cy;
+    t_light_data light_data;
 
-    
+    light_data.am = **(world.ambient);
+    light_data.l = **(world.light);
+    light_data.pos = comps.over_point;
+    light_data.eyev = comps.eyev;
+    light_data.normalv = comps.normalv;
     if (comps.type == 's')
     {
         s = (t_sphere *)comps.object;
-        return lightning(*(world.ambient[0]), s->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
+        light_data.m = s->material;
+        return lightning(light_data, is_shadowed(world, comps.over_point));
     }
     else if (comps.type == 'p')
     {
         p = (t_plane *)comps.object;
+        light_data.m = p->material;
         // p->material.color = stripe_at(comps.point);
-        return lightning(*(world.ambient[0]), p->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
+        return lightning(light_data, is_shadowed(world, comps.over_point));
     }
     else if (comps.type == 'c')
     {
         cy = (t_cy *)comps.object;
-        return lightning(*(world.ambient[0]), cy->material, **(world.light), comps.over_point, comps.eyev, comps.normalv, is_shadowed(world, comps.over_point));
+        light_data.m = cy->material;
+        return lightning(light_data, is_shadowed(world, comps.over_point));
     } 
     return (colour_init(0,0,0));
 }

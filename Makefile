@@ -6,7 +6,7 @@
 #    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/08/31 08:49:17 by ael-bach         ###   ########.fr        #
+#    Updated: 2022/09/01 16:27:39 by ael-bach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRCS_RENDER = 	miniRT.c\
 		shadows.c\
 		render.c\
 		planes.c\
-		cylinder.c
+		cylinder.c\
+		vector_helpers.c
 
 NAME = miniRT
 MLX = -lmlx -framework OpenGL -framework AppKit

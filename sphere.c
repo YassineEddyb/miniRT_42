@@ -6,75 +6,70 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/28 11:41:02 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/31 11:21:37 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
 // init sphere
-void sphereInit(t_sphere *sphere, t_ambient ambient)
+void	sphere_init(t_sphere *sphere, t_ambient ambient)
 {
-    sphere->transform = matrix_mult(get_matrix(sphere->pos.x, sphere->pos.y, sphere->pos.z, 't'), get_matrix(sphere->diameter, sphere->diameter, sphere->diameter, 's'));
-    sphere->pos = vectorInit(0, 0, 0, 1);
-    sphere->material = materials(sphere->rgb, ambient.ratio);
+	sphere->transform = matrix_mult(
+			get_matrix(sphere->pos.x, sphere->pos.y, sphere->pos.z, 't'),
+			get_matrix(sphere->diameter,
+				sphere->diameter, sphere->diameter, 's'));
+	sphere->pos = vector_init(0, 0, 0, 1);
+	sphere->material = materials(sphere->rgb, ambient.ratio);
 }
 
 // get the intersection of a ray with a sphere
-double sphereIntersection(t_sphere s, ray r)
+double	sphere_intersection(t_sphere s, ray r)
 {
-    double A;
-    double B;
-    double C;
-    double t1;
-    double t2;
-    t_vector v;
-    double tmp;
-    double discriminant;
-    ray r2;
+	t_delta		delta;
+	t_vector	v;
+	ray			r2;
+	double		t1;
+	double		t2;
 
-    r2 = transform(r, s.transform, -1);
-    // t = malloc(sizeof(double) * 2);
-
-    // print_vector(r2.start);
-
-    v = vectorSub(r2.start, s.pos);
-    A = vectorDot(r2.dir, r2.dir);
-    B = 2 * vectorDot(r2.dir, v);
-    C = vectorDot(v, v) - 1;
-    discriminant =  B * B - 4 * A * C; 
-    
-    if (discriminant < 0)
-        return (-1);
-    else
-    {
-        t1 = (-B - sqrt(discriminant)) / (2 * A);
-        t2 = (-B + sqrt(discriminant)) / (2 * A);
-
-        if(t1 > t2)
-                t1 = t2;
-
-        if((t1 > RAY_T_MIN))
-            return t1;
-        else
-            return (-1);
-    }
+	r2 = transform(r, s.transform, -1);
+	v = vector_sub(r2.start, s.pos);
+	delta.a = vector_dot(r2.dir, r2.dir);
+	delta.b = 2 * vector_dot(r2.dir, v);
+	delta.c = vector_dot(v, v) - 1;
+	delta.discriminant = delta.b * delta.b - 4 * delta.a * delta.c;
+	if (delta.discriminant < 0)
+		return (-1);
+	else
+	{
+		t1 = (-delta.b - sqrt(delta.discriminant)) / (2 * delta.a);
+		t2 = (-delta.b + sqrt(delta.discriminant)) / (2 * delta.a);
+		if (t1 > t2)
+			t1 = t2;
+		if ((t1 > RAY_T_MIN))
+			return (t1);
+		else
+			return (-1);
+	}
 }
 
 // get the normal vector in a sphere
-t_vector normal_at_sphere(t_sphere s, t_vector p)
+t_vector	normal_at_sphere(t_sphere s, t_vector p)
 {
-    t_vector obj_p = vector_mult_matrix(p, s.transform, -1);
-    t_vector obj_n = vectorSub(obj_p, s.pos);
-    t_vector world_n = vector_mult_matrix(obj_n, matrix_transpose(matrix_inverse(s.transform)), 1);
+	t_vector	obj_p;
+	t_vector	obj_n;
+	t_vector	world_n;
 
-    world_n.w = 0;
-
-    return normalize(world_n);
+	obj_p = vector_mult_matrix(p, s.transform, -1);
+	obj_n = vector_sub(obj_p, s.pos);
+	world_n = vector_mult_matrix(obj_n,
+			matrix_transpose(matrix_inverse(s.transform)), 1);
+	world_n.w = 0;
+	return (normalize(world_n));
 }
 
 // get the reflect vector of in vector
-t_vector reflect(t_vector in, t_vector normal)
+t_vector	reflect(t_vector in, t_vector normal)
 {
-	return vectorSub(in, vectorScale(normal, 2 * vectorDot(in, normal)));
+	return (vector_sub(in, vector_scale(normal, 2 * vector_dot(in, normal))));
 }

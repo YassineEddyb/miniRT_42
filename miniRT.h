@@ -35,6 +35,15 @@ typedef struct s_delta {
     double discriminant;
 } t_delta;
 
+typedef struct s_light_data {
+    t_material m;
+    t_ambient am;
+    t_light l;
+    t_vector pos;
+    t_vector eyev;
+    t_vector normalv;
+} t_light_data;
+
 /* The vector structure */
 // typedef struct {
 //       double x,y,z, w;
@@ -54,10 +63,10 @@ typedef struct s_delta {
 //     double shininess;
 // } material; 
 
-typedef struct {
-    char type;
-    t_vector transform;
-} trans;
+// typedef struct {
+//     char type;
+//     t_vector transform;
+// } trans;
 
 typedef struct 
 {
@@ -164,13 +173,13 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int     create_trgb(int t, int r, int g, int b);
 
 // vector functions
-t_vector vectorSub(t_vector v1, t_vector v2);
-double vectorDot(t_vector v1, t_vector v2);
-t_vector vectorScale(t_vector v, double t);
-t_vector vectorAdd(t_vector v1, t_vector v2);
+t_vector vector_sub(t_vector v1, t_vector v2);
+double vector_dot(t_vector v1, t_vector v2);
+t_vector vector_scale(t_vector v, double t);
+t_vector vector_add(t_vector v1, t_vector v2);
 t_vector normalize(t_vector v);
-t_vector vectorInit(double x, double y, double z, double w);
-t_vector vectorCross(t_vector a, t_vector b);
+t_vector vector_init(double x, double y, double z, double w);
+t_vector vector_cross(t_vector a, t_vector b);
 double magnitude(t_vector v);
 
 // matrix functions
@@ -203,8 +212,8 @@ ray transform(ray r, t_matrix m, int type);
 ray ray_for_pixel(t_camera camera, int x, int y);
 
 // sphere functions
-void sphereInit(t_sphere *sphere, t_ambient ambient);
-double sphereIntersection(t_sphere s, ray r);
+void sphere_init(t_sphere *sphere, t_ambient ambient);
+double sphere_intersection(t_sphere s, ray r);
 t_vector normal_at_sphere(t_sphere s, t_vector p);
 t_vector reflect(t_vector in, t_vector normal);
 
@@ -216,7 +225,7 @@ t_RGB stripe_at(t_vector point);
 // light functions
 void lightInit(t_light *light);
 void ambientInit(t_ambient *ambient);
-t_RGB lightning(t_ambient am, t_material m, t_light l, t_vector pos, t_vector v, t_vector n, int in_shadow);
+t_RGB	lightning(t_light_data light_data, int in_shadow);
 
 // material functions
 t_material materials(t_RGB color, double ratio);
@@ -239,8 +248,8 @@ int is_shadowed(t_world world, t_vector point);
 // void render(t_camera camera, t_world world, t_world *img);
 
 // plane functions
-void planeInit(t_plane *plane, t_ambient ambient);
-double planeIntersection(t_plane plane, ray r);
+void plane_init(t_plane *plane, t_ambient ambient);
+double plane_intersection(t_plane plane, ray r);
 t_vector normal_at_plane(t_plane plane, t_vector p);
 
 // cylinder functions

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/28 14:33:59 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/08/31 11:31:41 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	camera_init(t_camera *camera, double hsize, double vsize)
 		camera->half_height = half_view;
 	}
 	camera->pixel_size = (camera->half_width * 2) / camera->hsize;
-	up = vectorInit(0, 1, 0, 0);
+	up = vector_init(0, 1, 0, 0);
 	camera->transform = view_transform(camera->pos, camera->normal, up);
 }
 
@@ -49,9 +49,9 @@ t_matrix	view_transform(t_vector from, t_vector to, t_vector up)
 	t_matrix	or;
 	t_matrix	m;
 
-	forward = normalize(vectorSub(to, from));
-	left = vectorCross(forward, normalize(up));
-	true_up = vectorCross(left, forward);
+	forward = normalize(vector_sub(to, from));
+	left = vector_cross(forward, normalize(up));
+	true_up = vector_cross(left, forward);
 	or = matrix_create(4, 4);
 	or.m[0][0] = left.x;
 	or.m[0][1] = left.y;

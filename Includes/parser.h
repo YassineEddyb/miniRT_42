@@ -163,5 +163,6 @@ t_sphere	*sphere(char **tmp);
 t_plane		*plane(char **tmp);
 t_cy		*cylinder(char **tmp);
 t_world	*parser(int ac, char **av);
+t_vector fill_vector(char **xyz , int _w);
 
 #endif

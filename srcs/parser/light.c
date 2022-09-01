@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:10:35 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/31 09:45:12 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:54:28 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ t_light	*light(char **info)
 	check_rgbstring(info[1]);
 	check_rgbstring(info[3]);
 	xyz = ft_split(info[1], ',');
-	light->pos.x = ft_atof(xyz[0]);
-	light->pos.y = ft_atof(xyz[1]);
-	light->pos.z = ft_atof(xyz[2]);
-	light->pos.w = 1;
+	light->pos = fill_vector(xyz, 1);
 	free_two_arr(xyz);
 	light->ratio = ft_atof(info[2]);
 	xyz = ft_split(info[3], ',');
