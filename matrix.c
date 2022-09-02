@@ -6,32 +6,11 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:55:32 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/28 11:47:03 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:41:34 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-// // print matrix
-// void	print_matrix(t_matrix m)
-// {
-// 	int	j;
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < m.rows)
-// 	{
-// 		j = 0;
-// 		while (j < m.cols)
-// 		{
-// 			printf("%f|", m.m[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// 	printf("\n");
-// }
 
 // multiplu tow matrixes
 t_matrix	matrix_mult(t_matrix m1, t_matrix m2)
@@ -41,8 +20,8 @@ t_matrix	matrix_mult(t_matrix m1, t_matrix m2)
 	int			k;
 	t_matrix	result;
 
-	// if (m1.cols != m2.rows)
-	// 	exit(1);
+	if (m1.cols != m2.rows)
+		exit(1);
 	result = matrix_create(m1.rows, m2.cols);
 	i = -1;
 	while (++i < m1.rows)
@@ -128,8 +107,8 @@ t_matrix	matrix_inverse(t_matrix m)
 	t_matrix	matrix;
 
 	det = matrix_determinant(m);
-	// if (det == 0)
-	// 	exit(1);
+	if (det == 0)
+		exit(1);
 	matrix = cofactor_matrix(m);
 	matrix = matrix_transpose(matrix);
 	matrix = matrix_devide_by_det(matrix, det);

@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
+#    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/09/01 16:27:39 by ael-bach         ###   ########.fr        #
+#    Updated: 2022/09/02 10:50:39 by yed-dyb          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 SRCS =	./srcs/get_next_line/get_next_line.c\
 		./srcs/get_next_line/get_next_line_utils.c\
@@ -24,7 +25,7 @@ SRCS_RENDER = 	miniRT.c\
 		matrix_transfomations.c\
 		ray_functions.c\
 		sphere.c mutrix_inits.c\
-		colour.c\
+		color.c\
 		light.c\
 		material.c\
 		world.c\
@@ -42,7 +43,7 @@ OBJS = ${SRCS:.c=.o}
 
 CC = @cc
 
-CFLAGS = #-g -fsanitize=address
+CFLAGS = #-Wall -Wextra -Werror #-g -fsanitize=address
 
 RM = @rm -f
 
@@ -50,7 +51,7 @@ libft = srcs/Libft/libft.a
 
 ${NAME} : ${SRCS} ${SRCS_RENDER}
 	@make -C srcs/Libft
-	${CC}  ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o $(NAME) -o ${NAME} -g -fsanitize=address
+	${CC} ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o ${NAME} -g -fsanitize=address
 	@tput setaf 2; echo "miniRT IS READY"
 
 all : ${NAME}

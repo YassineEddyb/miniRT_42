@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/31 11:21:37 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:09:01 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	sphere_init(t_sphere *sphere, t_ambient ambient)
 	sphere->material = materials(sphere->rgb, ambient.ratio);
 }
 
-// get the intersection of a ray with a sphere
-double	sphere_intersection(t_sphere s, ray r)
+// get the intersection of a t_ray with a sphere
+double	sphere_intersection(t_sphere s, t_ray r)
 {
 	t_delta		delta;
 	t_vector	v;
-	ray			r2;
+	t_ray		r2;
 	double		t1;
 	double		t2;
 
