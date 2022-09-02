@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/02 15:09:16 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:29:28 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ t_world	*fi2(char **file, t_index *index, t_world *data)
 			data->light[index->l++] = light(tmp);
 		else if (identifier(tmp, data, &tmpindex))
 			data = identifier(tmp, data, index);
-		// else
-		// 	error("ERROR IN FILE");
+		else
+			error("ERROR IN FILE");
 		free_two_arr(tmp);
 	}
 	return (data);
