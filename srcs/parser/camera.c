@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:54:18 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 17:56:06 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 11:44:49 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ t_camera	*camera(char **info)
 	check_rgbstring(info[1]);
 	check_rgbstring(info[2]);
 	xyz = ft_split(info[1], ',');
-	camera->pos = fill_vector(xyz, 1);
+	camera->pos = fill_vector(xyz, 1, 10);
 	free_two_arr(xyz);
 	xyz = ft_split(info[2], ',');
-	camera->normal = fill_vector(xyz, 0);
+	camera->normal = fill_vector(xyz, 0, 1);
 	free_two_arr(xyz);
 	camera->fov = ft_atof(info[3]);
 	check_normalize_value(camera->normal);

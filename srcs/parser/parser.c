@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:36:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/31 08:49:33 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 12:21:30 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,11 @@ t_world	*parser(int ac, char **av)
 	{
 		file = ft_map(av);
 		data = check_and_fill(file);
+		return (data);
 	}
-	return (data);
+	else
+		error("ERROR: MAP NOT FOUND");
+	return (NULL);
 }
 
 // int main(int ac, char **av)

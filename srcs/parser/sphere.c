@@ -6,19 +6,19 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:55:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 18:08:38 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 11:52:31 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/parser.h"
 
-t_vector	fill_vector(char **xyz, int _w)
+t_vector	fill_vector(char **xyz, int _w, int dv)
 {
 	t_vector	vc;
 
-	vc.x = ft_atof(xyz[0]);
-	vc.y = ft_atof(xyz[1]);
-	vc.z = ft_atof(xyz[2]);
+	vc.x = ft_atof(xyz[0]) / dv;
+	vc.y = ft_atof(xyz[1]) / dv;
+	vc.z = ft_atof(xyz[2]) / dv;
 	vc.w = _w;
 	return (vc);
 }
@@ -35,18 +35,18 @@ t_cy	*cylinder(char **tmp)
 	check_rgbstring(tmp[2]);
 	check_rgbstring(tmp[5]);
 	xyz = ft_split(tmp[1], ',');
-	cy->pos = fill_vector(xyz, 1);
+	cy->pos = fill_vector(xyz, 1, 10);
 	free_two_arr(xyz);
 	xyz = ft_split(tmp[2], ',');
-	cy->normal = fill_vector(xyz, 0);
+	cy->normal = fill_vector(xyz, 0, 1);
 	free_two_arr(xyz);
 	xyz = ft_split(tmp[5], ',');
 	cy->rgb.red = ft_atof(xyz[0]);
 	cy->rgb.green = ft_atof(xyz[1]);
 	cy->rgb.blue = ft_atof(xyz[2]);
 	free_two_arr(xyz);
-	cy->diameter = ft_atof(tmp[3]);
-	cy->height = ft_atof(tmp[4]);
+	cy->diameter = ft_atof(tmp[3]) / 10.0;
+	cy->height = ft_atof(tmp[4]) / 10.0;
 	check_rgb_value(cy->rgb);
 	check_normalize_value(cy->normal);
 	return (cy);
@@ -64,10 +64,10 @@ t_plane	*plane(char **tmp)
 	check_rgbstring(tmp[2]);
 	check_rgbstring(tmp[3]);
 	xyz = ft_split(tmp[1], ',');
-	plane->pos = fill_vector(xyz, 1);
+	plane->pos = fill_vector(xyz, 1, 10);
 	free_two_arr(xyz);
 	xyz = ft_split(tmp[2], ',');
-	plane->normal = fill_vector(xyz, 0);
+	plane->normal = fill_vector(xyz, 0, 1);
 	free_two_arr(xyz);
 	xyz = ft_split(tmp[3], ',');
 	plane->rgb.red = ft_atof(xyz[0]);
@@ -90,9 +90,9 @@ t_sphere	*sphere(char **tmp)
 	check_rgbstring(tmp[1]);
 	check_rgbstring(tmp[3]);
 	xyz = ft_split(tmp[1], ',');
-	sphere->pos = fill_vector(xyz, 1);
+	sphere->pos = fill_vector(xyz, 1, 10);
 	free_two_arr(xyz);
-	sphere->diameter = ft_atof(tmp[2]);
+	sphere->diameter = ft_atof(tmp[2]) / 10;
 	xyz = ft_split(tmp[3], ',');
 	sphere->rgb.red = ft_atof(xyz[0]);
 	sphere->rgb.green = ft_atof(xyz[1]);

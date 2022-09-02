@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 23:28:32 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 18:07:22 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 12:15:49 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ t_index	*fill_index(void)
 	index = malloc(sizeof(t_index));
 	if (!index)
 		error("ERROR: ALLOCATION !!");
-	index->A = 0;
-	index->L = 0;
-	index->C = 0;
+	index->a = 0;
+	index->l = 0;
+	index->c = 0;
 	index->sp = 0;
 	index->pl = 0;
 	index->cy = 0;
@@ -67,11 +67,11 @@ t_index	*count_index(char **file)
 		tmpindex = *index;
 		tmp = ft_split_spaces(file[i], ' ');
 		if (!ft_strncmp(tmp[0], "A", ft_strlen(tmp[0])))
-			index->A++;
+			index->a++;
 		else if (!ft_strncmp(tmp[0], "C", ft_strlen(tmp[0])))
-			index->C++;
+			index->c++;
 		else if (!ft_strncmp(tmp[0], "L", ft_strlen(tmp[0])))
-			index->L++;
+			index->l++;
 		else if (count_index_part2(tmp, &tmpindex))
 			index = count_index_part2(tmp, index);
 		else
@@ -89,13 +89,13 @@ t_world	*allocate_data(t_index *index)
 	data = malloc (sizeof(t_world));
 	if (!data)
 		error("ERROR: ALLOCATION !!");
-	data->ambient = malloc (sizeof(t_ambient *) * (index->A + 1));
+	data->ambient = malloc (sizeof(t_ambient *) * (index->a + 1));
 	if (!data->ambient)
 		error("ERROR: ALLOCATION !!");
-	data->camera = malloc (sizeof(t_camera *) * (index->C + 1));
+	data->camera = malloc (sizeof(t_camera *) * (index->c + 1));
 	if (!data->camera)
 		error("ERROR: ALLOCATION !!");
-	data->light = malloc (sizeof(t_light *) * (index->L + 1));
+	data->light = malloc (sizeof(t_light *) * (index->l + 1));
 	if (!data->light)
 		error("ERROR: ALLOCATION !!");
 	data->sphere = malloc (sizeof(t_sphere *) * (index->sp + 1));

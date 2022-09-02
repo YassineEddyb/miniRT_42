@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 18:30:33 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 12:23:32 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_world	*identifier(char **tmp, t_world *data, t_index *index)
 	return (NULL);
 }
 
-t_world *fill_part2(char **file, t_index *index,t_world *data, t_index tmpindex)
+t_world	*fi2(char **file, t_index *index, t_world *data, t_index tmpindex)
 {
 	int		i;
 	char	**tmp;
@@ -64,23 +64,17 @@ t_world *fill_part2(char **file, t_index *index,t_world *data, t_index tmpindex)
 		tmpindex = *index;
 		tmp = ft_split_spaces(file[i], ' ');
 		if (!ft_strncmp(tmp[0], "A", ft_strlen(tmp[0])))
-			data->ambient[index->A++] = ambient_light(tmp);
+			data->ambient[index->a++] = ambient_light(tmp);
 		else if (!ft_strncmp(tmp[0], "C", ft_strlen(tmp[0])))
-			data->camera[index->C++] = camera(tmp);
+			data->camera[index->c++] = camera(tmp);
 		else if (!ft_strncmp(tmp[0], "L", ft_strlen(tmp[0])))
-			data->light[index->L++] = light(tmp);
+			data->light[index->l++] = light(tmp);
 		else if (identifier(tmp, data, &tmpindex))
 			data = identifier(tmp, data, index);
 		else
 			error("ERROR IN FILE");
 		free_two_arr(tmp);
 	}
-	// data->ambient[index->A] = NULL;
-	// data->camera[index->C] = NULL;
-	// data->light[index->L] = NULL;
-	// data->cy[index->cy] = NULL;
-	// data->plane[index->pl] = NULL;
-	// data->sphere[index->sp] = NULL;
 	return (data);
 }
 
@@ -97,30 +91,16 @@ t_world	*check_and_fill(char **file)
 	data = allocate_data(index);
 	free (index);
 	index = fill_index();
-	data = fill_part2(file, index, data, tmpindex);
-	// i = -1;
-	// while (file[++i])
-	// {
-	// 	tmpindex = *index;
-	// 	tmp = ft_split_spaces(file[i], ' ');
-	// 	if (!ft_strncmp(tmp[0], "A", ft_strlen(tmp[0])))
-	// 		data->ambient[index->A++] = ambient_light(tmp);
-	// 	else if (!ft_strncmp(tmp[0], "C", ft_strlen(tmp[0])))
-	// 		data->camera[index->C++] = camera(tmp);
-	// 	else if (!ft_strncmp(tmp[0], "L", ft_strlen(tmp[0])))
-	// 		data->light[index->L++] = light(tmp);
-	// 	else if (identifier(tmp, data, &tmpindex))
-	// 		data = identifier(tmp, data, index);
-	// 	else
-	// 		error("ERROR IN FILE");
-	// 	free_two_arr(tmp);
-	// }
-	data->ambient[index->A] = NULL;
-	data->camera[index->C] = NULL;
-	data->light[index->L] = NULL;
+	data = fi2(file, index, data, tmpindex);
+	data->ambient[index->a] = NULL;
+	data->camera[index->c] = NULL;
+	data->light[index->l] = NULL;
 	data->cy[index->cy] = NULL;
 	data->plane[index->pl] = NULL;
 	data->sphere[index->sp] = NULL;
+	if (index->a != 1 || index->c != 1 || index->l != 1)
+		error("ERROR : IN FILE");
 	free (index);
+	free_two_arr(file);
 	return (data);
 }
