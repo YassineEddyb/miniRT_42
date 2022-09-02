@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
+#    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/09/02 15:04:57 by ael-bach         ###   ########.fr        #
+#    Updated: 2022/09/02 17:29:26 by yed-dyb          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS_RENDER = 	miniRT.c\
 		planes.c\
 		cylinder.c\
 		vector_helpers.c\
-		mlx_helpers.c
+		mlx_helpers.c\
+		free_leaks.c
 
 NAME = miniRT
 MLX = -lmlx -framework OpenGL -framework AppKit

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:55:24 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 17:40:36 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	camera_init(t_camera *camera, double hsize, double vsize)
 	}
 	camera->pixel_size = (camera->half_width * 2) / camera->hsize;
 	up = vector_init(0, 1, 0, 0);
+	free_matrix(camera->transform);
 	camera->transform = view_transform(camera->pos, camera->normal, up);
 }
 

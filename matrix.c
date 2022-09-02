@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:55:32 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:41:34 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 17:37:44 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_matrix	matrix_mult(t_matrix m1, t_matrix m2)
 				result.m[i][j] += m1.m[i][k] * m2.m[k][j];
 		}
 	}
+	free_matrix(m1);
+	free_matrix(m2);
 	return (result);
 }
 

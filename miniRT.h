@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 12:49:59 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:31:56 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,9 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			close_window(void);
 int			exit_program(int key);
 int			create_trgb(int t, int r, int g, int b);
+
+// free leaks funcion
+void free_matrix(t_matrix m);
 
 // test functions
 void		print_vector(t_vector v);
