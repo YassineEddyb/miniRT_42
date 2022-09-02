@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
+/*   Updated: 2022/09/02 12:13:59 by ael-bach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSER_H
 # define PARSER_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-#include <mlx.h>
-#include <fcntl.h>
-#include <stdbool.h>
-#include "../srcs/libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <math.h>
+# include <mlx.h>
+# include <fcntl.h>
+# include <stdbool.h>
+# include "../srcs/libft/libft.h"
 
 /* t_RGB definition */
 typedef struct s_RGB
@@ -21,20 +33,21 @@ typedef struct s_RGB
 
 typedef struct s_material
 {
-    t_RGB		color;
-    double		ambient;
-    double		diffuse;
-    double		specular;
-    double		shininess;
-} t_material; 
+	t_RGB		color;
+	double		ambient;
+	double		diffuse;
+	double		specular;
+	double		shininess;
+
+}	t_material;
 
 typedef struct s_matrix
 {
-    int		rows;
-    int		cols;
-    double	**m;
+	int		rows;
+	int		cols;
+	double	**m;
 
-} t_matrix;
+}	t_matrix;
 
 /* The vector structure */
 typedef struct s_vector
@@ -55,28 +68,29 @@ typedef struct s_sphere
 	t_matrix	transform;
 	t_material	material;
 
-}	t_sphere; 
+}	t_sphere;
 
 // camera
 typedef struct s_camera
 {
 	t_vector	pos;
 	t_vector	normal;
-	double		fov;/////double
+	double		fov;
 	t_matrix	transform;
-    double		hsize;
-    double		vsize;
-    double		half_width;
-    double		half_height;
-    double		pixel_size;
+	double		hsize;
+	double		vsize;
+	double		half_width;
+	double		half_height;
+	double		pixel_size;
 
-} t_camera;
+}	t_camera;
 
 typedef struct s_ambient
 {
 	double	ratio;
 	t_RGB	rgb;
-} t_ambient;
+
+}	t_ambient;
 
 /* Light definition */
 typedef struct s_light
@@ -84,6 +98,7 @@ typedef struct s_light
 	t_vector	pos;
 	t_RGB		rgb;
 	double		ratio;
+
 }	t_light;
 
 typedef struct s_plane
@@ -92,7 +107,7 @@ typedef struct s_plane
 	t_vector	normal;
 	t_RGB		rgb;
 	t_matrix	transform;
-    t_material	material;
+	t_material	material;
 
 }	t_plane;
 
@@ -104,21 +119,21 @@ typedef struct s_cy
 	double		height;
 	t_RGB		rgb;
 	double		max;
-    double		min;
-	t_material 	material;
+	double		min;
+	t_material	material;
 	t_matrix	transform;
 
-} t_cy;
+}	t_cy;
 
 typedef struct s_index
 {
-	int	A;
-	int	L;
-	int	C;
-	int	sp;
-	int	pl;
-	int	cy;
-	
+	int		a;
+	int		l;
+	int		c;
+	int		sp;
+	int		pl;
+	int		cy;
+
 }	t_index;
 
 typedef struct s_world
@@ -129,12 +144,11 @@ typedef struct s_world
 	t_sphere	**sphere;
 	t_plane		**plane;
 	t_cy		**cy;
-	
+
 }	t_world;
 
-
 char		*get_next_line(int fd);
-double 		ft_atof(char *str);
+double		ft_atof(char *str);
 void		free_two_arr(char **arr);
 int			check_befor_atof(char *str);
 void		error(char *str);
@@ -154,7 +168,7 @@ t_light		*light(char **info);
 t_sphere	*sphere(char **tmp);
 t_plane		*plane(char **tmp);
 t_cy		*cylinder(char **tmp);
-t_world	*parser(int ac, char **av);
-t_vector fill_vector(char **xyz , int _w);
+t_world		*parser(int ac, char **av);
+t_vector	fill_vector(char **xyz, int _w, int dv);
 
 #endif
