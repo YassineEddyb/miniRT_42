@@ -6,15 +6,15 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:55:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 17:52:45 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/01 18:08:38 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/parser.h"
 
-t_vector fill_vector(char **xyz , int _w)
+t_vector	fill_vector(char **xyz, int _w)
 {
-	t_vector vc;
+	t_vector	vc;
 
 	vc.x = ft_atof(xyz[0]);
 	vc.y = ft_atof(xyz[1]);
@@ -79,7 +79,7 @@ t_plane	*plane(char **tmp)
 	return (plane);
 }
 
-t_sphere *sphere(char **tmp)
+t_sphere	*sphere(char **tmp)
 {
 	t_sphere	*sphere;
 	char		**xyz;

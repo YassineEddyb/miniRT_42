@@ -6,12 +6,11 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:13:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/08/16 17:12:02 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/01 18:00:20 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/parser.h"
-
 
 int	len_2d(char **str)
 {
@@ -25,8 +24,8 @@ int	len_2d(char **str)
 
 void	check_rgbstring(char *str)
 {
-	int i;
-	int point;
+	int		i;
+	int		point;
 
 	point = 0;
 	i = 0;

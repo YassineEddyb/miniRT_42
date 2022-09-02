@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:11:43 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 16:23:34 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/01 18:04:11 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	check_befor_atof(char *str)
 {
-	int i;
-	int point;
+	int		i;
+	int		point;
 
 	if (!str)
 		error("ERROR : Missing element");
@@ -27,11 +27,11 @@ int	check_befor_atof(char *str)
 			point += 1;
 		i++;
 	}
-    if (point > 1)
-    {
+	if (point > 1)
+	{
 		printf("Error\n");
 		exit (1);
-    }
+	}
 	return (point);
 }
 
@@ -59,6 +59,6 @@ double	ft_atof(char *str)
 		error("ERROR : ATOF");
 	if (n_sp[1])
 		return ((ft_atoi(n_sp[0]) + (ft_atoi(n_sp[1])
-				/ pow(10, ft_strlen(n_sp[1]))) ) * n);
-	return (ft_atoi(n_sp[0])  * n);
+					/ pow(10, ft_strlen(n_sp[1])))) * n);
+	return (ft_atoi(n_sp[0]) * n);
 }

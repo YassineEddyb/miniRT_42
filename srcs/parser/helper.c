@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 23:28:32 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 17:55:09 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/01 18:07:22 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_index	*count_index_part2(char **tmp, t_index *index)
 		len = ft_strlen(tmp[0]);
 	if (!ft_strncmp(tmp[0], "sp", len))
 	{
-		index->sp  += 1;
+		index->sp += 1;
 		return (index);
 	}
 	if (!ft_strncmp(tmp[0], "pl", len))
@@ -34,8 +34,9 @@ t_index	*count_index_part2(char **tmp, t_index *index)
 		index->cy += 1;
 		return (index);
 	}
-	return (NULL);	
+	return (NULL);
 }
+
 t_index	*fill_index(void)
 {
 	t_index	*index;
@@ -88,23 +89,23 @@ t_world	*allocate_data(t_index *index)
 	data = malloc (sizeof(t_world));
 	if (!data)
 		error("ERROR: ALLOCATION !!");
-	data->ambient = malloc (sizeof(t_ambient*) * (index->A+1));
+	data->ambient = malloc (sizeof(t_ambient *) * (index->A + 1));
 	if (!data->ambient)
 		error("ERROR: ALLOCATION !!");
-	data->camera = malloc (sizeof(t_camera*) * (index->C+1));
+	data->camera = malloc (sizeof(t_camera *) * (index->C + 1));
 	if (!data->camera)
 		error("ERROR: ALLOCATION !!");
-	data->light = malloc (sizeof(t_light*) * (index->L+1));
+	data->light = malloc (sizeof(t_light *) * (index->L + 1));
 	if (!data->light)
 		error("ERROR: ALLOCATION !!");
-	data->sphere = malloc (sizeof(t_sphere*) * (index->sp+1));
+	data->sphere = malloc (sizeof(t_sphere *) * (index->sp + 1));
 	if (!data->sphere)
 		error("ERROR: ALLOCATION !!");
-	data->plane = malloc (sizeof(t_plane*) * (index->pl+1));
+	data->plane = malloc (sizeof(t_plane *) * (index->pl + 1));
 	if (!data->plane)
 		error("ERROR: ALLOCATION !!");
-	data->cy = malloc (sizeof(t_cy*) * (index->cy+1));
+	data->cy = malloc (sizeof(t_cy *) * (index->cy + 1));
 	if (!data->cy)
 		error("ERROR: ALLOCATION !!");
-	return (data);	
+	return (data);
 }
