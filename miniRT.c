@@ -6,16 +6,24 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/01 14:52:14 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:15:39 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+double	min(double a, double b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
 void	*render(void *arg)
 {
 	t_th	*th;
-	ray		r;
+	t_ray	r;
 	t_RGB	color;
 	int		x;
 	int		y;

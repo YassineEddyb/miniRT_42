@@ -6,7 +6,7 @@
 #    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/09/01 22:27:28 by yed-dyb          ###   ########.fr        #
+#    Updated: 2022/09/02 10:50:39 by yed-dyb          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS_RENDER = 	miniRT.c\
 		matrix_transfomations.c\
 		ray_functions.c\
 		sphere.c mutrix_inits.c\
-		colour.c\
+		color.c\
 		light.c\
 		material.c\
 		world.c\

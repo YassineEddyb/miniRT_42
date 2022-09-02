@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/31 11:12:11 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:49:12 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	cylinder_init(t_cy *cy, t_ambient ambient)
 	cy->max = cy->height;
 }
 
-double	is_hit(t_cy cy, ray r, double t0, double t1)
+double	is_hit(t_cy cy, t_ray r, double t0, double t1)
 {
 	double	y0;
 	double	y1;
@@ -40,12 +40,12 @@ double	is_hit(t_cy cy, ray r, double t0, double t1)
 		return (-1);
 }
 
-double	cylinder_intersection(t_cy cy, ray r)
+double	cylinder_intersection(t_cy cy, t_ray r)
 {
 	double	t0;
 	double	t1;
 	t_delta	delta;
-	ray		r2;
+	t_ray	r2;
 
 	r2 = transform(r, cy.transform, -1);
 	delta.a = r2.dir.x * r2.dir.x + r2.dir.z * r2.dir.z;

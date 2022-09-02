@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 15:42:08 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/31 11:07:03 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:09:24 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_shadowed(t_world world, t_vector point)
 {
-	ray			r;
+	t_ray		r;
 	t_intersect	intersect;
 	t_vector	v;
 	t_vector	dir;

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:01 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/28 14:02:50 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:47:27 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,11 @@ t_matrix	submatrix(t_matrix m, int row, int col)
 		if (i != row)
 		{
 			j = -1;
-			n = 0;
+			n = -1;
 			while (++j < m.cols)
 			{
 				if (j != col)
-				{
-					sub.m[k][n] = m.m[i][j];
-					n++;
-				}
+					sub.m[k][++n] = m.m[i][j];
 			}
 			k++;
 		}

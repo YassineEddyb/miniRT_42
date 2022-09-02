@@ -57,14 +57,6 @@ typedef struct s_sphere
 
 }	t_sphere; 
 
-/* The ray */
-typedef struct s_ray
-{
-	t_vector	start;
-	t_vector	dir;
-
-} t_ray;
-
 // camera
 typedef struct s_camera
 {

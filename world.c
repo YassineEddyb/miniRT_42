@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/01 22:32:05 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:50:39 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	intersect_object(t_intersect *intersect, double t, void *obj, char type)
 	}
 }
 
-// the nearest ray intersection in this world
-t_intersect	intersect_world(t_world world, ray r)
+// the nearest t_ray intersection in this world
+t_intersect	intersect_world(t_world world, t_ray r)
 {
 	int			i;
 	double		t;
@@ -53,7 +53,7 @@ t_intersect	intersect_world(t_world world, ray r)
 }
 
 // get the information neaded for the intesected object;
-t_comps	prepare_computations(ray r, t_intersect i)
+t_comps	prepare_computations(t_ray r, t_intersect i)
 {
 	t_comps	comps;
 
@@ -99,11 +99,11 @@ t_RGB	shade_hit(t_world world, t_comps comps)
 		data.m = cy->material;
 		return (lightning(data, comps, is_shadowed(world, data.pos)));
 	}
-	return (colour_init(0, 0, 0));
+	return (color_init(0, 0, 0));
 }
 
-// get the color at the intersection of the ray with the sphere
-t_RGB	color_at(t_world world, ray r)
+// get the color at the intersection of the t_ray with the sphere
+t_RGB	color_at(t_world world, t_ray r)
 {
 	t_intersect	i;
 	t_comps		comps;
@@ -111,7 +111,7 @@ t_RGB	color_at(t_world world, ray r)
 
 	i = intersect_world(world, r);
 	if (i.t < 0)
-		return (colour_init(0, 0, 0));
+		return (color_init(0, 0, 0));
 	comps = prepare_computations(r, i);
 	c = shade_hit(world, comps);
 	return (c);

@@ -1,7 +1,7 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/yed-dyb/Desktop/merged_miniRT'
 make -C srcs/Libft
-cc   ./srcs/get_next_line/get_next_line.c ./srcs/get_next_line/get_next_line_utils.c parser.c ./srcs/parser/ft_atof.c ./srcs/parser/Ambient_light.c ./srcs/parser/element.c ./srcs/parser/split_spaces.c ./srcs/parser/camera.c ./srcs/parser/light.c ./srcs/parser/sphere.c ./srcs/parser/helper.c  srcs/Libft/libft.a miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c colour.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c -lmlx -framework OpenGL -framework AppKit -o miniRT -o miniRT -g -fsanitize=address
+cc   ./srcs/get_next_line/get_next_line.c ./srcs/get_next_line/get_next_line_utils.c parser.c ./srcs/parser/ft_atof.c ./srcs/parser/Ambient_light.c ./srcs/parser/element.c ./srcs/parser/split_spaces.c ./srcs/parser/camera.c ./srcs/parser/light.c ./srcs/parser/sphere.c ./srcs/parser/helper.c  srcs/Libft/libft.a miniRT.c vector.c matrix.c matrix_helpers.c matrix_transfomations.c ray_functions.c sphere.c mutrix_inits.c color.c light.c material.c world.c camera.c shadows.c render.c planes.c cylinder.c -lmlx -framework OpenGL -framework AppKit -o miniRT -o miniRT -g -fsanitize=address
 tput setaf 2; echo "miniRT IS READY"
 make: Leaving directory `/Users/yed-dyb/Desktop/merged_miniRT'
  

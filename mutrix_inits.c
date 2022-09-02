@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:21:13 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/01 12:49:33 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:37:54 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ t_matrix	get_matrix(double x, double y, double z, char type)
 	t_matrix	m;
 
 	m = matrix_create(4, 4);
+	m.m[0][0] = 1;
+	m.m[1][1] = 1;
+	m.m[2][2] = 1;
+	m.m[3][3] = 1;
 	if (type == 't')
 	{
-		m.m[0][0] = 1;
-		m.m[1][1] = 1;
-		m.m[2][2] = 1;
-		m.m[3][3] = 1;
 		m.m[0][3] = x;
 		m.m[1][3] = y;
 		m.m[2][3] = z;
@@ -61,16 +61,16 @@ t_matrix	get_matrix(double x, double y, double z, char type)
 		m.m[0][0] = x;
 		m.m[1][1] = y;
 		m.m[2][2] = z;
-		m.m[3][3] = 1;
-	}
-	else
-	{
-		m.m[0][0] = 1;
-		m.m[1][1] = 1;
-		m.m[2][2] = 1;
-		m.m[3][3] = 1;
 	}
 	return (m);
+}
+
+void	rotation_matrix_helper(t_matrix *m, double r)
+{
+	m->m[0][0] = cos(r);
+	m->m[1][1] = cos(r);
+	m->m[2][2] = cos(r);
+	m->m[3][3] = 1;
 }
 
 // get the rotation matrix
@@ -79,29 +79,23 @@ t_matrix	get_rotation_matrix(double r, int type)
 	t_matrix	m;
 
 	m = matrix_create(4, 4);
-	m.m[3][3] = 1;
+	rotation_matrix_helper(&m, r);
 	if (type == 'x')
 	{
 		m.m[0][0] = 1;
-		m.m[1][1] = cos(r);
 		m.m[1][2] = -sin(r);
-		m.m[2][2] = cos(r);
 		m.m[2][1] = sin(r);
 	}
 	else if (type == 'y')
 	{
-		m.m[0][0] = cos(r);
 		m.m[0][2] = sin(r);
 		m.m[1][1] = 1;
 		m.m[2][0] = -sin(r);
-		m.m[2][2] = cos(r);
 	}
 	else if (type == 'z')
 	{
-		m.m[0][0] = cos(r);
 		m.m[0][1] = -sin(r);
 		m.m[1][0] = sin(r);
-		m.m[1][1] = cos(r);
 		m.m[2][2] = 1;
 	}
 	return (m);

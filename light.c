@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:30:33 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/01 22:25:29 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:50:39 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ t_RGB	get_specular(t_light_data data, t_comps comps, t_vector lightv)
 	reflectv = reflect(vector_scale(lightv, -1), comps.normalv);
 	reflect_dot_eye = vector_dot(reflectv, comps.eyev);
 	if (reflect_dot_eye <= 0)
-		specular = colour_init(0, 0, 0);
+		specular = color_init(0, 0, 0);
 	else
 	{
 		factor = pow(reflect_dot_eye, data.m.shininess);
 		light_specular = data.m.specular * factor;
-		specular = colour_init(data.l.rgb.red * light_specular,
+		specular = color_init(data.l.rgb.red * light_specular,
 				data.l.rgb.green * light_specular,
 				data.l.rgb.blue * light_specular);
 	}
@@ -63,8 +63,8 @@ t_RGB	lightning(t_light_data data, t_comps comps, int in_shadow)
 	phong.light_dot_n = vector_dot(phong.lightv, comps.normalv);
 	if (phong.light_dot_n < 0 || in_shadow)
 	{
-		phong.diffuse = colour_init(0, 0, 0);
-		phong.specular = colour_init(0, 0, 0);
+		phong.diffuse = color_init(0, 0, 0);
+		phong.specular = color_init(0, 0, 0);
 	}
 	else
 	{
