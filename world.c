@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:50:39 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 12:50:17 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_comps	prepare_computations(t_ray r, t_intersect i)
 	if (i.type == 's')
 		comps.normalv = normal_at_sphere(*((t_sphere *)i.object), comps.point);
 	else if (i.type == 'p')
-		comps.normalv = normal_at_plane(*((t_plane *)i.object), comps.point);
+		comps.normalv = normal_at_plane(*((t_plane *)i.object));
 	else if (i.type == 'c')
 		comps.normalv = normal_at_cylinder(*((t_cy *)i.object), comps.point);
 	comps.over_point = vector_add(

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   planes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:11:12 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 12:49:35 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ double	plane_intersection(t_plane plane, t_ray r)
 		return (-1);
 }
 
-t_vector	normal_at_plane(t_plane plane, t_vector p)
+t_vector	normal_at_plane(t_plane plane)
 {
 	t_vector	world_n;
 

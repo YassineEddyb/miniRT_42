@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 12:15:37 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 12:56:35 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,22 @@ void	create_threads(t_world *world, t_data *img)
 
 int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*win;
-	t_data	img;
+	// void	*mlx;
+	// void	*win;
+	// t_data	img;
 	t_world	*world;
 
 	world = parser(argc, argv);
-	init_objects(world);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, WIDTH, HEIGHT, "miniRT");
-	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img,
-			&img.bits_per_pixel, &img.line_length, &img.endian);
-	create_threads(world, &img);
-	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
-	mlx_hook(win, 17, 0, close_window, NULL);
-	mlx_key_hook(win, exit_program, NULL);
-	mlx_loop(mlx);
+	// init_objects(world);
+	// mlx = mlx_init();
+	// win = mlx_new_window(mlx, WIDTH, HEIGHT, "miniRT");
+	// img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	// img.addr = mlx_get_data_addr(img.img,
+	// 		&img.bits_per_pixel, &img.line_length, &img.endian);
+	// create_threads(world, &img);
+	// mlx_put_image_to_window(mlx, win, img.img, 0, 0);
+	// mlx_hook(win, 17, 0, close_window, NULL);
+	// mlx_key_hook(win, exit_program, NULL);
+	system("leaks miniRT");
+	// mlx_loop(mlx);
 }

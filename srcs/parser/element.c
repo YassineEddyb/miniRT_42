@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/02 12:23:32 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:09:16 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	free_two_arr(char **arr)
 {
 	int		i;
 
-	i = 0;
-	while (arr[i++])
+	i = -1;
+	while (arr[++i])
 		free (arr[i]);
 	free (arr);
 }
@@ -53,10 +53,11 @@ t_world	*identifier(char **tmp, t_world *data, t_index *index)
 	return (NULL);
 }
 
-t_world	*fi2(char **file, t_index *index, t_world *data, t_index tmpindex)
+t_world	*fi2(char **file, t_index *index, t_world *data)
 {
 	int		i;
 	char	**tmp;
+	t_index	tmpindex;
 
 	i = -1;
 	while (file[++i])
@@ -71,8 +72,8 @@ t_world	*fi2(char **file, t_index *index, t_world *data, t_index tmpindex)
 			data->light[index->l++] = light(tmp);
 		else if (identifier(tmp, data, &tmpindex))
 			data = identifier(tmp, data, index);
-		else
-			error("ERROR IN FILE");
+		// else
+		// 	error("ERROR IN FILE");
 		free_two_arr(tmp);
 	}
 	return (data);
@@ -80,10 +81,8 @@ t_world	*fi2(char **file, t_index *index, t_world *data, t_index tmpindex)
 
 t_world	*check_and_fill(char **file)
 {
-	char		**tmp;
 	t_world		*data;
 	t_index		*index;
-	t_index		tmpindex;
 
 	if (!file)
 		error("ERROR : EMPTY FILE");
@@ -91,7 +90,7 @@ t_world	*check_and_fill(char **file)
 	data = allocate_data(index);
 	free (index);
 	index = fill_index();
-	data = fi2(file, index, data, tmpindex);
+	data = fi2(file, index, data);
 	data->ambient[index->a] = NULL;
 	data->camera[index->c] = NULL;
 	data->light[index->l] = NULL;

@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:11:43 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 18:04:11 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 14:57:16 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ double	ft_atof(char *str)
 	int		n;
 	int		c;
 	int		i;
+	int		v,v1,len;
 
 	n = 1;
 	c = 0;
@@ -57,8 +58,17 @@ double	ft_atof(char *str)
 	n_sp = ft_split(str + i, '.');
 	if (c >= 2 || (len_2d(n_sp) == 1 && check_befor_atof(str) > 0))
 		error("ERROR : ATOF");
+	v =  ft_atoi(n_sp[0]);
 	if (n_sp[1])
-		return ((ft_atoi(n_sp[0]) + (ft_atoi(n_sp[1])
-					/ pow(10, ft_strlen(n_sp[1])))) * n);
-	return (ft_atoi(n_sp[0]) * n);
+	{
+		v1 =  ft_atoi(n_sp[1]);
+		len = ft_strlen(n_sp[1]);
+	}
+	if (n_sp[1])
+	{
+		free_two_arr(n_sp);
+		return ((v + (v1 / pow(10, len))) * n);
+	}
+	free_two_arr(n_sp);
+	return (v * n);
 }

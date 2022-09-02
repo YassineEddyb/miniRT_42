@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 12:17:02 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 12:49:59 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ double		min(double a, double b);
 // plane functions
 void		plane_init(t_plane *plane, t_ambient ambient);
 double		plane_intersection(t_plane plane, t_ray r);
-t_vector	normal_at_plane(t_plane plane, t_vector p);
+t_vector	normal_at_plane(t_plane plane);
 
 // cylinder functions
 void		cylinder_init(t_cy *cy, t_ambient ambient);

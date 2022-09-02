@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
+#    By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/09/02 12:13:45 by yed-dyb          ###   ########.fr        #
+#    Updated: 2022/09/02 15:04:57 by ael-bach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJS = ${SRCS:.c=.o}
 
 CC = @cc
 
-CFLAGS = #-Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 RM = @rm -f
 
@@ -52,7 +52,7 @@ libft = srcs/Libft/libft.a
 
 ${NAME} : ${SRCS} ${SRCS_RENDER}
 	@make -C srcs/Libft
-	${CC} ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o ${NAME} -g -fsanitize=address
+	${CC} ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o ${NAME}
 	@tput setaf 2; echo "miniRT IS READY"
 
 all : ${NAME}
