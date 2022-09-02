@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:30:33 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:50:39 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 21:24:37 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 // init light
 void	light_init(t_light *light)
 {
+	light->pos.x += FLT_EPSILON;
+	light->pos.y += FLT_EPSILON;
+	light->pos.z += FLT_EPSILON;
 	light->rgb.red = light->rgb.red / 255;
 	light->rgb.green = light->rgb.green / 255;
 	light->rgb.blue = light->rgb.blue / 255;

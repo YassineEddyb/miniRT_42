@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/02 12:13:59 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:08:16 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,15 @@ typedef struct s_index
 	int		cy;
 
 }	t_index;
+
+typedef struct s_v
+{
+	int	i;
+	int	n;
+	int	v;
+	int	c;	
+
+}	t_v;
 
 typedef struct s_world
 {

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 17:51:58 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 18:41:52 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	create_threads(t_world *world, t_data *img)
 	i = -1;
 	while (++i < len)
 		pthread_join(th[i].th_id, NULL);
+	free(th);
 }
 
 int	main(int argc, char **argv)
@@ -89,6 +90,6 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
 	mlx_hook(win, 17, 0, close_window, NULL);
 	mlx_key_hook(win, exit_program, NULL);
-	system("leaks miniRT");
-	// mlx_loop(mlx);
+	// system("leaks miniRT");
+	mlx_loop(mlx);
 }

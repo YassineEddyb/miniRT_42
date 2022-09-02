@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/02 15:29:28 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:55:50 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_two_arr(char **arr)
 	free (arr);
 }
 
-t_world	*identifier(char **tmp, t_world *data, t_index *index)
+t_world	*identifier(char **tmp, t_world *data, t_index *index, int nbr)
 {
 	int	len;
 
@@ -37,17 +37,20 @@ t_world	*identifier(char **tmp, t_world *data, t_index *index)
 		len = ft_strlen(tmp[0]);
 	if (!ft_strncmp(tmp[0], "sp", len))
 	{
-		data->sphere[index->sp++] = sphere(tmp);
+		if (nbr == 1)
+			data->sphere[index->sp++] = sphere(tmp);
 		return (data);
 	}
 	if (!ft_strncmp(tmp[0], "pl", len))
 	{
-		data->plane[index->pl++] = plane(tmp);
+		if (nbr == 1)
+			data->plane[index->pl++] = plane(tmp);
 		return (data);
 	}
 	if (!ft_strncmp(tmp[0], "cy", len))
 	{
-		data->cy[index->cy++] = cylinder(tmp);
+		if (nbr == 1)
+			data->cy[index->cy++] = cylinder(tmp);
 		return (data);
 	}
 	return (NULL);
@@ -70,8 +73,8 @@ t_world	*fi2(char **file, t_index *index, t_world *data)
 			data->camera[index->c++] = camera(tmp);
 		else if (!ft_strncmp(tmp[0], "L", ft_strlen(tmp[0])))
 			data->light[index->l++] = light(tmp);
-		else if (identifier(tmp, data, &tmpindex))
-			data = identifier(tmp, data, index);
+		else if (identifier(tmp, data, &tmpindex, 0))
+			data = identifier(tmp, data, index, 1);
 		else
 			error("ERROR IN FILE");
 		free_two_arr(tmp);

@@ -6,18 +6,18 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:26:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 17:52:23 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 18:39:06 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void free_matrix(t_matrix m)
+void	free_matrix(t_matrix m)
 {
-    int i;
+	int	i;
 
-    i = -1;
-    while (++i < m.rows)
-        free(m.m[i]);
-    free(m.m);
+	i = -1;
+	while (++i < m.rows)
+		free(m.m[i]);
+	free(m.m);
 }

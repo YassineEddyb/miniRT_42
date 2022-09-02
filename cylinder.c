@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:49:12 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 21:52:47 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	cylinder_init(t_cy *cy, t_ambient ambient)
 {
 	cy->transform = matrix_mult(matrix_mult(matrix_mult(
-					get_rotation_matrix(cy->normal.y * M_PI_2, 'y'),
-					get_matrix(cy->pos.x, cy->pos.y, cy->pos.z, 't')),
-				get_rotation_matrix(cy->normal.z * M_PI_2, 'x')),
+					get_matrix(cy->pos.x, cy->pos.y, cy->pos.z, 't'),
+					get_rotation_matrix(cy->normal.y * M_PI_2, 'x')),
+				get_rotation_matrix(cy->normal.z * M_PI_2, 'y')),
 			get_rotation_matrix(cy->normal.x * M_PI_2, 'z'));
 	cy->pos = vector_init(0, 0, 0, 1);
 	cy->material = materials(cy->rgb, ambient.ratio);
