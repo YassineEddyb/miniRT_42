@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   mlx_helpers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 14:59:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 12:15:46 by yed-dyb          ###   ########.fr       */
+/*   Created: 2022/09/02 12:08:10 by yed-dyb           #+#    #+#             */
+/*   Updated: 2022/09/02 12:15:16 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	*render(void *arg)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	t_th	*th;
-	t_ray	r;
-	t_RGB	color;
-	int		x;
-	int		y;
+	char	*dst;
 
-	th = (t_th *)arg;
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = th->min;
-		while (x < th->max)
-		{
-			r = ray_for_pixel(th->camera, x, y);
-			color = color_at(th->world, r);
-			my_mlx_pixel_put(th->img, x, y, create_trgb(1,
-					min(color.red * 255, 255),
-					min(color.green * 255, 255),
-					min(color.blue * 255, 255)));
-			x++;
-		}
-		y++;
-	}
-	return (NULL);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+int	close_window(void)
+{
+	exit(0);
+}
+
+int	exit_program(int key)
+{
+	if (key == 53)
+		exit(0);
+	return (0);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:15:39 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 12:15:37 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,42 +18,6 @@ double	min(double a, double b)
 		return (a);
 	else
 		return (b);
-}
-
-void	*render(void *arg)
-{
-	t_th	*th;
-	t_ray	r;
-	t_RGB	color;
-	int		x;
-	int		y;
-
-	th = (t_th *)arg;
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = th->min;
-		while (x < th->max)
-		{
-			r = ray_for_pixel(th->camera, x, y);
-			color = color_at(th->world, r);
-			my_mlx_pixel_put(th->img, x, y, create_trgb(1,
-					min(color.red * 255, 255),
-					min(color.green * 255, 255),
-					min(color.blue * 255, 255)));
-			x++;
-		}
-		y++;
-	}
-	return (NULL);
-}
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
 }
 
 void	init_objects(t_world *world)
@@ -123,5 +87,7 @@ int	main(int argc, char **argv)
 			&img.bits_per_pixel, &img.line_length, &img.endian);
 	create_threads(world, &img);
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
+	mlx_hook(win, 17, 0, close_window, NULL);
+	mlx_key_hook(win, exit_program, NULL);
 	mlx_loop(mlx);
 }

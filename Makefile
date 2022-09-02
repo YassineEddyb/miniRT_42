@@ -6,7 +6,7 @@
 #    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/09/02 10:50:39 by yed-dyb          ###   ########.fr        #
+#    Updated: 2022/09/02 12:13:45 by yed-dyb          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS_RENDER = 	miniRT.c\
 		render.c\
 		planes.c\
 		cylinder.c\
-		vector_helpers.c
+		vector_helpers.c\
+		mlx_helpers.c
 
 NAME = miniRT
 MLX = -lmlx -framework OpenGL -framework AppKit
