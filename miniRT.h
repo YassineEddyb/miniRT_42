@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:50:39 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/02 12:17:02 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,6 @@ typedef struct s_phong {
 	double		light_diffuse;
 }	t_phong;
 
-// mlx
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int			create_trgb(int t, int r, int g, int b);
-
 // vector functions
 t_vector	vector_sub(t_vector v1, t_vector v2);
 double		vector_dot(t_vector v1, t_vector v2);
@@ -180,7 +176,8 @@ t_matrix	view_transform(t_vector from, t_vector to, t_vector up);
 int			is_shadowed(t_world world, t_vector point);
 
 // render functions
-// void render(t_camera camera, t_world world, t_world *img);
+void		*render(void *arg);
+double		min(double a, double b);
 
 // plane functions
 void		plane_init(t_plane *plane, t_ambient ambient);
@@ -192,6 +189,12 @@ void		cylinder_init(t_cy *cy, t_ambient ambient);
 double		cylinder_intersection(t_cy cy, t_ray r);
 double		cylinder_caps_intersect(t_cy cy, t_ray r);
 t_vector	normal_at_cylinder(t_cy cy, t_vector p);
+
+// mlx helpers
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int			close_window(void);
+int			exit_program(int key);
+int			create_trgb(int t, int r, int g, int b);
 
 // test functions
 void		print_vector(t_vector v);

@@ -61,8 +61,3 @@ t_RGB	stripe_at(t_vector point)
 	else
 		return (color_init(1, 1, 1));
 }
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
