@@ -3,6 +3,7 @@
         "vector": "c",
         "iosfwd": "c",
         "iterator": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "locale": "c"
     }
 }

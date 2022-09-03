@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 22:17:22 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 15:02:34 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	plane_init(t_plane *plane, t_ambient ambient)
 {
 	plane->transform = matrix_mult(matrix_mult(matrix_mult(
-					get_rotation_matrix(plane->normal.y * M_PI_2, 'y'),
-					get_matrix(plane->pos.x, plane->pos.y, plane->pos.z, 't')),
+					get_matrix(plane->pos.x, plane->pos.y, plane->pos.z, 't'),
+					get_rotation_matrix(plane->normal.y * M_PI_2, 'y')),
 				get_rotation_matrix(plane->normal.x * M_PI_2, 'z')),
 			get_rotation_matrix(plane->normal.z * M_PI_2, 'x'));
 	plane->pos = vector_init(0, 0, 0, 1);
