@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 18:41:52 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 11:23:41 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,5 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
 	mlx_hook(win, 17, 0, close_window, NULL);
 	mlx_key_hook(win, exit_program, NULL);
-	// system("leaks miniRT");
 	mlx_loop(mlx);
 }
