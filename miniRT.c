@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/03 11:23:41 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/03 18:31:58 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ double	min(double a, double b)
 		return (a);
 	else
 		return (b);
+}
+
+double	rad(double deg)
+{
+	return (deg * M_PI / 100);
 }
 
 void	init_objects(t_world *world)

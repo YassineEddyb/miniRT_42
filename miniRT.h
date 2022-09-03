@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 18:42:06 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:41:55 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,10 @@ int			is_shadowed(t_world world, t_vector point);
 
 // render functions
 void		*render(void *arg);
+
+// Math functions
 double		min(double a, double b);
+double		rad(double deg);
 
 // plane functions
 void		plane_init(t_plane *plane, t_ambient ambient);

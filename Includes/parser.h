@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/03 11:50:51 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/03 18:33:19 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_sphere
 	double		diameter;
 	t_RGB		rgb;
 	t_matrix	transform;
+	t_matrix	inverted_transform;
 	t_material	material;
 	double		shiness;
 
@@ -109,6 +110,7 @@ typedef struct s_plane
 	t_RGB		rgb;
 	t_RGB		rgbcheck;
 	t_matrix	transform;
+	t_matrix	inverted_transform;
 	t_material	material;
 	double		shiness;
 
@@ -126,6 +128,7 @@ typedef struct s_cy
 	t_material	material;
 	t_matrix	transform;
 	double		shiness;
+	t_matrix	inverted_transform;
 
 }	t_cy;
 

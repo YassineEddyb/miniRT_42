@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:09:01 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:11:43 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	sphere_init(t_sphere *sphere, t_ambient ambient)
 			get_matrix(sphere->pos.x, sphere->pos.y, sphere->pos.z, 't'),
 			get_matrix(sphere->diameter,
 				sphere->diameter, sphere->diameter, 's'));
+	sphere->inverted_transform = matrix_inverse(sphere->transform);
 	sphere->pos = vector_init(0, 0, 0, 1);
 	sphere->material = materials(sphere->rgb, ambient.ratio);
 }
@@ -32,7 +33,8 @@ double	sphere_intersection(t_sphere s, t_ray r)
 	double		t1;
 	double		t2;
 
-	r2 = transform(r, s.transform, -1);
+	// printf("test=> %f\n", s.inverted_transform.m[0][0]);
+	r2 = transform(r, s.inverted_transform, 1);
 	v = vector_sub(r2.start, s.pos);
 	delta.a = vector_dot(r2.dir, r2.dir);
 	delta.b = 2 * vector_dot(r2.dir, v);
@@ -59,11 +61,10 @@ t_vector	normal_at_sphere(t_sphere s, t_vector p)
 	t_vector	obj_p;
 	t_vector	obj_n;
 	t_vector	world_n;
-
-	obj_p = vector_mult_matrix(p, s.transform, -1);
+	obj_p = vector_mult_matrix(p, s.inverted_transform, 1);
 	obj_n = vector_sub(obj_p, s.pos);
 	world_n = vector_mult_matrix(obj_n,
-			matrix_transpose(matrix_inverse(s.transform)), 1);
+			matrix_transpose(s.inverted_transform), 1);
 	world_n.w = 0;
 	return (normalize(world_n));
 }

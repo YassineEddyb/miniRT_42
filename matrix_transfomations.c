@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:06:50 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/31 11:12:11 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:14:00 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ t_vector	vector_mult_matrix(t_vector v, t_matrix m, int type)
 	m2.m[1][0] = v.y;
 	m2.m[2][0] = v.z;
 	m2.m[3][0] = v.w;
+	(void)type;
 	if (type == -1)
 		m3 = matrix_mult(matrix_inverse(m), m2);
 	else
