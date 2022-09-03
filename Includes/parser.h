@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/03 11:18:12 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:53:59 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ typedef struct s_sphere
 	double		diameter;
 	t_RGB		rgb;
 	t_matrix	transform;
+	t_matrix	inverted_transform;
 	t_material	material;
-
+	double		shiness;
 }	t_sphere;
 
 // camera
@@ -108,8 +109,9 @@ typedef struct s_plane
 	t_RGB		rgb;
 	t_RGB		rgbCheck;
 	t_matrix	transform;
+	t_matrix	inverted_transform;
 	t_material	material;
-
+	double		shiness;
 }	t_plane;
 
 typedef struct s_cy
@@ -123,7 +125,8 @@ typedef struct s_cy
 	double		min;
 	t_material	material;
 	t_matrix	transform;
-
+	t_matrix	inverted_transform;
+	double		shiness;
 }	t_cy;
 
 typedef struct s_index

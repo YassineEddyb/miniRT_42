@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:54:18 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/02 11:44:49 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/03 16:14:12 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@ void	is_between(float small, float big, float nbr)
 
 void	*check_normalize_value(t_vector pos)
 {
+	if (pos.x < 0 || pos.x > 180)
+		error("ERROR : X NORMALIZE VALUE OUT OF RANGE");
+	if (pos.y < 0 || pos.y > 180)
+		error("ERROR : Y NORMALIZE VALUE OUT OF RANGE");
+	if (pos.z < 0 || pos.z > 180)
+		error("ERROR : Z NORMALIZE VALUE OUT OF RANGE");
+	return ("OK");
+}
+
+void	*check_normalize_camera(t_vector pos)
+{
 	if (pos.x > 1 || pos.x < -1)
-		error("ERROR : NORMALIZE VALUE OUT OF RANGE");
+		error("ERROR : X NORMALIZE VALUE OUT OF RANGE");
 	if (pos.y > 1 || pos.y < -1)
-		error("ERROR : NORMALIZE VALUE OUT OF RANGE");
+		error("ERROR : Y NORMALIZE VALUE OUT OF RANGE");
 	if (pos.z > 1 || pos.z < -1)
-		error("ERROR : NORMALIZE VALUE OUT OF RANGE");
+		error("ERROR : Z NORMALIZE VALUE OUT OF RANGE");
 	return ("OK");
 }
 
@@ -57,7 +68,7 @@ t_camera	*camera(char **info)
 	camera->normal = fill_vector(xyz, 0, 1);
 	free_two_arr(xyz);
 	camera->fov = ft_atof(info[3]);
-	check_normalize_value(camera->normal);
+	check_normalize_camera(camera->normal);
 	is_between(0, 180, camera->fov);
 	return (camera);
 }

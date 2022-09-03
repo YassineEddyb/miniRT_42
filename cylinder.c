@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/03 15:07:57 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:10:57 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void	cylinder_init(t_cy *cy, t_ambient ambient)
 {
 	cy->transform = matrix_mult(matrix_mult(matrix_mult(
 					get_matrix(cy->pos.x, cy->pos.y, cy->pos.z, 't'),
-					get_rotation_matrix(cy->normal.y * M_PI_2, 'x')),
-					get_rotation_matrix(cy->normal.x * M_PI_2, 'z')),
-				get_rotation_matrix(cy->normal.z * M_PI_2, 'y'));
+					get_rotation_matrix(cy->normal.x, 'x')),
+					get_rotation_matrix(cy->normal.y, 'y')),
+				get_rotation_matrix(cy->normal.z, 'z'));
+	cy->inverted_transform = matrix_inverse(cy->transform);
 	cy->pos = vector_init(0, 0, 0, 1);
 	cy->material = materials(cy->rgb, ambient.ratio);
 	cy->min = 0;
@@ -47,7 +48,7 @@ double	cylinder_intersection(t_cy cy, t_ray r)
 	t_delta	delta;
 	t_ray	r2;
 
-	r2 = transform(r, cy.transform, -1);
+	r2 = transform(r, cy.inverted_transform, 1);
 	delta.a = r2.dir.x * r2.dir.x + r2.dir.z * r2.dir.z;
 	if (delta.a < 0)
 		return (-1);
@@ -71,10 +72,10 @@ t_vector	normal_at_cylinder(t_cy cy, t_vector p)
 	t_vector	obj_n;
 	t_vector	world_n;
 
-	obj_p = vector_mult_matrix(p, cy.transform, -1);
+	obj_p = vector_mult_matrix(p, cy.inverted_transform, 1);
 	obj_n = vector_init(obj_p.x, 0, obj_p.z, 0);
 	world_n = vector_mult_matrix(obj_n,
-			matrix_transpose(matrix_inverse(cy.transform)), 1);
+			matrix_transpose(cy.inverted_transform), 1);
 	world_n.w = 0;
 	return (normalize(world_n));
 }

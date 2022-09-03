@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 18:41:52 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:41:27 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ double	min(double a, double b)
 		return (a);
 	else
 		return (b);
+}
+
+double	rad(double deg)
+{
+	return (deg * M_PI / 100);
 }
 
 void	init_objects(t_world *world)
