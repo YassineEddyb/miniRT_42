@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/03 19:42:37 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 12:49:29 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ double	sphere_intersection(t_sphere s, t_ray r)
 	double		t1;
 	double		t2;
 
-	// printf("test=> %f\n", s.inverted_transform.m[0][0]);
 	r2 = transform(r, s.inverted_transform, 1);
 	v = vector_sub(r2.start, s.pos);
 	delta.a = vector_dot(r2.dir, r2.dir);
@@ -61,6 +60,7 @@ t_vector	normal_at_sphere(t_sphere s, t_vector p)
 	t_vector	obj_p;
 	t_vector	obj_n;
 	t_vector	world_n;
+
 	obj_p = vector_mult_matrix(p, s.inverted_transform, 1);
 	obj_n = vector_sub(obj_p, s.pos);
 	world_n = vector_mult_matrix(obj_n,
