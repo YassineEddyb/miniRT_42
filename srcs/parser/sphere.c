@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:55:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/03 16:15:41 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/04 12:51:13 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_plane	*plane(char **tmp)
 	t_plane		*plane;
 	char		**xyz;
 
-	if (len_2d(tmp) != 5)
+	if (len_2d(tmp) < 5 || len_2d(tmp) > 6)
 		error("ERROR: plane");
 	plane = malloc (sizeof(t_plane));
 	check_rgbstring(tmp[1]);
@@ -82,6 +82,10 @@ t_plane	*plane(char **tmp)
 	free_two_arr(xyz);
 	plane->rgb = fill_rgb(tmp[3]);
 	plane->shiness = ft_atof(tmp[4]);
+	if (tmp[5])
+		plane->rgbcheck = fill_rgb(tmp[5]);
+	else
+		plane->rgbcheck = fill_rgb("-1,-1,-1");
 	is_between(0, 200, plane->shiness);
 	check_rgb_value(plane->rgb);
 	check_normalize_value(plane->normal);
