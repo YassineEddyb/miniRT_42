@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:55:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/04 13:11:04 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 15:27:13 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,7 @@ t_plane	*plane(char **tmp)
 	plane->rgb = fill_rgb(tmp[3]);
 	plane->shiness = ft_atof(tmp[4]);
 	if (tmp[5])
-	{
-		check_rgbstring(tmp[5]);
-		plane->rgbcheck = fill_rgb(tmp[5]);
-		check_rgb_value(plane->rgbcheck);
-	}
+		plane->rgbcheck = plane_optional(tmp[5]);
 	else
 		plane->rgbcheck = fill_rgb("-1,-1,-1");
 	is_between(0, 200, plane->shiness);

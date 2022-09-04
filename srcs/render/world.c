@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 18:18:07 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 18:24:12 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,12 @@ t_RGB	shade_hit(t_world world, t_comps comps)
 		data.m.color = stripe_at(*p, comps.point);
 		return (lightning(data, comps, is_shadowed(world, data.pos)));
 	}
-	else if (comps.type == 'c')
+	else
 	{
 		cy = (t_cy *)comps.object;
 		data.m = cy->material;
 		return (lightning(data, comps, is_shadowed(world, data.pos)));
 	}
-	return (color_init(0, 0, 0));
 }
 
 // get the color at the intersection of the t_ray with the sphere
