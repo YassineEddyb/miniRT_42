@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 17:58:23 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	camera_init(t_camera *camera, double hsize, double vsize)
 	up = vector_init(0, 1, 0, 0);
 	free_matrix(camera->transform);
 	camera->transform = view_transform(camera->pos, camera->normal, up);
+	camera->inverted_transform = matrix_inverse(camera->transform);
 }
 
 // transform the view of the camera

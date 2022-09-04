@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 18:05:59 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
 	mlx_hook(win, 17, 0, close_window, NULL);
 	mlx_key_hook(win, exit_program, NULL);
-	// system("leaks miniRT");
+	free_objects(world);
+	system("leaks miniRT");
 	mlx_loop(mlx);
 }

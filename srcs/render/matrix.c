@@ -6,13 +6,13 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:55:32 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:16:08 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 18:12:36 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/miniRT.h"
 
-// multiplu tow matrixes
+// multiplu tow matrixes and free
 t_matrix	matrix_mult(t_matrix m1, t_matrix m2)
 {
 	int			i;
@@ -34,6 +34,7 @@ t_matrix	matrix_mult(t_matrix m1, t_matrix m2)
 				result.m[i][j] += m1.m[i][k] * m2.m[k][j];
 		}
 	}
+	free_matrix(m1);
 	free_matrix(m2);
 	return (result);
 }
@@ -62,6 +63,7 @@ t_matrix	cofactor_matrix(t_matrix m)
 	int			i;
 	int			j;
 	t_matrix	matrix;
+	t_matrix	sub_matrix;
 
 	matrix = matrix_create(m.rows, m.cols);
 	i = 0;
@@ -70,8 +72,10 @@ t_matrix	cofactor_matrix(t_matrix m)
 		j = 0;
 		while (j < m.cols)
 		{
+			sub_matrix = submatrix(m, i, j);
 			matrix.m[i][j] = cofactor(
-					matrix_determinant(submatrix(m, i, j)), i, j);
+					matrix_determinant(sub_matrix), i, j);
+			free_matrix(sub_matrix);
 			j++;
 		}
 		i++;
@@ -106,12 +110,16 @@ t_matrix	matrix_inverse(t_matrix m)
 {
 	double		det;
 	t_matrix	matrix;
+	t_matrix	tmp_matrix;
 
 	det = matrix_determinant(m);
 	if (det == 0)
 		exit(1);
-	matrix = cofactor_matrix(m);
-	matrix = matrix_transpose(matrix);
-	matrix = matrix_devide_by_det(matrix, det);
+	tmp_matrix = cofactor_matrix(m);
+	matrix = matrix_transpose(tmp_matrix);
+	free_matrix(tmp_matrix);
+	tmp_matrix = matrix;
+	matrix = matrix_devide_by_det(tmp_matrix, det);
+	free_matrix(tmp_matrix);
 	return (matrix);
 }

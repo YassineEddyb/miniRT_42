@@ -6,12 +6,13 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 14:59:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 15:21:27 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/miniRT.h"
 
+// render the scene
 void	*render(void *arg)
 {
 	t_th	*th;

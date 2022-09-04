@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:13:26 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 18:07:31 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <mlx.h>
 # include <pthread.h>
 
-# define WIDTH 600
-# define HEIGHT 500
+# define WIDTH 500
+# define HEIGHT 500 
 # define UNIT 10
 
 # define EPSILON 0.0000001f
@@ -52,12 +52,6 @@ typedef struct s_light_data {
 	t_light		l;
 	t_vector	pos;
 }	t_light_data;
-
-// typedef struct 
-// {
-// 	double t;
-// 	void *object;
-// } intesection;
 
 /* The t_ray */
 typedef struct s_ray {
@@ -121,6 +115,8 @@ double		matrix_determinant(t_matrix m);
 t_matrix	matrix_mult(t_matrix m1, t_matrix m2);
 t_matrix	matrix_transpose(t_matrix m);
 t_matrix	matrix_inverse(t_matrix m);
+
+t_matrix	mult_matrix(t_matrix m1, t_matrix m2);
 
 // matrix transformatons
 t_vector	translate(t_vector v, t_vector translator, int type);
@@ -202,6 +198,7 @@ int			create_trgb(int t, int r, int g, int b);
 
 // free leaks funcion
 void		free_matrix(t_matrix m);
+void		free_objects(t_world *world);
 
 // test functions
 void		print_vector(t_vector v);

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 17:50:29 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	plane_init(t_plane *plane, t_ambient ambient)
 				get_rotation_matrix(rad(plane->normal.y), 'y')),
 			get_rotation_matrix(rad(plane->normal.z), 'z'));
 	plane->inverted_transform = matrix_inverse(plane->transform);
+	plane->transposed_matrix = matrix_transpose(plane->inverted_transform);
 	plane->pos = vector_init(0, 0, 0, 1);
 	plane->material = materials(plane->rgb, ambient.ratio, plane->shiness);
 }
@@ -47,8 +48,7 @@ t_vector	normal_at_plane(t_plane plane)
 
 	normal = vector_init(0, 1, 0, 1);
 	obj_p = vector_mult_matrix(normal, plane.inverted_transform, 1);
-	world_n = vector_mult_matrix(obj_p,
-			matrix_transpose(plane.inverted_transform), 1);
+	world_n = vector_mult_matrix(obj_p, plane.transposed_matrix, 1);
 	world_n.w = 0;
 	return (normalize(world_n));
 }

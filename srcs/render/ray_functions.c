@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 23:30:25 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 17:59:07 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_ray	ray_for_pixel(t_camera camera, int x, int y)
 	world_x = camera.half_width - (x + 0.5) * camera.pixel_size;
 	world_y = camera.half_height - (y + 0.5) * camera.pixel_size;
 	pixel = vector_mult_matrix(vector_init(
-				world_x, world_y, -1, 1), camera.transform, -1);
+				world_x, world_y, -1, 1), camera.inverted_transform, 1);
 	r.start = camera.pos;
 	r.dir = normalize(vector_sub(pixel, r.start));
 	return (r);

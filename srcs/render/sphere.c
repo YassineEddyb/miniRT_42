@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 17:51:16 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	sphere_init(t_sphere *sphere, t_ambient ambient)
 			get_matrix(sphere->diameter,
 				sphere->diameter, sphere->diameter, 's'));
 	sphere->inverted_transform = matrix_inverse(sphere->transform);
+	sphere->transposed_matrix = matrix_transpose(sphere->inverted_transform);
 	sphere->pos = vector_init(0, 0, 0, 1);
 	sphere->material = materials(sphere->rgb, ambient.ratio, sphere->shiness);
 }
@@ -63,8 +64,7 @@ t_vector	normal_at_sphere(t_sphere s, t_vector p)
 
 	obj_p = vector_mult_matrix(p, s.inverted_transform, 1);
 	obj_n = vector_sub(obj_p, s.pos);
-	world_n = vector_mult_matrix(obj_n,
-			matrix_transpose(s.inverted_transform), 1);
+	world_n = vector_mult_matrix(obj_n, s.transposed_matrix, 1);
 	world_n.w = 0;
 	return (normalize(world_n));
 }

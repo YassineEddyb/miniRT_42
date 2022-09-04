@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:01 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 18:12:53 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ double	cofactor(double det, int row, int col)
 // get the determinant of a matrix
 double	matrix_determinant(t_matrix m)
 {
-	int		i;
-	double	det;
+	int			i;
+	double		det;
+	t_matrix	sub_matrix;
 
 	if (m.rows == 2 && m.cols == 2)
 		return (determinant(m));
@@ -71,8 +72,10 @@ double	matrix_determinant(t_matrix m)
 	det = 0;
 	while (i < m.cols)
 	{
+		sub_matrix = submatrix(m, 0, i);
 		det += m.m[0][i] * cofactor(
-				matrix_determinant(submatrix(m, 0, i)), 0, i);
+				matrix_determinant(sub_matrix), 0, i);
+		free_matrix(sub_matrix);
 		i++;
 	}
 	return (det);

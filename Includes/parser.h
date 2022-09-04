@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/03 18:33:19 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:57:46 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_sphere
 	t_RGB		rgb;
 	t_matrix	transform;
 	t_matrix	inverted_transform;
+	t_matrix	transposed_matrix;
 	t_material	material;
 	double		shiness;
 
@@ -79,6 +80,7 @@ typedef struct s_camera
 	t_vector	normal;
 	double		fov;
 	t_matrix	transform;
+	t_matrix	inverted_transform;
 	double		hsize;
 	double		vsize;
 	double		half_width;
@@ -111,6 +113,7 @@ typedef struct s_plane
 	t_RGB		rgbcheck;
 	t_matrix	transform;
 	t_matrix	inverted_transform;
+	t_matrix	transposed_matrix;
 	t_material	material;
 	double		shiness;
 
@@ -129,6 +132,7 @@ typedef struct s_cy
 	t_matrix	transform;
 	double		shiness;
 	t_matrix	inverted_transform;
+	t_matrix	transposed_matrix;
 
 }	t_cy;
 

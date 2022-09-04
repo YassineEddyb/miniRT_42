@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:21:13 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 18:12:25 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,28 @@ t_matrix	get_rotation_matrix(double r, int type)
 	return (m);
 }
 
-void	init_light_data(t_light_data *data, t_world world, t_comps comps)
+// multiply matrixes
+t_matrix	mult_matrix(t_matrix m1, t_matrix m2)
 {
-	data->am = **(world.ambient);
-	data->l = **(world.light);
-	data->pos = comps.over_point;
+	int			i;
+	int			j;
+	int			k;
+	t_matrix	result;
+
+	if (m1.cols != m2.rows)
+		exit(1);
+	result = matrix_create(m1.rows, m2.cols);
+	i = -1;
+	while (++i < m1.rows)
+	{
+		j = -1;
+		while (++j < m2.cols)
+		{
+			k = -1;
+			while (++k < m1.cols)
+				result.m[i][j] += m1.m[i][k] * m2.m[k][j];
+		}
+	}
+	free_matrix(m2);
+	return (result);
 }
