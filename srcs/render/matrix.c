@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 21:55:32 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 18:12:36 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 20:16:28 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ t_matrix	matrix_inverse(t_matrix m)
 
 	det = matrix_determinant(m);
 	if (det == 0)
+	{
+		error("ERROR: CAN'T TRANSFORM CAMERA");
 		exit(1);
+	}
 	tmp_matrix = cofactor_matrix(m);
 	matrix = matrix_transpose(tmp_matrix);
 	free_matrix(tmp_matrix);

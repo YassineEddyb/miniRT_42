@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 17:58:23 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 20:04:25 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,13 @@ void	camera_init(t_camera *camera, double hsize, double vsize)
 // transform the view of the camera
 t_matrix	view_transform(t_vector from, t_vector to, t_vector up)
 {
-	t_vector	forward;
 	t_vector	left;
 	t_vector	true_up;
 	t_matrix	or;
 	t_matrix	m;
 
-	to = vector_scale(to, 35);
-	forward = normalize(vector_sub(to, from));
-	left = vector_cross(forward, normalize(up));
-	true_up = vector_cross(left, forward);
+	left = vector_cross(to, normalize(up));
+	true_up = vector_cross(left, to);
 	or = matrix_create(4, 4);
 	or.m[0][0] = left.x;
 	or.m[0][1] = left.y;
@@ -62,9 +59,9 @@ t_matrix	view_transform(t_vector from, t_vector to, t_vector up)
 	or.m[1][0] = true_up.x;
 	or.m[1][1] = true_up.y;
 	or.m[1][2] = true_up.z;
-	or.m[2][0] = -forward.x;
-	or.m[2][1] = -forward.y;
-	or.m[2][2] = -forward.z;
+	or.m[2][0] = -to.x;
+	or.m[2][1] = -to.y;
+	or.m[2][2] = -to.z;
 	or.m[3][3] = 1;
 	m = get_matrix(-from.x, -from.y, -from.z, 't');
 	return (matrix_mult(or, m));
