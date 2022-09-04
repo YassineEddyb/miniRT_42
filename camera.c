@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/03 18:12:56 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 09:58:35 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_matrix	view_transform(t_vector from, t_vector to, t_vector up)
 	t_vector	true_up;
 	t_matrix	or;
 	t_matrix	m;
+
+	to = vector_scale(to, 100);
 
 	forward = normalize(vector_sub(to, from));
 	left = vector_cross(forward, normalize(up));

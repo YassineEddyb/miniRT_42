@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/03 18:31:58 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/03 21:33:47 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ double	min(double a, double b)
 
 double	rad(double deg)
 {
-	return (deg * M_PI / 100);
+	return (deg * M_PI_2);
 }
 
 void	init_objects(t_world *world)

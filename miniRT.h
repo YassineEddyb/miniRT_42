@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/03 17:41:55 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/03 19:41:00 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <mlx.h>
 # include <pthread.h>
 
-# define WIDTH 400
-# define HEIGHT 300
+# define WIDTH 500
+# define HEIGHT 400
 
 # define EPSILON 0.0000001f
 # define RAY_T_MIN 0.001f
@@ -159,7 +159,7 @@ void		ambient_init(t_ambient *ambient);
 t_RGB		lightning(t_light_data data, t_comps comps, int in_shadow);
 
 // material functions
-t_material	materials(t_RGB color, double ratio);
+t_material	materials(t_RGB color, double ratio, double shininess);
 
 // world functions
 t_world		worldInit(t_light l);
