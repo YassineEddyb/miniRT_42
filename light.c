@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:30:33 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/03 19:38:45 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 12:13:40 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ t_RGB	get_specular(t_light_data data, t_comps comps, t_vector lightv)
 t_RGB	lightning(t_light_data data, t_comps comps, int in_shadow)
 {
 	t_phong	phong;
+	t_RGB test;
 
-	phong.eff_color = mult_colors(mult_colors(
-				data.m.color, data.l.rgb), data.am.rgb);
+	test = mult_colors(data.m.color, data.am.rgb);
+	phong.eff_color = mult_colors(data.m.color, data.l.rgb);
 	phong.lightv = normalize(vector_sub(data.l.pos, data.pos));
-	phong.ambient = scale_colors(phong.eff_color, data.m.ambient);
+	phong.ambient = scale_colors(test, data.m.ambient);
 	phong.light_dot_n = vector_dot(phong.lightv, comps.normalv);
 	if (phong.light_dot_n < 0 || in_shadow)
 	{

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/03 21:25:55 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 10:09:11 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_vector	normal_at_plane(t_plane plane)
 	t_vector	obj_p;
 	t_vector	world_n;
 
-	normal = vector_init(0, 1, 0, 0);
+	normal = vector_init(0, 1, 0, 1);
 	obj_p = vector_mult_matrix(normal, plane.inverted_transform, 1);
 	world_n = vector_mult_matrix(obj_p,
 			matrix_transpose(plane.inverted_transform), 1);
