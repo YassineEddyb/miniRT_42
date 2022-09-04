@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shadows.c                                          :+:      :+:    :+:   */
+/*   mlx_helpers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/02 15:42:08 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:09:24 by yed-dyb          ###   ########.fr       */
+/*   Created: 2022/09/02 12:08:10 by yed-dyb           #+#    #+#             */
+/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../Includes/miniRT.h"
 
-int	is_shadowed(t_world world, t_vector point)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	t_ray		r;
-	t_intersect	intersect;
-	t_vector	v;
-	t_vector	dir;
-	int			i;
+	char	*dst;
 
-	i = 0;
-	while (world.light[i])
-	{
-		v = vector_sub((**world.light).pos, point);
-		dir = normalize(v);
-		r.start = point;
-		r.dir = dir;
-		intersect = intersect_world(world, r);
-		if (intersect.t != -1 && intersect.t < magnitude(v))
-			return (1);
-		i++;
-	}
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+int	close_window(void)
+{
+	exit(0);
+}
+
+int	exit_program(int key)
+{
+	if (key == 53)
+		exit(0);
 	return (0);
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }

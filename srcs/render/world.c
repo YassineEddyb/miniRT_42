@@ -6,11 +6,11 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 12:54:23 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../Includes/miniRT.h"
 
 // set the instersected object data
 void	intersect_object(t_intersect *intersect, double t, void *obj, char type)

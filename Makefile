@@ -6,9 +6,10 @@
 #    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/09/03 18:53:43 by yed-dyb          ###   ########.fr        #
+#    Updated: 2022/09/04 15:13:01 by yed-dyb          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 
 SRCS =	./srcs/get_next_line/get_next_line.c\
@@ -18,25 +19,26 @@ SRCS =	./srcs/get_next_line/get_next_line.c\
 		./srcs/parser/camera.c ./srcs/parser/light.c ./srcs/parser/sphere.c\
 		./srcs/parser/helper.c\
 
-SRCS_RENDER = 	miniRT.c\
-		vector.c\
-		matrix.c\
-		matrix_helpers.c\
-		matrix_transfomations.c\
-		ray_functions.c\
-		sphere.c mutrix_inits.c\
-		color.c\
-		light.c\
-		material.c\
-		world.c\
-		camera.c\
-		shadows.c\
-		render.c\
-		planes.c\
-		cylinder.c\
-		vector_helpers.c\
-		mlx_helpers.c\
-		free_leaks.c
+SRCS_RENDER = 	./srcs/render/miniRT.c\
+		./srcs/render/vector.c\
+		./srcs/render/matrix.c\
+		./srcs/render/matrix_helpers.c\
+		./srcs/render/matrix_transfomations.c\
+		./srcs/render/ray_functions.c\
+		./srcs/render/sphere.c\
+		./srcs/render/mutrix_inits.c\
+		./srcs/render/color.c\
+		./srcs/render/light.c\
+		./srcs/render/material.c\
+		./srcs/render/world.c\
+		./srcs/render/camera.c\
+		./srcs/render/shadows.c\
+		./srcs/render/render.c\
+		./srcs/render/planes.c\
+		./srcs/render/cylinder.c\
+		./srcs/render/vector_helpers.c\
+		./srcs/render/mlx_helpers.c\
+		./srcs/render/free_leaks.c
 
 NAME = miniRT
 MLX = -lmlx -framework OpenGL -framework AppKit
@@ -45,7 +47,7 @@ OBJS = ${SRCS:.c=.o}
 
 CC = @cc
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 RM = @rm -f
 

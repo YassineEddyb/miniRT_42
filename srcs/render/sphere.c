@@ -6,11 +6,11 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 12:49:29 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../Includes/miniRT.h"
 
 // init sphere
 void	sphere_init(t_sphere *sphere, t_ambient ambient)

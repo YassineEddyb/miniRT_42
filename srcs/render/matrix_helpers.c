@@ -6,11 +6,11 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:01 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 10:47:27 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../Includes/miniRT.h"
 
 // get the determinant of a submatrix
 double	determinant(t_matrix m)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../Includes/miniRT.h"
 
 // init color
 t_RGB	color_init(double r, double g, double b)
@@ -57,7 +57,11 @@ t_RGB	scale_colors(t_RGB color1, double scaler)
 t_RGB	stripe_at(t_plane plane, t_vector point)
 {
 	if ((int)(round(point.x) + round(point.y) + round(point.z)) % 2 == 0)
-		return (plane.rgb);
-	else
-		return (color_init(1, 1, 1));
+		return (color_init(plane.rgb.red / 255,
+				plane.rgb.green / 255, plane.rgb.blue / 255));
+	else if (plane.rgbcheck.red > -1)
+		return (color_init(plane.rgbcheck.red / 255,
+				plane.rgbcheck.green / 255, plane.rgbcheck.blue / 255));
+	return (color_init(plane.rgb.red / 255,
+			plane.rgb.green / 255, plane.rgb.blue / 255));
 }

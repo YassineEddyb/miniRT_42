@@ -6,14 +6,14 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 12:53:13 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 15:13:26 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include "Includes/parser.h"
+# include "parser.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -22,8 +22,9 @@
 # include <mlx.h>
 # include <pthread.h>
 
-# define WIDTH 500
-# define HEIGHT 400
+# define WIDTH 600
+# define HEIGHT 500
+# define UNIT 10
 
 # define EPSILON 0.0000001f
 # define RAY_T_MIN 0.001f

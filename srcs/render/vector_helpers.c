@@ -6,11 +6,11 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:41:55 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/08/31 11:51:15 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../Includes/miniRT.h"
 
 // get the length of a vector
 double	magnitude(t_vector v)

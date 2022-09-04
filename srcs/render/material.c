@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_helpers.c                                      :+:      :+:    :+:   */
+/*   material.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/02 12:08:10 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/02 12:15:16 by yed-dyb          ###   ########.fr       */
+/*   Created: 2022/07/27 11:54:53 by yed-dyb           #+#    #+#             */
+/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../Includes/miniRT.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// materail init
+t_material	materials(t_RGB color, double ratio, double shininess)
 {
-	char	*dst;
+	t_material	m;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	close_window(void)
-{
-	exit(0);
-}
-
-int	exit_program(int key)
-{
-	if (key == 53)
-		exit(0);
-	return (0);
-}
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
+	m.color = color_init(color.red / 255, color.green / 255, color.blue / 255);
+	m.ambient = ratio;
+	m.shininess = shininess;
+	return (m);
 }

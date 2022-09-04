@@ -6,11 +6,11 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:46:58 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 12:44:35 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/04 15:11:09 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../../Includes/miniRT.h"
 
 // init camera
 void	camera_init(t_camera *camera, double hsize, double vsize)
@@ -50,7 +50,7 @@ t_matrix	view_transform(t_vector from, t_vector to, t_vector up)
 	t_matrix	or;
 	t_matrix	m;
 
-	to = vector_scale(to, 100);
+	to = vector_scale(to, 35);
 	forward = normalize(vector_sub(to, from));
 	left = vector_cross(forward, normalize(up));
 	true_up = vector_cross(left, forward);
