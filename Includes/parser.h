@@ -6,7 +6,7 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/03 18:33:19 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/04 15:28:03 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ int			len_2d(char **str);
 void		is_between(float small, float big, float nbr);
 void		*check_rgb_value(t_RGB rgb);
 void		*check_normalize_value(t_vector pos);
+
 t_world		*allocate_data(t_index *index);
 t_index		*count_index(char **file);
 t_index		*fill_index(void);
@@ -186,5 +187,7 @@ t_plane		*plane(char **tmp);
 t_cy		*cylinder(char **tmp);
 t_world		*parser(int ac, char **av);
 t_vector	fill_vector(char **xyz, int _w, int dv);
+t_RGB		plane_optional(char *tmp);
+t_RGB		fill_rgb(char *tmp);
 
 #endif

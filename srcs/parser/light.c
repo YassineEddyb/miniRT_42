@@ -6,11 +6,21 @@
 /*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:10:35 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/02 11:44:19 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/04 15:27:39 by ael-bach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/parser.h"
+
+t_RGB	plane_optional(char *tmp)
+{
+	t_RGB	rgb;
+
+	check_rgbstring(tmp);
+	rgb = fill_rgb(tmp);
+	check_rgb_value(rgb);
+	return (rgb);
+}
 
 t_light	*light(char **info)
 {
