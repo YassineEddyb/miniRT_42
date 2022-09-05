@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 20:19:29 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/05 11:00:07 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,16 @@ void	create_threads(t_world *world, t_data *img)
 	t_th	*th;
 	int		len;
 
-	len = ceil(WIDTH / 100);
-	th = malloc(len * sizeof(t_th));
+	len = ceil(WIDTH / THREAD);
+	th = malloc((len + 1) * sizeof(t_th));
 	i = 0;
-	while (i < len)
+	while (i < len + 1)
 	{
-		th[i].min = i * 100;
-		th[i].max = i * 100 + 100;
+		th[i].min = i * THREAD;
+		if (i * THREAD + THREAD < WIDTH)
+			th[i].max = i * THREAD + THREAD;
+		else
+			th[i].max = WIDTH;
 		th[i].camera = *(world->camera[0]);
 		th[i].world = *world;
 		th[i].img = img;

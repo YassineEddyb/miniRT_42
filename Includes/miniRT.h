@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 18:07:31 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/05 10:53:35 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # include <mlx.h>
 # include <pthread.h>
 
-# define WIDTH 500
-# define HEIGHT 500 
+# define WIDTH  600
+# define HEIGHT 500
 # define UNIT 10
+# define THREAD 50
 
 # define EPSILON 0.0000001f
 # define RAY_T_MIN 0.001f
