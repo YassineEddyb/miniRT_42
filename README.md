@@ -11,4 +11,6 @@ generating digital images.
 
 ### How it works?
 
-Just loop over all pixels and generate ray then see if intersects with an object the calculate the color of this pixel, sounds simple isn't it, Beleive me it's not.
+Just loop over all pixels and generate ray for each one then see if intersects with an object and calculate the color of this pixel, sounds simple isn't it, Beleive me it's not.
+
+<b>first we have to generate the ray for each pixel</b>
