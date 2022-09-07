@@ -16,3 +16,4 @@ Just loop over all pixels and generate a ray for each one, then see if intersect
 <b>First we have to generate the ray for each pixel</b>
 
 here is some resourses
+<a srs="https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays">https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays</a>
