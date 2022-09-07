@@ -13,4 +13,6 @@ generating digital images.
 
 Just loop over all pixels and generate a ray for each one, then see if intersects with any object and calculate the color for this pixel, sounds simple isn't it, well it's not.
 
-<b>first we have to generate the ray for each pixel</b>
+<b>First we have to generate the ray for each pixel</b>
+
+here is some resourses
