@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/05 10:53:35 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/08 18:56:12 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <mlx.h>
 # include <pthread.h>
 
-# define WIDTH  600
-# define HEIGHT 500
+# define WIDTH  800
+# define HEIGHT 600
 # define UNIT 10
 # define THREAD 50
 
@@ -74,6 +74,7 @@ typedef struct s_comps {
 	t_vector	point;
 	t_vector	eyev;
 	t_vector	normalv;
+	t_vector	reflectv;
 	int			inside;
 }	t_comps;
 
@@ -131,7 +132,7 @@ t_vector	vector_mult_matrix(t_vector v, t_matrix m, int type);
 t_matrix	matrix_create(int rows, int cols);
 t_matrix	get_matrix(double x, double y, double z, char type);
 t_matrix	get_rotation_matrix(double r, int type);
-void		init_light_data(t_light_data *data, t_world world, t_comps comps);
+void	init_light_data(t_light_data *data, t_world world, t_comps comps, int index);
 
 // t_ray functions
 t_vector	position(t_ray r, double t);
@@ -157,14 +158,14 @@ void		ambient_init(t_ambient *ambient);
 t_RGB		lightning(t_light_data data, t_comps comps, int in_shadow);
 
 // material functions
-t_material	materials(t_RGB color, double ratio, double shininess);
+t_material	materials(t_RGB color, double ratio, double shininess, double reflective);
 
 // world functions
 t_world		worldInit(t_light l);
 t_intersect	intersect_world(t_world world, t_ray r);
 t_comps		prepare_computations(t_ray r, t_intersect i);
-t_RGB		shade_hit(t_world world, t_comps comps);
-t_RGB		color_at(t_world world, t_ray r);
+t_RGB		shade_hit(t_world world, t_comps comps, int remaining);
+t_RGB		color_at(t_world world, t_ray r, int remaining);
 
 // camera functions
 void		camera_init(t_camera *camera, double hsize, double vsize);
@@ -196,6 +197,9 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			close_window(void);
 int			exit_program(int key);
 int			create_trgb(int t, int r, int g, int b);
+
+// refelction functions
+t_RGB		reflect_color(t_world world, t_comps comps, int remaining);
 
 // free leaks funcion
 void		free_matrix(t_matrix m);

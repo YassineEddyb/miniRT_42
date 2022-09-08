@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:30:33 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 18:10:10 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/08 18:49:42 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	light_init(t_light *light)
 }
 
 // init light data
-void	init_light_data(t_light_data *data, t_world world, t_comps comps)
+void	init_light_data(t_light_data *data, t_world world, t_comps comps, int index)
 {
 	data->am = **(world.ambient);
-	data->l = **(world.light);
+	data->l = *(world.light[index]);
 	data->pos = comps.over_point;
 }
 

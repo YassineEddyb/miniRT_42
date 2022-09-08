@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/04 18:22:04 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/08 10:41:39 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_material
 	double		diffuse;
 	double		specular;
 	double		shininess;
+	double		reflective;
 
 }	t_material;
 

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/05 11:00:07 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/08 20:03:39 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,13 @@ void	init_objects(t_world *world)
 		cylinder_init(world->cy[i], *(world->ambient[0]));
 		i++;
 	}
+	i = 0;
+	while (world->light[i])
+	{
+		light_init(world->light[i]);
+		i++;
+	}
 	camera_init(*(world->camera), WIDTH, HEIGHT);
-	light_init(*(world->light));
 	ambient_init(*(world->ambient));
 }
 

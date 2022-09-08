@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 18:24:12 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/08 20:01:43 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,40 +70,50 @@ t_comps	prepare_computations(t_ray r, t_intersect i)
 		comps.normalv = normal_at_cylinder(*((t_cy *)i.object), comps.point);
 	comps.over_point = vector_add(
 			comps.point, vector_scale(comps.normalv, FLT_EPSILON));
+	comps.reflectv = reflect(r.dir, comps.normalv);
 	return (comps);
 }
 
-t_RGB	shade_hit(t_world world, t_comps comps)
+t_RGB	shade_hit(t_world world, t_comps comps, int remaining)
 {
 	t_sphere		*s;
 	t_plane			*p;
 	t_cy			*cy;
 	t_light_data	data;
+	t_RGB			surface = color_init(0, 0, 0);
+	t_RGB			reflected = color_init(0, 0, 0);
+	int i = 0;
 
-	init_light_data(&data, world, comps);
-	if (comps.type == 's')
+	while(world.light[i])
 	{
-		s = (t_sphere *)comps.object;
-		data.m = s->material;
-		return (lightning(data, comps, is_shadowed(world, data.pos)));
+		init_light_data(&data, world, comps, i);
+		if (comps.type == 's')
+		{
+			s = (t_sphere *)comps.object;
+			data.m = s->material;
+			surface = add_colors(surface, lightning(data, comps, is_shadowed(world, data.pos)));
+		}
+		else if (comps.type == 'p')
+		{
+			p = (t_plane *)comps.object;
+			data.m = p->material;
+			data.m.color = stripe_at(*p, comps.point);
+			surface = add_colors(surface, lightning(data, comps, is_shadowed(world, data.pos)));
+		}
+		else
+		{
+			cy = (t_cy *)comps.object;
+			data.m = cy->material;
+			surface = add_colors(surface, lightning(data, comps, is_shadowed(world, data.pos)));
+		}
+		i++;
 	}
-	else if (comps.type == 'p')
-	{
-		p = (t_plane *)comps.object;
-		data.m = p->material;
-		data.m.color = stripe_at(*p, comps.point);
-		return (lightning(data, comps, is_shadowed(world, data.pos)));
-	}
-	else
-	{
-		cy = (t_cy *)comps.object;
-		data.m = cy->material;
-		return (lightning(data, comps, is_shadowed(world, data.pos)));
-	}
+	reflected = reflect_color(world, comps, remaining);
+	return (add_colors(surface, reflected));
 }
 
 // get the color at the intersection of the t_ray with the sphere
-t_RGB	color_at(t_world world, t_ray r)
+t_RGB	color_at(t_world world, t_ray r, int remaining)
 {
 	t_intersect	i;
 	t_comps		comps;
@@ -113,6 +123,6 @@ t_RGB	color_at(t_world world, t_ray r)
 	if (i.t < 0)
 		return (color_init(0, 0, 0));
 	comps = prepare_computations(r, i);
-	c = shade_hit(world, comps);
+	c = shade_hit(world, comps, remaining);
 	return (c);
 }

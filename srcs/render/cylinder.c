@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:14:35 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 18:03:31 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/08 14:37:24 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	cylinder_init(t_cy *cy, t_ambient ambient)
 	cy->inverted_transform = matrix_inverse(cy->transform);
 	cy->transposed_matrix = matrix_transpose(cy->inverted_transform);
 	cy->pos = vector_init(0, 0, 0, 1);
-	cy->material = materials(cy->rgb, ambient.ratio, cy->shiness);
+	cy->material = materials(cy->rgb, ambient.ratio, cy->shiness, 0.1);
 	cy->min = 0;
 	cy->max = cy->height;
 }

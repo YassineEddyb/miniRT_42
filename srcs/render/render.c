@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 14:59:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/04 20:01:24 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/08 11:47:47 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*render(void *arg)
 		while (x < th->max)
 		{
 			r = ray_for_pixel(th->camera, x, y);
-			color = color_at(th->world, r);
+			color = color_at(th->world, r, 5);
 			my_mlx_pixel_put(th->img, x, y, create_trgb(1,
 					min(color.red * 255, 255),
 					min(color.green * 255, 255),
