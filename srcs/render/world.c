@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:24:04 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/08 20:01:43 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/10 19:49:53 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ t_intersect	intersect_world(t_world world, t_ray r)
 		t = cylinder_intersection(*(world.cy[i]), r);
 		intersect_object(&intersect, t, (void *)world.cy[i], 'c');
 	}
+	i = -1;
+	while (world.cube[++i])
+	{
+		t = cube_intersection(*(world.cube[i]), r);
+		intersect_object(&intersect, t, (void *)world.cube[i], 'b');
+	}
 	return (intersect);
 }
 
@@ -68,6 +74,8 @@ t_comps	prepare_computations(t_ray r, t_intersect i)
 		comps.normalv = normal_at_plane(*((t_plane *)i.object));
 	else if (i.type == 'c')
 		comps.normalv = normal_at_cylinder(*((t_cy *)i.object), comps.point);
+	else if (i.type == 'b')
+		comps.normalv = normal_at_cube(*((t_cube *)i.object), comps.point);
 	comps.over_point = vector_add(
 			comps.point, vector_scale(comps.normalv, FLT_EPSILON));
 	comps.reflectv = reflect(r.dir, comps.normalv);
@@ -79,6 +87,7 @@ t_RGB	shade_hit(t_world world, t_comps comps, int remaining)
 	t_sphere		*s;
 	t_plane			*p;
 	t_cy			*cy;
+	t_cube			*cube;
 	t_light_data	data;
 	t_RGB			surface = color_init(0, 0, 0);
 	t_RGB			reflected = color_init(0, 0, 0);
@@ -100,10 +109,16 @@ t_RGB	shade_hit(t_world world, t_comps comps, int remaining)
 			data.m.color = stripe_at(*p, comps.point);
 			surface = add_colors(surface, lightning(data, comps, is_shadowed(world, data.pos)));
 		}
-		else
+		else if (comps.type == 'c')
 		{
 			cy = (t_cy *)comps.object;
 			data.m = cy->material;
+			surface = add_colors(surface, lightning(data, comps, is_shadowed(world, data.pos)));
+		}
+		else if (comps.type == 'b')
+		{
+			cube = (t_cube *)comps.object;
+			data.m = cube->material;
 			surface = add_colors(surface, lightning(data, comps, is_shadowed(world, data.pos)));
 		}
 		i++;

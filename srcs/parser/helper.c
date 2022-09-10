@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 23:28:32 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/02 12:15:49 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:58:23 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ t_index	*count_index_part2(char **tmp, t_index *index)
 		index->cy += 1;
 		return (index);
 	}
+	if (!ft_strncmp(tmp[0], "cb", len))
+	{
+		index->cb += 1;
+		return (index);
+	}
 	return (NULL);
 }
 
@@ -50,6 +55,7 @@ t_index	*fill_index(void)
 	index->sp = 0;
 	index->pl = 0;
 	index->cy = 0;
+	index->cb = 0;
 	return (index);
 }
 
@@ -106,6 +112,9 @@ t_world	*allocate_data(t_index *index)
 		error("ERROR: ALLOCATION !!");
 	data->cy = malloc (sizeof(t_cy *) * (index->cy + 1));
 	if (!data->cy)
+		error("ERROR: ALLOCATION !!");
+	data->cube = malloc (sizeof(t_cube *) * (index->cb + 1));
+	if (!data->cube)
 		error("ERROR: ALLOCATION !!");
 	return (data);
 }

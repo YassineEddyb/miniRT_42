@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:25:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/08 20:03:39 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/10 19:44:05 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ void	init_objects(t_world *world)
 	while (world->cy[i])
 	{
 		cylinder_init(world->cy[i], *(world->ambient[0]));
+		i++;
+	}
+	i = 0;
+	while (world->cube[i])
+	{
+		cube_init(world->cube[i], *(world->ambient[0]));
 		i++;
 	}
 	i = 0;
@@ -94,6 +100,15 @@ int	main(int argc, char **argv)
 
 	world = parser(argc, argv);
 	init_objects(world);
+	// test
+	// t_ray r;
+	// r.start = vector_init(5, 0.5, 0, 1);
+	// r.dir = vector_init(-1, 0, 0, 0);
+
+	// t_vector v = normal_at_cube(*(world->cube[0]), vector_init(1, -0.9, 0.2, 1));
+
+	// printf("%f, %f, %f\n", v.x, v.y, v.z);
+
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "miniRT");
 	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);

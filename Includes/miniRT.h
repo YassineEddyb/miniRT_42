@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/08 18:56:12 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/10 18:45:26 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,11 @@ int			create_trgb(int t, int r, int g, int b);
 
 // refelction functions
 t_RGB		reflect_color(t_world world, t_comps comps, int remaining);
+
+// cubes functions
+double	cube_intersection(t_cube cube, t_ray r);
+void cube_init(t_cube *cube, t_ambient ambient);
+t_vector	normal_at_cube(t_cube cube, t_vector point);
 
 // free leaks funcion
 void		free_matrix(t_matrix m);

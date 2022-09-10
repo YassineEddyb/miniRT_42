@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/08 14:08:17 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/10 16:58:32 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ t_world	*identifier(char **tmp, t_world *data, t_index *index, int nbr)
 	{
 		if (nbr == 1)
 			data->cy[index->cy++] = cylinder(tmp);
+		return (data);
+	}
+	if (!ft_strncmp(tmp[0], "cb", len))
+	{
+		if (nbr == 1)
+			data->cube[index->cb++] = cube(tmp);
 		return (data);
 	}
 	return (NULL);
@@ -100,6 +106,7 @@ t_world	*check_and_fill(char **file)
 	data->cy[index->cy] = NULL;
 	data->plane[index->pl] = NULL;
 	data->sphere[index->sp] = NULL;
+	data->cube[index->cb] = NULL;
 	if (index->a != 1 || index->c != 1 || index->l <= 0)
 		error("ERROR : IN FILE");
 	free (index);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:55:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/04 15:27:13 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:46:19 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,39 @@ t_cy	*cylinder(char **tmp)
 	cy->diameter = ft_atof(tmp[3]) / 10.0;
 	cy->height = ft_atof(tmp[4]) / 10.0;
 	cy->shiness = ft_atof(tmp[6]);
-	is_between(0, 200, cy->shiness);
+	is_between(0, 500, cy->shiness);
 	check_rgb_value(cy->rgb);
 	check_normalize_value(cy->normal);
 	return (cy);
 }
+
+t_cube	*cube(char **tmp)
+{
+	t_cube		*cube;
+	char		**xyz;
+
+	if (len_2d(tmp) != 7)
+		error("ERROR: cube");
+	cube = malloc (sizeof(t_cube));
+	check_rgbstring(tmp[1]);
+	check_rgbstring(tmp[2]);
+	check_rgbstring(tmp[5]);
+	xyz = ft_split(tmp[1], ',');
+	cube->pos = fill_vector(xyz, 1, 10);
+	free_two_arr(xyz);
+	xyz = ft_split(tmp[2], ',');
+	cube->normal = fill_vector(xyz, 0, 1);
+	free_two_arr(xyz);
+	cube->rgb = fill_rgb(tmp[5]);
+	cube->width = ft_atof(tmp[3]) / 10.0;
+	cube->height = ft_atof(tmp[4]) / 10.0;
+	cube->shiness = ft_atof(tmp[6]);
+	is_between(0, 500, cube->shiness);
+	check_rgb_value(cube->rgb);
+	check_normalize_value(cube->normal);
+	return (cube);
+}
+
 
 t_plane	*plane(char **tmp)
 {
@@ -86,7 +114,7 @@ t_plane	*plane(char **tmp)
 		plane->rgbcheck = plane_optional(tmp[5]);
 	else
 		plane->rgbcheck = fill_rgb("-1,-1,-1");
-	is_between(0, 200, plane->shiness);
+	is_between(0, 500, plane->shiness);
 	check_rgb_value(plane->rgb);
 	check_normalize_value(plane->normal);
 	return (plane);
@@ -108,7 +136,7 @@ t_sphere	*sphere(char **tmp)
 	sphere->diameter = ft_atof(tmp[2]) / 10;
 	sphere->rgb = fill_rgb(tmp[3]);
 	sphere->shiness = ft_atof(tmp[4]);
-	is_between(0, 200, sphere->shiness);
+	is_between(0, 500, sphere->shiness);
 	check_rgb_value(sphere->rgb);
 	return (sphere);
 }

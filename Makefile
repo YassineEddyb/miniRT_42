@@ -6,7 +6,7 @@
 #    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/09/08 14:44:31 by yed-dyb          ###   ########.fr        #
+#    Updated: 2022/09/10 16:36:30 by yed-dyb          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ SRCS_RENDER = 	./srcs/render/miniRT.c\
 		./srcs/render/vector_helpers.c\
 		./srcs/render/mlx_helpers.c\
 		./srcs/render/free_leaks.c\
-		./srcs/render/reflection.c
+		./srcs/render/reflection.c\
+		./srcs/render/cubes.c
 
 NAME = miniRT
 MLX = -lmlx -framework OpenGL -framework AppKit

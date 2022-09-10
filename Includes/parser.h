@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/08 10:41:39 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/10 16:57:14 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,19 @@ typedef struct s_cy
 
 }	t_cy;
 
+typedef struct s_cube {
+	t_vector	pos;
+	t_vector	normal;
+	t_RGB		rgb;
+	double		width;
+	double		height;
+	t_material	material;
+	t_matrix	transform;
+	double		shiness;
+	t_matrix	inverted_transform;
+	t_matrix	transposed_matrix;
+} t_cube;
+
 typedef struct s_index
 {
 	int		a;
@@ -145,6 +158,7 @@ typedef struct s_index
 	int		sp;
 	int		pl;
 	int		cy;
+	int		cb;
 
 }	t_index;
 
@@ -164,6 +178,7 @@ typedef struct s_world
 	t_light		**light;
 	t_sphere	**sphere;
 	t_plane		**plane;
+	t_cube		**cube;
 	t_cy		**cy;
 
 }	t_world;
@@ -190,6 +205,7 @@ t_light		*light(char **info);
 t_sphere	*sphere(char **tmp);
 t_plane		*plane(char **tmp);
 t_cy		*cylinder(char **tmp);
+t_cube		*cube(char **tmp);
 t_world		*parser(int ac, char **av);
 t_vector	fill_vector(char **xyz, int _w, int dv);
 t_RGB		plane_optional(char *tmp);

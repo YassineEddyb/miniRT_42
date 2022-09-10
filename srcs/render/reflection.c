@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 10:51:43 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/08 11:47:15 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/10 20:59:20 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ t_RGB reflect_color(t_world world, t_comps comps, int remaining)
 		if (p->material.reflective == 0)
             return (color_init(0, 0, 0));
 		reflective = p->material.reflective;
+	}
+	else if (comps.type == 'c')
+	{
+		cy = (t_cy *)comps.object;
+		if (cy->material.reflective == 0)
+            return (color_init(0, 0, 0));
+		reflective = cy->material.reflective;
 	}
 	else
 	{
