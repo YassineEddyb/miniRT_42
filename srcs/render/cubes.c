@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:55:10 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/10 21:44:58 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/10 22:18:15 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ t_vector	normal_at_cube(t_cube cube, t_vector point)
     double maxc;
 
 	obj_p = vector_mult_matrix(point, cube.inverted_transform, 1);
+    // printf("%f,%f,%f\n", point.x, point.y, point.z);
+
     maxc = fmax(fabs(obj_p.x), fmax(fabs(obj_p.y), fabs(obj_p.z)));
     if (maxc == fabs(obj_p.x))
 	    normal = vector_init(obj_p.x, 0, 0, 1);
@@ -112,7 +114,7 @@ t_vector	normal_at_cube(t_cube cube, t_vector point)
     else
 	    normal = vector_init(0, 0, obj_p.z, 1);
 
-	world_n = vector_mult_matrix(obj_p, cube.transposed_matrix, 1);
+	world_n = vector_mult_matrix(normal, cube.transposed_matrix, 1);
 	world_n.w = 0;
 	return (normalize(world_n));
 }
