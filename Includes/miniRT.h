@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/10 18:45:26 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/12 11:47:20 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <mlx.h>
 # include <pthread.h>
 
-# define WIDTH  800
-# define HEIGHT 600
+# define WIDTH  2400
+# define HEIGHT 1400
 # define UNIT 10
 # define THREAD 50
 
@@ -147,7 +147,7 @@ t_vector	reflect(t_vector in, t_vector normal);
 
 // color functions
 t_RGB		color_init(double r, double g, double b);
-t_RGB		stripe_at(t_plane plane, t_vector point);
+t_RGB		stripe_at(t_plane plane, t_vector point, char type);
 t_RGB		mult_colors(t_RGB color1, t_RGB color2);
 t_RGB		add_colors(t_RGB color1, t_RGB color2);
 t_RGB		scale_colors(t_RGB color1, double scaler);

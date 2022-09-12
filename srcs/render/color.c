@@ -54,12 +54,15 @@ t_RGB	scale_colors(t_RGB color1, double scaler)
 }
 
 // checker board color
-t_RGB	stripe_at(t_plane plane, t_vector point)
+t_RGB	stripe_at(t_plane plane, t_vector point, char type)
 {
-	if ((int)(round(point.x) + round(point.y) + round(point.z)) % 2 == 0)
+	if ((int)(round(point.x) + round(point.y) + round(point.z)) % 2 == 0 && type == 'c')
 		return (color_init(plane.rgb.red / 255,
 				plane.rgb.green / 255, plane.rgb.blue / 255));
-	else if (plane.rgbcheck.red > -1)
+	if (((int)round(point.x) + (int)round(point.z)) % 2 == 0 && type == 'b')
+		return (color_init(plane.rgb.red / 255,
+				plane.rgb.green / 255, plane.rgb.blue / 255));
+	if (plane.rgbcheck.red > -1)
 		return (color_init(plane.rgbcheck.red / 255,
 				plane.rgbcheck.green / 255, plane.rgbcheck.blue / 255));
 	return (color_init(plane.rgb.red / 255,

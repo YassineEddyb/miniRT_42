@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 23:28:32 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/10 16:58:23 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/11 13:40:49 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ t_index	*count_index(char **file)
 	t_index	tmpindex;
 
 	index = fill_index();
-	i = 0;
-	while (file[i])
+	i = -1;
+	while (file[++i])
 	{
 		tmpindex = *index;
 		tmp = ft_split_spaces(file[i], ' ');
@@ -80,9 +80,10 @@ t_index	*count_index(char **file)
 			index->l++;
 		else if (count_index_part2(tmp, &tmpindex))
 			index = count_index_part2(tmp, index);
+		else if (tmp[0][0] == '#')
+			continue;
 		else
 			error("ERROR IN FILE");
-		i++;
 		free_two_arr(tmp);
 	}
 	return (index);

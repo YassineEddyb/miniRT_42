@@ -6,7 +6,7 @@
 #    By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 19:35:33 by ael-bach          #+#    #+#              #
-#    Updated: 2022/09/10 16:36:30 by yed-dyb          ###   ########.fr        #
+#    Updated: 2022/09/11 11:00:30 by yed-dyb          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ libft = srcs/Libft/libft.a
 
 ${NAME} : ${SRCS} ${SRCS_RENDER}
 	@make -C srcs/Libft
-	${CC} ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o ${NAME} -O3
+	${CC} ${CFLAGS} ${SRCS} ${libft} $(SRCS_RENDER) $(MLX) -o ${NAME} -O3 -fsanitize=address -g
 	@tput setaf 2; echo "miniRT IS READY"
 
 all : ${NAME}

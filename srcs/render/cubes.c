@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:55:10 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/10 22:18:15 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/11 12:56:03 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ void print_matrix(t_matrix m)
 
 void cube_init(t_cube *cube, t_ambient ambient)
 {
-	cube->transform = matrix_mult(matrix_mult(matrix_mult(
+	cube->transform = matrix_mult(matrix_mult(matrix_mult(matrix_mult(
 					get_matrix(cube->pos.x, cube->pos.y, cube->pos.z, 't'),
 					get_rotation_matrix(rad(cube->normal.x), 'x')),
 				get_rotation_matrix(rad(cube->normal.y), 'y')),
-			get_rotation_matrix(rad(cube->normal.z), 'z'));
-    print_matrix(cube->transform);
+			get_rotation_matrix(rad(cube->normal.z), 'z')),
+        get_matrix(cube->width, cube->height, cube->length, 's'));
 	cube->inverted_transform = matrix_inverse(cube->transform);
 	cube->transposed_matrix = matrix_transpose(cube->inverted_transform);
 	cube->pos = vector_init(0, 0, 0, 1);
-	cube->material = materials(cube->rgb, ambient.ratio, cube->shiness, 1);
+	cube->material = materials(cube->rgb, ambient.ratio, cube->shiness, cube->reflective);
 	// cube->min = 0;
 	// cube->max = cube->height;
 }
@@ -104,7 +104,6 @@ t_vector	normal_at_cube(t_cube cube, t_vector point)
     double maxc;
 
 	obj_p = vector_mult_matrix(point, cube.inverted_transform, 1);
-    // printf("%f,%f,%f\n", point.x, point.y, point.z);
 
     maxc = fmax(fabs(obj_p.x), fmax(fabs(obj_p.y), fabs(obj_p.z)));
     if (maxc == fabs(obj_p.x))

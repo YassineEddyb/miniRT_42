@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:57:49 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/08 12:30:49 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/11 12:57:12 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	sphere_init(t_sphere *sphere, t_ambient ambient)
 	sphere->inverted_transform = matrix_inverse(sphere->transform);
 	sphere->transposed_matrix = matrix_transpose(sphere->inverted_transform);
 	sphere->pos = vector_init(0, 0, 0, 1);
-	sphere->material = materials(sphere->rgb, ambient.ratio, sphere->shiness, 1);
+	sphere->material = materials(sphere->rgb, ambient.ratio, sphere->shiness, sphere->reflective);
 }
 
 // get the intersection of a t_ray with a sphere

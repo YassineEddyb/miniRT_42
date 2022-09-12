@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:35:10 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/10 16:58:32 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/11 13:35:22 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ t_world	*fi2(char **file, t_index *index, t_world *data)
 			data->light[index->l++] = light(tmp);
 		else if (identifier(tmp, data, &tmpindex, 0))
 			data = identifier(tmp, data, index, 1);
+		else if (tmp[0][0] == '#')
+			continue;
 		else
 			error("ERROR IN FILE");
 		free_two_arr(tmp);

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:14:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/10 21:00:11 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/11 12:56:42 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	plane_init(t_plane *plane, t_ambient ambient)
 	plane->inverted_transform = matrix_inverse(plane->transform);
 	plane->transposed_matrix = matrix_transpose(plane->inverted_transform);
 	plane->pos = vector_init(0, 0, 0, 1);
-	plane->material = materials(plane->rgb, ambient.ratio, plane->shiness, 0);
+	plane->material = materials(plane->rgb, ambient.ratio, plane->shiness, plane->reflective);
 }
 
 double	plane_intersection(t_plane plane, t_ray r)

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:07:24 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/10 16:57:14 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/11 11:55:00 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_sphere
 	t_matrix	transposed_matrix;
 	t_material	material;
 	double		shiness;
+	double		reflective;
 
 }	t_sphere;
 
@@ -112,11 +113,13 @@ typedef struct s_plane
 	t_vector	normal;
 	t_RGB		rgb;
 	t_RGB		rgbcheck;
+	char		stripe_type;
 	t_matrix	transform;
 	t_matrix	inverted_transform;
 	t_matrix	transposed_matrix;
 	t_material	material;
 	double		shiness;
+	double		reflective;
 
 }	t_plane;
 
@@ -131,9 +134,10 @@ typedef struct s_cy
 	double		min;
 	t_material	material;
 	t_matrix	transform;
-	double		shiness;
 	t_matrix	inverted_transform;
 	t_matrix	transposed_matrix;
+	double		shiness;
+	double		reflective;
 
 }	t_cy;
 
@@ -143,11 +147,14 @@ typedef struct s_cube {
 	t_RGB		rgb;
 	double		width;
 	double		height;
+	double		length;
 	t_material	material;
 	t_matrix	transform;
-	double		shiness;
 	t_matrix	inverted_transform;
 	t_matrix	transposed_matrix;
+	double		shiness;
+	double		reflective;
+
 } t_cube;
 
 typedef struct s_index

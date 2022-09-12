@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ambient_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bach <ael-bach@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:13:28 by ael-bach          #+#    #+#             */
-/*   Updated: 2022/09/01 18:00:20 by ael-bach         ###   ########.fr       */
+/*   Updated: 2022/09/11 13:57:32 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_rgbstring(char *str)
 			point += 1;
 	if (point != 2)
 	{
-		printf("Error\n");
+		printf("Error 1\n");
 		exit (1);
 	}
 }
