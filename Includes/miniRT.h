@@ -6,7 +6,7 @@
 /*   By: yed-dyb <yed-dyb@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:27:02 by yed-dyb           #+#    #+#             */
-/*   Updated: 2022/09/12 11:47:20 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2022/09/12 13:03:40 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <mlx.h>
 # include <pthread.h>
 
-# define WIDTH  2400
-# define HEIGHT 1400
+# define WIDTH  1000
+# define HEIGHT 600
 # define UNIT 10
 # define THREAD 50
 
