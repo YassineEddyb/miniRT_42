@@ -19,7 +19,23 @@ Just loop over all pixels and generate a ray for each one, then see if intersect
 Here is some resourses <br>
 <a srs="https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays">https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays</a>
 
-### install
+## install
 ```
-git clone 
+git clone https://github.com/YassineEddyb/miniRT_42 && cd miniRT_42 && make
 ```
+## How to use it
+
+
+plane
+<img src="./images/plane.png" />
+
+sphere
+<img src="./images/sphere.png" />
+
+cylinder
+<img src="./images/cylinder.png" />
+
+cube
+<img src="./images/cube.png" />
+
+
