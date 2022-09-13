@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/yed-dyb/Desktop/miniRT_42",
+            "binaryPath": "/Users/yed-dyb/Desktop/miniRT_42/miniRT",
+            "binaryArgs": []
+        }
+    ]
+}

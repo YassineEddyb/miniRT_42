@@ -1,0 +1,24 @@
+     A               0.3            100,100,100
+# ambient id    #ambient ratio    # ambient color
+
+
+     C             0,10,-50               0,0,1                      70
+# camera id    # camera position    # camera oreintation    # camera field of view
+
+
+     L            -20,30,-10               0.5             255,255,255
+# light id     # light position      # light intensity    # light color
+
+
+    sp             0,10,0 10           255,0,0            200            0.3
+# sphere id    # sphere position    # sphere color    # shininess   # reflection
+
+
+     cy             0,5,0          0,1,0              10            30        255,0,0        100             1
+# cylinder id    # position    # oreintation      # diameter     # height     # color    # shininess   # reflection
+
+    cb        60,25,0        0,0,1          12         0.5          30      20,20,20        200             1
+# cube id   # position   # oreintation   # width    # height    # length     # color    # shininess   # reflection
+
+    pl          0,0,0         0,1,0       255,255,255      100             0          163,222,131                 c
+# plane id   # position   # oreintation     # color    # shininess   # reflection   # optional color    # stripe type optional
