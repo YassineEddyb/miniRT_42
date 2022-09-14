@@ -25,17 +25,29 @@ git clone https://github.com/YassineEddyb/miniRT_42 && cd miniRT_42 && make
 ```
 ## How to use it
 
+There is three conifg object that are mandate to have
 
-plane
+Ambient
+<img src="./images/ambient.png" />
+
+Light
+<img src="./images/light.png" />
+
+Camera
+<img src="./images/camera.png" />
+
+And foor basic shapes that are (optional, will not entirely cause if you leave it empty you will only see a black window)
+
+Plane
 <img src="./images/plane.png" />
 
-sphere
+Sphere
 <img src="./images/sphere.png" />
 
-cylinder
+Cylinder
 <img src="./images/cylinder.png" />
 
-cube
+Cube
 <img src="./images/cube.png" />
 
 
