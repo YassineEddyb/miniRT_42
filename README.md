@@ -10,15 +10,6 @@ In 3D computer graphics, ray tracing is a technique for modeling light
 transport for use in a wide variety of rendering algorithms for
 generating digital images.
 
-### How it works?
-
-Just loop over all pixels and generate a ray for each one, then see if intersects with any object and calculate the color for this pixel, sounds simple isn't it, well it's not.
-
-<b>First we have to generate the ray for each pixel</b>
-
-Here is some resourses <br>
-<a srs="https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays">https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays</a>
-
 ## install
 
 Clone this repo
@@ -74,3 +65,16 @@ Cube
 <img src="./images/Screen Shot 2022-09-11 at 5.58.32 PM.png" />
 <img src="./images/Screen Shot 2022-09-12 at 10.26.17 AM.png" />
 <img src="./images/Screen Shot 2022-09-12 at 11.47.06 AM.png" />
+
+### How it works?
+
+in case you're wondering how all this works? just loop over all pixels and generate a ray for each one, then see if intersects with any object and calculate the color for this pixel, sounds simple isn't it, well it's not.
+
+<b>Here is some resourses</b> <br>
+<ol>
+  <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work">Introduction to Ray Tracing: a Simple Method for Creating 3D Images</a> <br> 
+  <a href="https://www.youtube.com/watch?v=gfW1Fhd9u9Q&list=PLlrATfBNZ98edc5GshdBtREv5asFW3yXl">The cherno ray tracing in youtube</a> <br>
+  <a href="https://raytracing.github.io/">Ray Tracing in One Weekend</a> <br>
+  <a href="https://www.amazon.com/Ray-Tracer-Challenge-Test-Driven-Renderer/dp/1680502719/ref=sr_1_1?crid=12SJ4LEACDK9I&keywords=the+ray+tracing+challenge&qid=1663158573&sprefix=the+ray+tracing+challenge%2Caps%2C161&sr=8-1">The The Ray Tracer Challenge</a> <br>
+  <a href="https://www.youtube.com/watch?v=RIgc5J_ZGu8&list=PLAqGIYgEAxrUO6ODA0pnLkM2UOijerFPv">Ray Tracer youtube</a>
+</ol>
