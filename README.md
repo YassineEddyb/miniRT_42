@@ -68,13 +68,13 @@ Cube
 
 ### How it works?
 
-in case you're wondering how all this works? just loop over all pixels and generate a ray for each one, then see if intersects with any object and calculate the color for this pixel, sounds simple isn't it, well it's not.
+in case you're wondering how all this works? just loop over all pixels and generate a ray for each one, then see if intersects with any object and calculate the color for this pixel, sounds simple isn't it, well it's not at least for me.
 
 <b>Here is some resourses</b> <br>
-<ol>
-  <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work">Introduction to Ray Tracing: a Simple Method for Creating 3D Images</a> <br> 
+<ul>
+  <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work">Introduction to Ray Tracing: a Simple    Method for Creating 3D Images</a> <br> 
   <a href="https://www.youtube.com/watch?v=gfW1Fhd9u9Q&list=PLlrATfBNZ98edc5GshdBtREv5asFW3yXl">The cherno ray tracing in youtube</a> <br>
   <a href="https://raytracing.github.io/">Ray Tracing in One Weekend</a> <br>
-  <a href="https://www.amazon.com/Ray-Tracer-Challenge-Test-Driven-Renderer/dp/1680502719/ref=sr_1_1?crid=12SJ4LEACDK9I&keywords=the+ray+tracing+challenge&qid=1663158573&sprefix=the+ray+tracing+challenge%2Caps%2C161&sr=8-1">The The Ray Tracer Challenge</a> <br>
+  <a href="https://www.amazon.com/Ray-Tracer-Challenge-Test-Driven-Renderer/dp/1680502719/ref=sr_1_1?   crid=12SJ4LEACDK9I&keywords=the+ray+tracing+challenge&qid=1663158573&sprefix=the+ray+tracing+challenge%2Caps%2C161&sr=8-1">The The Ray Tracer Challenge</a> <br>
   <a href="https://www.youtube.com/watch?v=RIgc5J_ZGu8&list=PLAqGIYgEAxrUO6ODA0pnLkM2UOijerFPv">Ray Tracer youtube</a>
-</ol>
+</ul>
