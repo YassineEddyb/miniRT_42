@@ -20,12 +20,20 @@ Here is some resourses <br>
 <a srs="https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays">https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays</a>
 
 ## install
+
+Copy this command into a shell
 ```
 git clone https://github.com/YassineEddyb/miniRT_42 && cd miniRT_42 && make
 ```
+Then run the program with an argument from the scenes folder 
+```
+./miniRT ./scenes/1337.rt
+```
+
 ## How to use it
 
-There is three conifg object that are mandate to have
+You can also create your own scene,
+There is three conifg object that are mandate to have:
 
 Ambient
 <img src="./images/ambient.png" />
@@ -36,7 +44,7 @@ Light
 Camera
 <img src="./images/camera.png" />
 
-And foor basic shapes that are (optional, will not entirely cause if you leave it empty you will only see a black window)
+And foor basic shapes that are (optional, will not entirely cause if you leave it empty you will only see a black window):
 
 Plane
 <img src="./images/plane.png" />
