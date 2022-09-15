@@ -1,4 +1,4 @@
-# MINIRT
+# MiniRT
 This project is 42 project that aimes to introduce us to the beautiful world of Raytracing
 
 <img src="./images/1337.png" />
