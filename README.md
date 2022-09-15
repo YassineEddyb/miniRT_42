@@ -158,3 +158,25 @@ x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> - r<sup>2</sup> = 0
 
 Remember that x,y,z are the cordinates of a point in the sphere so we can write it as
 <pre>P<sup>2</sup> - r<sup>2</sup> = 0</pre>
+
+If we replace P with it's value from the equation of a line we get:
+<pre>|O + tD|<sup>2</sup> - r<sup>2</sup> = 0</pre>
+
+With the origin of the sphere on 0,0,0 we get
+<pre>(tD)<sup>2</sup> - r<sup>2</sup> = 0</pre>
+
+When we expand this equation we get
+<pre>(Dt)<sup>2</sup> + 2Dt − R<sup>2</sup> = D<sup>2</sup>t<sup>2</sup> + 2Dt − r<sup>2</sup> = 0</pre>
+
+It looks like:
+<pre>ax<sup>2</sup> + bx + c = 0</pre>
+Where
+<ul>
+  <li><b>a</b> => D</li>
+  <li><b>b</b> => 2D</li>
+  <li><b>c</b> => r<sup>2<sup></li>
+</ul>
+
+so we can solve it using the <a href="https://en.wikipedia.org/wiki/Quadratic_formula">Quadratic Formula</a>
+
+
