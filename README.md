@@ -79,35 +79,61 @@ in case you're wondering how all this works? just loop over all pixels and gener
 </ul>
 
 ## My explanation
-First of all you should be familiar with matrixes and vectors
-check this article from scratchapixel <a href="https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry">geometry</a>
+First of all you should be familiar with matrixes and vectors,
+check this article from scratchapixel <a href="https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry">geometry.</a> <br>
+
+in this lesson well draw a sphere and the same method go for other basic shapes.
 
 ### generating rays
-in orther to generate rays in real life you would have to implement a camera but we will keep thing simple here
+In orther to generate rays in real life you would have to implement a camera but we'll keep thing simple here 
+
+First we'll have to deside how large our window will be
+```
+Width = 100
+Height = 100
+```
+
+We'll assume the ray starts from z -5
+```
+vector ray_origin = point(0, 0, -5)
+```
 
 ```
-# start the ray at z = -5
-vector ray_origin ← point(0, 0, -5)
-
-# put the wall at z = 10
-wall_z ← 10
+# assuming Width > Height
+AspectRatio = Width / Height;
 
 # for each row of pixels in the canvas
-for y ← 0 to width - 1
+for y = 0 to Width - 1
 
-  # compute the world y coordinate (top = +half, bottom = -half)
-  world_y ← half - pixel_size * y
+  # compute the world y coordinate
+  world_x = (2 * ((x + 0.5) / Width) - 1) * tan(fov / 2 * M_PI / 180) * AspectRatio; 
 
   # for each pixel in the row
-  for x ← 0 to height - 1
+  for x = 0 to Height - 1
  
-    # compute the world x coordinate (left = -half, right = half)
-    world_x ← -half + pixel_size * x
+    # compute the world x coordinate
+    world_y = (1 - 2 * ((y + 0.5) / Height) * tan(fov / 2 * M_PI / 180);
 
-    # describe the point on the wall that the ray will target
-    vector position ← point(world_x, world_y, wall_z)
+    # describe the point that the ray will target
+    vector position = point(world_x, world_y, 1)
+
+    # get ray direction
+    vector ray_dir = normalize(ray_dir - ray_origin);
 
   end for
-
 end for
+```
+
+### ray intresetion
+After generating rays we'll see if they intersect with a sphere
+
+We know that the equation of a line is
+```
+<b>p = o + td</b>
+where :
+<ul>
+  <li>p is a point on the line</li>
+  <li>o is the origin on the line</li>
+  <li>d is the dir of the line</li>
+</ul>
 ```
