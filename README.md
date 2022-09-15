@@ -11,18 +11,18 @@ generating digital images.
 
 ## install
 
-Clone this repo
+Clone this repo:
 ```
 git clone https://github.com/YassineEddyb/miniRT_42 && cd miniRT_42 && make
 ```
-Then run the program with a file as an argument from the scenes folder
+Then run the program with a file as an argument from the scenes folder:
 ```
 ./miniRT ./scenes/1337.rt
 ```
 
 ## How to use it
 
-You can also create your own scene,
+You can also create your own scene, just create a file with <b>.rt</b> extention and add configure it. <br>
 There is three conifg object that are mandate to have:
 
 Ambient
@@ -85,15 +85,15 @@ check this article from scratchapixel <a href="https://www.scratchapixel.com/les
 in this lesson well draw a sphere and the same method go for other basic shapes.
 
 ### generating rays
-In orther to generate rays in real life you would have to implement a camera but we'll keep thing simple here 
+In orther to generate rays in real life you would have to implement a camera but we'll keep thing simple here.
 
-First we'll have to deside how large our window will be
+First we'll have to deside how large our window will be:
 ```
 Width = 100
 Height = 100
 ```
 
-We'll assume the ray starts from z -5
+We'll assume the ray starts from z -5.
 ```
 vector ray_origin = point(0, 0, -5)
 ```
@@ -125,15 +125,17 @@ end for
 ```
 
 ### ray intresetion
-After generating rays we'll see if they intersect with a sphere
+After generating rays we'll see if they intersect with a sphere.
 
-We know that the equation of a line is
+We know that the equation of a line is:
 ```
 p = o + td
 ```
-where :
+Where :
 <ul>
   <li><b>p</b>: a point on the line</li>
   <li><b>o</b>: the origin on the line</li>
   <li><b>d</b>: the direction of the line</li>
 </ul>
+
+We
