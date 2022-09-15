@@ -124,7 +124,7 @@ for y = 0 to Width - 1
 end for
 ```
 
-### ray intresetion
+### Ray Sphere intresetion
 After generating rays we'll see if they intersect with a sphere.
 
 We know the equation of a line:
@@ -172,11 +172,11 @@ It looks like:
 <pre>ax<sup>2</sup> + bx + c = 0</pre>
 Where
 <ul>
-  <li><b>a</b> => D</li>
+  <li><b>a</b> => D<sup>2</sup></li>
   <li><b>b</b> => 2D</li>
   <li><b>c</b> => r<sup>2<sup></li>
 </ul>
 
-so we can solve it using the <a href="https://en.wikipedia.org/wiki/Quadratic_formula">Quadratic Formula</a>
+So we can solve it using the <a href="https://en.wikipedia.org/wiki/Quadratic_formula">Quadratic Formula</a>
 
 
