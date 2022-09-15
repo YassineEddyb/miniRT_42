@@ -71,11 +71,11 @@ in case you're wondering how all this works? just loop over all pixels and gener
 
 ## Here is some resourses
 <ul>
-  <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work">Introduction to Ray Tracing: a Simple    Method for Creating 3D Images</a> <br> 
-  <a href="https://www.youtube.com/watch?v=gfW1Fhd9u9Q&list=PLlrATfBNZ98edc5GshdBtREv5asFW3yXl">The cherno ray tracing in youtube</a> <br>
-  <a href="https://raytracing.github.io/">Ray Tracing in One Weekend</a> <br>
-  <a href="https://www.amazon.com/Ray-Tracer-Challenge-Test-Driven-Renderer/dp/1680502719/ref=sr_1_1?   crid=12SJ4LEACDK9I&keywords=the+ray+tracing+challenge&qid=1663158573&sprefix=the+ray+tracing+challenge%2Caps%2C161&sr=8-1">The The Ray Tracer Challenge</a> <br>
-  <a href="https://www.youtube.com/watch?v=RIgc5J_ZGu8&list=PLAqGIYgEAxrUO6ODA0pnLkM2UOijerFPv">Ray Tracer series youtube</a>
+  <li><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work">Introduction to Ray Tracing: a Simple    Method for Creating 3D Images</a></li>s
+  <li><a href="https://www.youtube.com/watch?v=gfW1Fhd9u9Q&list=PLlrATfBNZ98edc5GshdBtREv5asFW3yXl">The cherno ray tracing in youtube</a> <br>
+  <li><a href="https://raytracing.github.io/">Ray Tracing in One Weekend</a></li>
+  <li><a href="https://www.amazon.com/Ray-Tracer-Challenge-Test-Driven-Renderer/dp/1680502719/ref=sr_1_1?   crid=12SJ4LEACDK9I&keywords=the+ray+tracing+challenge&qid=1663158573&sprefix=the+ray+tracing+challenge%2Caps%2C161&sr=8-1">The The Ray Tracer Challenge</a></li>
+  <li><a href="https://www.youtube.com/watch?v=RIgc5J_ZGu8&list=PLAqGIYgEAxrUO6ODA0pnLkM2UOijerFPv">Ray Tracer series youtube</a></li>
 </ul>
 
 ## My explanation
@@ -129,11 +129,11 @@ After generating rays we'll see if they intersect with a sphere
 
 We know that the equation of a line is
 ```
-<b>p = o + td</b>
+p = o + td
+```
 where :
 <ul>
-  <li>p is a point on the line</li>
-  <li>o is the origin on the line</li>
-  <li>d is the dir of the line</li>
+  <li><b>p</b>: a point on the line</li>
+  <li><b>o</b>: the origin on the line</li>
+  <li><b>d</b>: the direction of the line</li>
 </ul>
-```
