@@ -83,4 +83,31 @@ First of all you should be familiar with matrixes and vectors
 check this article from scratchapixel <a href="https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry">geometry</a>
 
 ### generating rays
-There is a lot of methods to generate rays one of them is 
+in orther to generate rays in real life you would have to implement a camera but we will keep thing simple here
+
+```
+# start the ray at z = -5
+vector ray_origin ← point(0, 0, -5)
+
+# put the wall at z = 10
+wall_z ← 10
+
+# for each row of pixels in the canvas
+for y ← 0 to width - 1
+
+  # compute the world y coordinate (top = +half, bottom = -half)
+  world_y ← half - pixel_size * y
+
+  # for each pixel in the row
+  for x ← 0 to height - 1
+ 
+    # compute the world x coordinate (left = -half, right = half)
+    world_x ← -half + pixel_size * x
+
+    # describe the point on the wall that the ray will target
+    vector position ← point(world_x, world_y, wall_z)
+
+  end for
+
+end for
+```
