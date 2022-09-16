@@ -250,7 +250,7 @@ end for
 
 ```
 
-you will get something like this: <br>
+You will get something like this: <br>
 <img src="./images/circle.png" />
 
-working on it...
+Working on it...
