@@ -107,7 +107,7 @@ In orther to generate rays in real life you would have to implement a camera but
 
 General configurations
 ```
-Width = 100
+Width = 150
 Height = 100
 
 ray.pos = point(0, 0, -5)
@@ -251,6 +251,6 @@ end for
 ```
 
 you will get something like this
-<img href="./images/sphere.webp" />
+<img href="./images/circle.png" />
 
 working on it...
