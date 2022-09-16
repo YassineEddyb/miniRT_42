@@ -71,7 +71,7 @@ in case you're wondering how all this works? just loop over all pixels and gener
 
 ## Here is some resourses:
 <ul>
-  <li><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work">Introduction to Ray Tracing: a Simple    Method for Creating 3D Images</a></li>s
+  <li><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work">Introduction to Ray Tracing: a Simple    Method for Creating 3D Images</a></li>
   <li><a href="https://www.youtube.com/watch?v=gfW1Fhd9u9Q&list=PLlrATfBNZ98edc5GshdBtREv5asFW3yXl">The cherno ray tracing in youtube</a> <br>
   <li><a href="https://raytracing.github.io/">Ray Tracing in One Weekend</a></li>
   <li><a href="https://www.amazon.com/Ray-Tracer-Challenge-Test-Driven-Renderer/dp/1680502719/ref=sr_1_1?   crid=12SJ4LEACDK9I&keywords=the+ray+tracing+challenge&qid=1663158573&sprefix=the+ray+tracing+challenge%2Caps%2C161&sr=8-1">The The Ray Tracer Challenge</a></li>
@@ -84,7 +84,7 @@ check this article from scratchapixel <a href="https://www.scratchapixel.com/les
 
 in this lesson well draw a sphere and the same method go for other basic shapes.
 
-### 1- generating rays
+### 1- Generating rays
 In orther to generate rays in real life you would have to implement a camera but we'll keep thing simple here.
 
 First we'll have to deside how large our window will be:
@@ -124,7 +124,7 @@ for y = 0 to Width - 1
 end for
 ```
 
-### Ray Sphere intresetion
+### 2- Ray Sphere intersection
 After generating rays we'll see if they intersect with a sphere.
 
 We know the equation of a line:
@@ -147,6 +147,7 @@ Where:
 <ul>
   <li><b>a,b,c</b>: the position of the sphere</li>
   <li><b>x,y,z</b>: a point from the sphere</li>
+  <li><b>r</b>: the raduis of the shpere</li>
 </ul>
 
 Assuming that the sphere postion is on 0,0,0.
