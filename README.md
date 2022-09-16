@@ -105,23 +105,26 @@ sphere {
 ### 1- Generating rays
 In orther to generate rays in real life you would have to implement a camera but we'll keep thing simple here.
 
-First we'll have to deside how large our window will be:
+General configurations
 ```
 Width = 100
 Height = 100
-```
-  
-We'll assume the ray starts from z -5.
-```
+
 ray.pos = point(0, 0, -5)
+sphere.pos = point(0,0,0)
+sphere.transform = identity_matrix;
+  
+fov = PI/2
 ```
 
-We'll implement a function that calculate the direction of the ray
- 
+We'll implement a function that calculates the direction of the ray
 ```
 fucntion get_ray_direction(Width, Height, x, y, fov)
-  # assuming Width > Height
-  AspectRatio = Width / Height;
+  # get the aspect ratio
+  if Widht > Height
+    AspectRatio = Width / Height;
+  else 
+    AspectRatio = Width / Height;
 
   # compute the world y coordinate
   world_x = (2 * ((x + 0.5) / Width) - 1) * tan(fov / 2 * M_PI / 180) * AspectRatio; 
@@ -130,10 +133,10 @@ fucntion get_ray_direction(Width, Height, x, y, fov)
   world_y = (1 - 2 * ((y + 0.5) / Height) * tan(fov / 2 * M_PI / 180);
 
   # describe the point that the ray will target
-  vector position = point(world_x, world_y, 1)
+  vector position = point(world_x, world_y, 0)
 
   # get ray direction
-  ray.dir = normalize(ray_dir - ray_origin);
+  return normalize(ray_dir - ray_origin);
 end function
 ```
 
@@ -230,3 +233,22 @@ function ray_sphere_intersection(sphere, ray)
 end function
 </pre>
 
+finaly we can draw something by merging what we learnd so far
+
+```
+# for each row of pixels in the canvas
+for y = 0 to Width - 1
+  # for each pixel in the row
+  for x = 0 to Height - 1
+    ray.dir = get_ray_direction(Width, Hight, x, y, fov)
+
+    if ray_sphere_intersection(sphere, ray)
+      put_pixel_to_window(x, y, red)
+
+  end for
+end for
+
+```
+
+you will get something like this
+<img href="./images/sphere" />
