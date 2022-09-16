@@ -87,7 +87,7 @@ Check this article from scratchapixel <a href="https://www.scratchapixel.com/les
 - Structures needed for this lesson
 ```
 ray {
-  vector pos # postion of the ray
+  vector origin # start of the ray
   vector dir # direction of the ray
 }
 
@@ -181,16 +181,13 @@ Remember that x,y,z are the cordinates of a point in the sphere so we can write 
 If we replace P with it's value from the equation of a line we get:
 <pre>|O + tD|<sup>2</sup> - r<sup>2</sup> = 0</pre>
 
-With the origin of the sphere on 0,0,0 we get
-<pre>(tD)<sup>2</sup> - r<sup>2</sup> = 0</pre>
-
-When we expand this equation we get
+When we expand this equation we get:
 <pre>O<sup>2</sup> + (Dt)<sup>2</sup> + 2ODt − r<sup>2</sup> = 0
 D<sup>2</sup>t<sup>2</sup> + 2ODt + O<sup>2</sup> - r<sup>2</sup> = 0</pre>
 
 It looks like:
 <pre>ax<sup>2</sup> + bx + c = 0</pre>
-Where
+Where:
 <ul>
   <li><b>a</b> => D<sup>2</sup></li>
   <li><b>b</b> => 2OD</li>
@@ -200,18 +197,40 @@ Where
 So we can solve it using the <a href="https://en.wikipedia.org/wiki/Quadratic_formula">Quadratic Formula</a>
 <pre>t<sub>1,2</sub> = (-b ± √Δ) / 2a</pre>
 
-Where :
-
+Where:
 <pre>Δ = b<sup>2</sup> - 4ac</pre>
 
 - if `Δ > 0` => the ray intersects the sphere in two points
 - if `Δ = 0` => the ray intersects the sphere in one points
 - if `Δ < 0` => the ray does not intersects with the sphre
 
+In pseudocode
 <pre>
 function ray_sphere_intersection(sphere, ray)
   # first transform the ray by the inverse of transform matrix
-  trasformed_ray = 
+  transformed_ray.origin = ray.pos * sphere.transform
+  transformed_ray.dir = ray.dir * sphere.transform
+  
+  # convert the origin of the ray to a vector
+  origin = trasformed_ray.origin - sphere.pos
+
+  # D<sup>2</sup>
+  a = dot(transformed_ray.dir, transformed_ray.dir)
+
+  # 2OD
+  b = 2 * dot(orgin, transformed_ray.dir)
+  
+  # O<sup>2</sup> - r<sup>2</sup> // r = 1
+  c = dot(origin, origin) - 1
+  
+  # b<sup>2</sup> - 4ac
+  discriminant = b * b - 4 * a * c
+  
+  if (discriminant < 0)
+    return false
+  else
+    return true
+  end if
 end function
 </pre>
 
