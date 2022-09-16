@@ -110,36 +110,31 @@ First we'll have to deside how large our window will be:
 Width = 100
 Height = 100
 ```
-
+  
 We'll assume the ray starts from z -5.
 ```
 ray.pos = point(0, 0, -5)
 ```
 
+We'll implement a function that calculate the direction of the ray
+ 
 ```
-# assuming Width > Height
-AspectRatio = Width / Height;
-
-# for each row of pixels in the canvas
-for y = 0 to Width - 1
+fucntion get_ray_direction(Width, Height, x, y, fov)
+  # assuming Width > Height
+  AspectRatio = Width / Height;
 
   # compute the world y coordinate
   world_x = (2 * ((x + 0.5) / Width) - 1) * tan(fov / 2 * M_PI / 180) * AspectRatio; 
 
-  # for each pixel in the row
-  for x = 0 to Height - 1
- 
-    # compute the world x coordinate
-    world_y = (1 - 2 * ((y + 0.5) / Height) * tan(fov / 2 * M_PI / 180);
+  # compute the world x coordinate
+  world_y = (1 - 2 * ((y + 0.5) / Height) * tan(fov / 2 * M_PI / 180);
 
-    # describe the point that the ray will target
-    vector position = point(world_x, world_y, 1)
+  # describe the point that the ray will target
+  vector position = point(world_x, world_y, 1)
 
-    # get ray direction
-    ray.dir = normalize(ray_dir - ray_origin);
-
-  end for
-end for
+  # get ray direction
+  ray.dir = normalize(ray_dir - ray_origin);
+end function
 ```
 
 ### 2- Ray Sphere intersection
@@ -204,6 +199,7 @@ Where:
 - if `Δ = 0` => the ray intersects the sphere in one points
 - if `Δ < 0` => the ray does not intersects with the sphre
 
+Now we can implement the ray sphere intersection function
 In pseudocode
 <pre>
 function ray_sphere_intersection(sphere, ray)
