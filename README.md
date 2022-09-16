@@ -67,7 +67,7 @@ And four basic shapes that are (optional, will not entirely cause if you leave i
 
 # How it works?
 
-in case you're wondering how all this works? just loop over all pixels and generate a ray for each one, then see if intersects with any object and calculate the color for this pixel, sounds simple isn't it, well it's not at least for me.
+in case you're wondering how all this works? just loop over all pixels and generate a ray for each one, then see if intersects with any object and calculate the color for this pixel, sounds simple isn't it, well it's not.
 
 ## Here is some resourses:
 <ul>
@@ -79,10 +79,28 @@ in case you're wondering how all this works? just loop over all pixels and gener
 </ul>
 
 ## My explanation
-First of all you should be familiar with matrixes and vectors,
-check this article from scratchapixel <a href="https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry">geometry.</a> <br>
 
-in this lesson well draw a sphere and the same method go for other basic shapes.
+### Some things you have to know
+- First of all you should be familiar with matrixes and vectors,
+Check this article from scratchapixel <a href="https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry">geometry.</a> <br>
+
+- Structures needed for this lesson
+```
+ray {
+  vector pos # postion of the ray
+  vector dir # direction of the ray
+}
+
+sphere {
+  vector pos # position of the sphere
+  matrix transform # transformation matrix of the sphere
+}
+```
+
+- in this lesson well draw a sphere and the same method go for other basic shapes.
+- Intersection of the sphere will be in object space then we will transform it to world space see 
+<a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2018/ENU/Maya-Basics/files/GUID-A63AC5C8-8822-42AC-827E-164B5266DA03-htm.html#:~:text=World%20space%20is%20the%20coordinate,an%20object's%20point%20of%20view.">Object space vs World space</a>.
+
 
 ### 1- Generating rays
 In orther to generate rays in real life you would have to implement a camera but we'll keep thing simple here.
@@ -95,7 +113,7 @@ Height = 100
 
 We'll assume the ray starts from z -5.
 ```
-vector ray_origin = point(0, 0, -5)
+ray.pos = point(0, 0, -5)
 ```
 
 ```
@@ -118,7 +136,7 @@ for y = 0 to Width - 1
     vector position = point(world_x, world_y, 1)
 
     # get ray direction
-    vector ray_dir = normalize(ray_dir - ray_origin);
+    ray.dir = normalize(ray_dir - ray_origin);
 
   end for
 end for
@@ -167,27 +185,33 @@ With the origin of the sphere on 0,0,0 we get
 <pre>(tD)<sup>2</sup> - r<sup>2</sup> = 0</pre>
 
 When we expand this equation we get
-<pre>(Dt)<sup>2</sup> + 2Dt − R<sup>2</sup> = D<sup>2</sup>t<sup>2</sup> + 2Dt − r<sup>2</sup> = 0</pre>
+<pre>O<sup>2</sup> + (Dt)<sup>2</sup> + 2ODt − r<sup>2</sup> = 0
+D<sup>2</sup>t<sup>2</sup> + 2ODt + O<sup>2</sup> - r<sup>2</sup> = 0</pre>
 
 It looks like:
 <pre>ax<sup>2</sup> + bx + c = 0</pre>
 Where
 <ul>
   <li><b>a</b> => D<sup>2</sup></li>
-  <li><b>b</b> => 2D</li>
-  <li><b>c</b> => r<sup>2<sup></li>
+  <li><b>b</b> => 2OD</li>
+  <li><b>c</b> => O<sup>2</sup> - r<sup>2<sup></li>
 </ul>
 
 So we can solve it using the <a href="https://en.wikipedia.org/wiki/Quadratic_formula">Quadratic Formula</a>
 <pre>t<sub>1,2</sub> = (-b ± √Δ) / 2a</pre>
 
 Where :
-```
-Δ = b<sup>2<sup> - 4ac
-```
+
+<pre>Δ = b<sup>2</sup> - 4ac</pre>
 
 - if `Δ > 0` => the ray intersects the sphere in two points
 - if `Δ = 0` => the ray intersects the sphere in one points
 - if `Δ < 0` => the ray does not intersects with the sphre
 
+<pre>
+function ray_sphere_intersection(sphere, ray)
+  # first transform the ray by the inverse of transform matrix
+  trasformed_ray = 
+end function
+</pre>
 
